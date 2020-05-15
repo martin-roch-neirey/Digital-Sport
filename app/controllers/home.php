@@ -19,14 +19,14 @@ function submit_contact()
 		return;	
 	}
 
-	$sql = "INSERT INTO CONTACT (Message, Mail) VALUES (:Message, :Mail)";
+	$localTable = "CONTACT";
 
-	$params = [
-		':Mail' => $_POST['contact_mail'],
-		':Message' => $_POST['contact_message'],
+	$localData = [
+		'Message' => $_POST['contact_message'],
+		'Mail' => $_POST['contact_mail'],
 	];
 
-	pdo_query($sql, $params);
+	insert($localTable , $localData);
 
 	display_view('home/index', ['success_message' => 'Message envoyé ! 💪']);
 	echo "<script>goToCont()</script>";
