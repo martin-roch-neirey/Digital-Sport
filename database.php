@@ -44,30 +44,29 @@ function pdo_query(string $sql,array $params = null)
 	return $sth->fetchAll(PDO::FETCH_ASSOC); //exécuter une requête préparée
 }
 
-function select($table, $fields, array $whereParams, array $orderParams = null, $limitParams = null, $offsetParams = null)
+function select($table, array $fieldsParams, array $whereParams, $orderParams = null, $limitParams = null, $offsetParams = null)
 {
-	$where = '';
-	$order = '';
+	$fields = '';
 
+	foreach ($fieldsParams as $param){
+		$fields .= $param.', ';
+	}
+	$fields = substr($fields,0,-2);
+	
+	$where = '';
+	$data_array = [];
+	$bindParams_array = [];
 	foreach ($whereParams as $param){
-		foreach ($param as $values) {
-			$where .= ($values.' ');
-		}
-		$where .= 'AND ';
+        $where .= ($param[0] . ' ' . $param[1] . ' :' . $param[0] . ' AND ');
+        array_push($data_array, $param[2]);
+        array_push($bindParams_array, (':'.$param[0]));
 	}
 	$where = substr($where,0,-5);
-
-	foreach ($orderParams as $param){
-		foreach ($param as $values) {
-			$order .= (' '.$values);
-		}
-		$order .= ',';
-	}
-	$order = substr($order,1,-1);
+	$data_prepare = array_combine($bindParams_array, array_values($data_array));
 
 	$sql = 'SELECT ' . $fields . ' FROM ' . $table . ' WHERE ' . $where . ' ORDER BY ' . $order . ' LIMIT ' . $limitParams .' OFFSET ' . $offsetParams;
 
-	pdo_query($sql);
+	pdo_query($sql,$data_prepare);
 
 }
 
@@ -104,21 +103,28 @@ function delete($table, array $whereParams){
 
 }
 
-function update($table, array $fieldsParams ,$whereParams){ //arret
+function update($table, array $fieldsParams ,$whereParams){
 
+	$fields = '';
+	$data_array = [];
+	$bindField_array = [];
+	
 	foreach ($fieldsParams as $param){
-		foreach ($param as $values) {
-			$field .= (' '.$values);
-		}
-		$field .= ',';
+        $fields .= ($param[0] . ' ' . $param[1] . ' :' . $param[0] . ', ');
+        array_push($data_array, $param[2]);
+        array_push($bindField_array, (':'.$param[0]));
 	}
-	$field = substr($field,1,-1);
+	
+	$field_prepare = array_combine($bindField_array, array_values($data_array));
+    $where_prepare = array(':'.$whereParams[0] => $whereParams[2]);
+	
+    $fields = substr($fields,0,-2);
+    $where = $whereParams[0] . ' ' . $whereParams[1] . ' ' . ':'.$whereParams[0];
+    
+    $data_prepare = array_merge($field_prepare, $where_prepare);
 
-	$sql = 'DELETE FROM ' . $table . ' SET ' . $field . ' WHERE ' . $whereParams;
+	$sql = 'UPDATE ' . $table . ' SET ' . $fields . ' WHERE ' . $where;
 
-	pdo_query($sql);
-
-
-
+	pdo_query($sql, $data_prepare);
 
 }
