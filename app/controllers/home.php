@@ -13,7 +13,7 @@ function index ()
 function submit_contact()
 {
 
-	if (!isset($_POST['contact_mail']) || !isset($_POST['contact_message']) || empty($_POST['contact_message'])) {
+	if (!isset($_POST['contact_mail']) || !isset($_POST['contact_message']) || empty($_POST['contact_message']) || empty($_POST['contact_mail'])) {
 		$errors = ['champs manquant'];
 		display_view('home/index', ['errors' => $errors]);
 		return;	
