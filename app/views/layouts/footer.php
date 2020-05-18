@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>DigitalSport</title>
-	<link rel="stylesheet" type="text/css" href="../public/css/footer_style.css">
-	<script type="text/javascript" src="../public/js/footer_script.js"></script>
-	<meta http-equiv="Content-Type" content="text/HTML; charset=UTF-8" />
-</head>
-<body>
 	<!-- Footer -->
 	<footer id="footer">
 		<h1>CONTACT</h1>

@@ -16,7 +16,7 @@ function display_view(string $view_path, array $data = [], bool $use_layout = tr
 
 	if(!file_exists($view)) {
 		require_once VIEW_PATH . "/errors/500.php";
-		return false;	
+		return false;
 	}
 	
 	if ($use_layout) {
@@ -65,4 +65,36 @@ function get_config(string $item)
 	$config = require (APP_ROOT . '/app/config.php');
 
 	return get_item_rec($config, $item) ?? null;
+}
+
+/**
+ * cree une url pour un lien de l'application
+ * 
+ * @param  string      $controller le controller sur lequel on navigue
+ * @param  string|null $action     l'action du controller
+ * @param  array       $get_params les parametres get qu'on veux dans l'url sous la forme de tableau cle => valeur
+ * @return [type]                  l'url au format // www.monsite.com/index.php?controller=home&action=index&param1=param
+ */
+function get_url(string $controller, string $action = null,array $get_params = []) {
+	$base_url = get_config('app_url');
+
+	$url = $base_url . '/index.php?controller=' . $controller;
+	$url .= isset($action) ? '&action=' . $action: '';
+	$url .= (!empty($get_params) ? http_build_query($get_params): '');
+
+	return $url;
+}
+
+/**
+ * renvoi l'url vers un asset
+ * 
+ * @param  [type] $path le chemin relatif de l'asset par rapport a mvc/public/
+ * @return [type]       
+ */
+function get_asset($path) {
+	if(!file_exists(PUBLIC_PATH . '/' . $path)) {
+		display_view('errors/500', null, false);
+		exit;
+	}
+	return get_config('app_url') . '/' . $path;
 }

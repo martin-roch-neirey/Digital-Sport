@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>DigitalSport</title>
-	<link rel="stylesheet" type="text/css" href="../public/css/index_style.css">
-	<script type="text/javascript" src="../public/js/index_script.js"></script>
-	<meta http-equiv="Content-Type" content="text/HTML; charset=UTF-8" />
-</head>
-<body>
+	<link rel="stylesheet" type="text/css" href="<?php echo get_asset('css/index_style.css') ?>">
 	<div id="partie1" class="divpartie">
 		<div>
 			<h1>Bienvenue dans notre <span>Salle de Sport Vitruelle</span> !</h1>
@@ -16,7 +8,7 @@
 				<p>Inscrivez vous et bénéficiez de cette expérience unique !</p>
 			</div>
 		</div>
-		<img class="imageronde" src="images/warmup.jpg" alt="warmup"/>
+		<img class="imageronde" src="<?php echo get_asset('images/warmup.jpg') ?>" alt="warmup"/>
 		<div id="styleimg1"></div>
 		<div id="styleimg2"></div>
 	</div>
@@ -79,30 +71,4 @@
 	    	<div>Obtenez-le pour <a href="#">19.99€ / mois </a> !</div>
 	    </div>
 	</div>
-</body>
-</html>
-
-
-
-
-
-
-
-
-<!--
-hello <?php echo $username ?>
-
-
-<?php foreach($userlist as $user): ?>
-	<p>
-		<?php echo $user['name'] ?> <br> 
-		<?php echo $user['surname'] ?><br>
-		<?php echo $user['email'] ?><br>
-	</p>
-<?php endforeach; ?>
-
-<script type="text/javascript">
-	const username = '<?php echo $username ?>';
-	console.log('hello ' + username)
-</script>
--->
+	<script type="text/javascript" src="<?php echo get_asset('js/index_script.js') ?>"></script>
