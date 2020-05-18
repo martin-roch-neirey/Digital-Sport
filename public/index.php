@@ -2,7 +2,7 @@
 
 require __DIR__ . '/../bootstrap.php';
 
-$dbh = getPdo();
+// $dbh = getPdo();
 
 
 // www.monsite.com/index.php?controller=home&action=index

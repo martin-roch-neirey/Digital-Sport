@@ -2,8 +2,7 @@
 <html>
 <head>
 	<title>DigitalSport</title>
-	<link rel="stylesheet" type="text/css" href="<?php echo get_asset('css/header_style.css') ?>">
-	<script type="text/javascript" src="<?php echo get_asset('js/header_script.js') ?>"></script>
+	<link rel="stylesheet" type="text/css" href="<?php echo get_asset('css/style.css') ?>">
 	<meta http-equiv="Content-Type" content="text/HTML; charset=UTF-8" />
 </head>
 <body>

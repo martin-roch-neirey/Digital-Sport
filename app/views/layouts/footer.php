@@ -20,5 +20,6 @@
 		</div>
 		<h2>&copy; DigitalSport</h2>
 	</footer>
+	<script type="text/javascript" src="<?php echo get_asset('js/script.js') ?>"></script>
 </body>
 </html>

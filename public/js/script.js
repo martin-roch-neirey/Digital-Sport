@@ -7,3 +7,8 @@ function scrollFunction() {
     document.getElementById("header").style.background = "rgba(0,0,0,0.55)";
   }
 }
+
+function goToCont(){
+	var element = document.getElementById("footer");
+	element.scrollIntoView({behavior: "smooth"});
+}
