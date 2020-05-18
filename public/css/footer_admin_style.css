@@ -1,0 +1,23 @@
+/* Général ----------------------------------------------------------------------------------------------------------------- */
+
+*{
+	margin: 0px;
+	padding: 0px;
+	font-family: "Gill Sans", sans-serif;
+	max-width: 1320px;
+	transition: 0.5s ease;
+}
+
+/* Footer ----------------------------------------------------------------------------------------------------------------- */
+
+footer{
+	border-top: solid 1px #7347FE;
+	height: 100px;
+	line-height: 100px;
+	background-color: #232323;
+	width: 100%;
+}
+
+h1{
+	color: rgba(0,0,0,0.8);
+}

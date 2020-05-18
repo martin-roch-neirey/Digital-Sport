@@ -1,0 +1,93 @@
+/* Général ----------------------------------------------------------------------------------------------------------------- */
+
+*{
+	margin: 0px;
+	padding: 0px;
+	font-family: "Gill Sans", sans-serif;
+	transition: 0.5s ease;
+}
+
+a{
+	text-decoration: none;
+	color: white;
+}
+
+body{
+	background-color: #232323;
+}
+
+/* Header ----------------------------------------------------------------------------------------------------------------- */
+
+header{
+	transition: 0.5s ease;
+}
+
+header nav{
+	width: 150px;
+	height: 100%;
+	border-right: solid 1px white;
+}
+
+header li{
+	position: relative;
+	list-style-type: none;
+	width: 150px;
+	text-align: center;
+	color: grey;
+	padding: 15px 0px;
+
+}
+
+header li:hover{
+	cursor: pointer;
+	background-color: #181818;
+	transition: none;
+
+}
+
+header nav > ul > li:hover > ul {
+	display: block;
+}
+
+header nav > ul > li {
+	background-color: #202020;
+}
+
+header nav > ul > li > ul {
+	display: none;
+	position: relative;
+}
+
+header nav > ul > li > ul > li {
+	background-color: #181818;
+	width: 150px;
+	color: white;
+}
+
+ header nav > ul > li > ul > li:hover {
+	background-color: #252525;
+}
+
+.listeli::after {
+	content: "";
+	position: absolute;
+	top: 20px;
+	right: 15px;
+	border-top: solid 4px transparent;
+	border-bottom: solid 4px transparent;
+	border-left: solid 10px grey;
+}
+.listeli:hover::after {
+	content: "";
+	position: absolute;
+	top: 20px;
+	right: 15px;
+	border-top: solid 10px grey;
+	border-left: solid 4px transparent;
+	border-right: solid 4px transparent;
+	transition: all 0.2s ease;
+}
+
+.test{
+	transition: 0.5s ease;
+}
