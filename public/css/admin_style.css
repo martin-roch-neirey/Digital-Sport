@@ -4,12 +4,13 @@
 	margin: 0px;
 	padding: 0px;
 	font-family: "Gill Sans", sans-serif;
-	transition: 0.5s ease;
+	transition: all 0.5s ease;
 }
 
 a{
 	text-decoration: none;
 	color: white;
+	display: block;
 }
 
 body{
@@ -20,11 +21,12 @@ body{
 
 header{
 	transition: 0.5s ease;
+	position: fixed;
 }
 
 header nav{
 	width: 150px;
-	height: 100%;
+	height: auto;
 	border-right: solid 1px white;
 }
 
@@ -35,14 +37,17 @@ header li{
 	text-align: center;
 	color: grey;
 	padding: 15px 0px;
+	display: block;
 
 }
 
 header li:hover{
 	cursor: pointer;
 	background-color: #181818;
-	transition: none;
 
+}
+
+header ul{
 }
 
 header nav > ul > li:hover > ul {
@@ -90,4 +95,22 @@ header nav > ul > li > ul > li {
 
 .test{
 	transition: 0.5s ease;
+}
+
+/* Footer ----------------------------------------------------------------------------------------------------------------- */
+
+footer{
+	position: absolute;
+	bottom: 0px;
+	border-top: solid 1px #7347FE;
+	height: 80px;
+	line-height: 80px;
+	background-color: #232323;
+	width: 100%;
+}
+
+h1{
+	color: rgba(255,255,255,0.6);
+	text-align: center;
+	font-size: 25px;
 }

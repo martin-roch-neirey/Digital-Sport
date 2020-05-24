@@ -44,7 +44,7 @@ function pdo_query(string $sql,array $params = null)
 	return $sth->fetchAll(PDO::FETCH_ASSOC); //exécuter une requête préparée
 }
 
-function select($table, array $fieldsParams, array $whereParams, $orderParams = null, $limitParams = null, $offsetParams = null)
+function select(string $table, array $fieldsParams, array $whereParams, string $orderParams, int $limitParams , int $offsetParams)
 {
 	$fields = '';
 
@@ -64,13 +64,16 @@ function select($table, array $fieldsParams, array $whereParams, $orderParams = 
 	$where = substr($where,0,-5);
 	$data_prepare = array_combine($bindParams_array, array_values($data_array));
 
-	$sql = 'SELECT ' . $fields . ' FROM ' . $table . ' WHERE ' . $where . ' ORDER BY ' . $order . ' LIMIT ' . $limitParams .' OFFSET ' . $offsetParams;
+    $sql = 'SELECT ' . $fields . ' FROM ' . $table;
+    $sql .= !empty($whereParams) ? ' WHERE ' . $where: '';
+    $sql .= !empty($orderParams) ? ' ORDER BY ' . $orderParams: '';
+    $sql .= !empty($limitParams) ? ' LIMIT ' . $limitParams: '';
+    $sql .= !empty($offsetParams) ? ' OFFSET ' . $offsetParams: '';
 
-	pdo_query($sql,$data_prepare);
-
+	return pdo_query($sql,$data_prepare);
 }
 
-function insert($table, array $data){
+function insert(string $table, array $data){
     $fields = array_keys($data);
 
     $bindParams = array_map(function($field) {
@@ -85,7 +88,7 @@ function insert($table, array $data){
 }
 
 
-function delete($table, array $whereParams){
+function delete(string $table, array $whereParams){
 	$params = '';
 	$data_array = [];
 	$bindParams_array = [];
@@ -103,7 +106,7 @@ function delete($table, array $whereParams){
 
 }
 
-function update($table, array $fieldsParams ,$whereParams){
+function update(string $table, array $fieldsParams , array $whereParams){
 
 	$fields = '';
 	$data_array = [];

@@ -2,7 +2,7 @@
 
 require __DIR__ . '/../bootstrap.php';
 
-// $dbh = getPdo();
+$dbh = getPdo();
 
 
 // www.monsite.com/index.php?controller=home&action=index
@@ -19,6 +19,8 @@ if (!isset($_GET['controller']) || empty($_GET['controller']) || !file_exists($c
 require_once $controller_file;
 
 $user_defined_functions = get_defined_functions()['user'];
+
+//if (!isset($_GET['action']) || empty($_GET['action']) || !in_array($_GET['action'], $user_defined_functions)) {
 
 if (!isset($_GET['action']) || empty($_GET['action']) || !in_array($_GET['action'], $user_defined_functions)) {
 	$_GET['action'] = 'index';

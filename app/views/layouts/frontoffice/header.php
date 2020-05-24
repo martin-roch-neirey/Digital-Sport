@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>DigitalSport</title>
-	<link rel="stylesheet" type="text/css" href="<?php echo get_asset('css/style.css') ?>">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<meta http-equiv="Content-Type" content="text/HTML; charset=UTF-8" />
 </head>
 <body>
@@ -13,9 +13,9 @@
 		    <ul>
 			    <li onclick="goToAcc()">
 			    	<a id="logo">
-			    		<img src="<?php echo get_asset('images/haltere.png') ?>" alt="haltere"/>
+			    		<img src="images/haltere.png" alt="haltere"/>
 			    			DigitalSport
-			    		<img src="<?php echo get_asset('images/haltere_reverse.png') ?>" alt="haltere"/>
+			    		<img src="images/haltere_reverse.png" alt="haltere"/>
 			    	</a>
 			    </li>
 			    <li onclick="goToEntmnt()">ENTRAINEMENTS</li>

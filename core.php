@@ -11,7 +11,7 @@
 function display_view(string $view_path, array $data = [], bool $use_layout = true)
 {
 	$view = VIEW_PATH . '/' . str_replace('.php', '', $view_path) . ".php";
-
+	$layout = explode('/', $view_path);
 	extract($data);
 
 	if(!file_exists($view)) {
@@ -19,14 +19,18 @@ function display_view(string $view_path, array $data = [], bool $use_layout = tr
 		return false;
 	}
 	
-	if ($use_layout) {
-		require_once VIEW_PATH ."/layouts/header.php";
+	if (($use_layout) and ($layout[0] == 'admin')){
+		require_once VIEW_PATH ."/layouts/backoffice/header.php";
+	}elseif ($use_layout){
+		require_once VIEW_PATH ."/layouts/frontoffice/header.php";
 	}
 
 	require_once $view;
 
-	if ($use_layout) {
-		require_once VIEW_PATH ."/layouts/footer.php";
+	if (($use_layout) and ($layout[0] == 'admin')){
+		require_once VIEW_PATH ."/layouts/backoffice/footer.php";
+	}elseif ($use_layout){
+		require_once VIEW_PATH ."/layouts/frontoffice/footer.php";
 	}
 }
 
