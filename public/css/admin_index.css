@@ -172,3 +172,12 @@ tr:nth-child(even) {
 	font-size: 32px;
 	top: 60px;
 }
+
+#modifyClient{
+	position: relative;
+	top: 0px;
+	left: 0px;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}

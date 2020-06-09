@@ -1,0 +1,302 @@
+/* Général -----------------------------------*/
+* {
+    font-family: "Gill Sans", sans-serif;
+    transition: all 0.5s ease;
+}
+/* Header ------------------------------------*/
+#linelogo{
+    white-space: nowrap;
+}
+
+#logo{
+    font-size: 48px;
+    font-weight: bold;
+    background: -webkit-linear-gradient(#f40d42, white);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+}
+
+.haltlogo{
+    height: 40px;
+    position: relative;
+}
+
+body header div{
+    height: 110px;
+    width: 100%;
+    background-color: rgba(0,0,0,0.55);
+    position: fixed;
+    border-bottom: solid 1px rgba(255,255,255,0.8);
+    z-index: 11;
+}
+
+body header nav{
+    position: fixed;
+        width: 100%;
+    z-index: 11;
+}
+
+body header nav ul{
+    display: flex;
+}
+
+body header nav ul li{
+    flex-direction: row;
+    height: 70px;
+    flex: 1 1 auto;
+    text-align: center;
+    line-height: 70px;
+    list-style-type: none;
+    border-radius: 10px;
+    margin: 8px;
+    padding: 10px;
+
+}
+
+body header nav ul li:hover{
+    transition-duration: 0.5s;
+    background-color: rgba(255,255,255,0.15);
+}
+
+body header nav ul li:not(:hover){
+    transition-duration: 0.5s;
+}
+
+body header nav ul li a{
+    text-decoration: none;
+    color: rgba(255,255,255,0.7);
+    font-size: 27px;
+    display: block;
+
+}
+
+#header{
+    transition: 0.5s ease;
+}
+
+
+.divpartie{
+    height: 1020px;
+}
+/* Inscription ------------------------------------------------------*/
+html, body, h1, form, fieldset, input
+{
+margin: 0; padding: 0; border: none;
+}
+body {
+font-family: Helvetica, Arial, sans-serif; font-size: 12px;
+  padding: 0px;
+  background: #f40d42;
+  background: -o-linear-gradient(-135deg, #f40d42, #f40d42);
+  background: -moz-linear-gradient(-135deg, #c850c0, #f40d42);
+  background: linear-gradient(-135deg, #f40d42, #4158d0);
+  background: contain;
+}
+main {
+    width: 50%;
+}
+#registration {
+    color: #fff;
+    background-color: rgba(0,0,0,0.8);
+     border-radius: 50px;
+     margin: 10px;
+     width: 900px;
+     line-height: 30px;
+     }
+
+ #registration a {
+      color: #8c910b;
+      text-shadow: 0px -1px 0px #000;
+      }
+
+#registration fieldset {
+      padding: 20px;
+      }
+      fieldset, label {
+        display:inline-grid;
+        line-height: 40px;
+        width: 300px;
+      }
+#divTel {
+display: inline-flex;
+width: 100px;
+}
+#prefixeTel {
+    display: inline-block;
+}
+
+fieldset {
+ padding:0 20px 20px 20px;
+ margin-bottom:10px;
+ border:1px solid #DF3F3F;
+ }
+legend {
+ color:#DF3F3F;
+ font-weight:bold
+ }
+label {
+ margin-top:10px;
+ display:block;
+ }
+label.inline {
+ display:inline;
+ margin-right:50px;
+ }
+input, textarea, select, option {
+ background-color:#FFF3F3;
+ }
+input, textarea, select {
+ padding:3px;
+ border:1px solid #F5C5C5;
+ border-radius:5px;
+ width:300px;
+ box-shadow:1px 1px 2px #C0C0C0 inset;
+ }
+select {
+ margin-top:10px;
+ }
+input[type=checkbox] {
+ background-color:transparent;
+ border:none;
+ width:10px;
+ }
+input[type=submit] {
+ width:100px;
+ margin-left:5px;
+ cursor:pointer;
+ }
+ div {
+    display: inline-grid;
+    padding: 10px;
+    line-height: 20px;
+ }
+ fieldset {
+    display: inline-flex;
+    padding: 10px;
+    line-height: 20px;
+ }
+  menu {
+    display: inline-grid;
+ }
+ #acceptTerms {
+    text-align: center;
+    width: 10px;
+ }
+ .form-submit-button {
+
+background: #f40d42;
+
+color: white;
+
+border-radius: 4px;
+
+border-color: #f40d42;
+
+font-size: 75%;
+
+height: 50px;
+
+width: 150px;
+
+}
+
+
+/* -------------------------- */
+footer {
+    background-color: rgba(0,0,0,0.5);
+    text-align: center;
+    border: solid 1px black;
+    border-color: white;
+    color: white;
+    margin: 15px;
+    padding: 2px;
+}
+main {
+    display: flex;
+    flex: 1 1 auto;
+    margin: 15px;
+    padding: 2px;
+}
+a {
+  outline: none;
+  text-decoration: none;
+}
+a:hover{
+  color: gray;
+}
+a:not(:hover){
+  color: #f40d42;
+}
+article {
+    margin: 15px;
+    padding: 10px;
+}
+menu {
+    border-radius: 50px;
+    background-color: rgba(0,0,0,0.8);
+    text-align: center;
+    color: #ffffff;
+    border: solid 2px black;
+    border-color: #f40d42;
+    margin: 15px;
+    padding: 30px;
+}
+h3 {
+    color: #f40d42;
+}
+.displayText {
+    display: inline-block;
+}
+.redcolor {
+    display: inline-block;
+    color: #f40d42;
+}
+@media screen and (max-width:400px) {
+body {
+}
+header {
+    height: 100px
+}
+main {
+    flex-direction: column;
+    color: white;
+    margin: 15px;
+    padding: 2px;
+}
+}
+@media screen and (min-width:400px) and (max-width:700px) {
+body {
+    background-size: cover;
+    }
+header {
+    height: 125px
+}
+main {
+    flex-direction: column;
+    margin: 15px;
+    padding: 2px;
+}
+}
+@media screen and (min-width:700px) and (max-width:1600px) {
+body {
+    }
+header {
+    height: 150px
+}
+}
+@media screen and (min-width:1600px) {
+body {
+background-size: cover;
+    }
+header {
+    height: 175px
+}
+menu, section {
+    font-size: 20px;
+    flex: 1 1 auto;
+}
+h3 {
+    font-size: 30px;
+}
+}

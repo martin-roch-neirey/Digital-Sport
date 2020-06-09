@@ -9,3 +9,5 @@ define('PUBLIC_PATH', APP_ROOT . '/public');
 require_once __DIR__ . "/core.php";
 
 require_once __DIR__ . "/database.php";
+
+?>

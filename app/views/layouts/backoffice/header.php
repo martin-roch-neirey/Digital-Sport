@@ -11,20 +11,20 @@
 		<nav>
 		    <ul>
 			    <li>
-			    	<a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=index">Tableau de bord</a>
+			    	<a href=https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=index>Tableau de bord</a>
 			    </li>
 			    <li class="listeli">Coach
 			    	<ul>
 			    		<li>
-			    			<a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=showCoach">Profils</a>
+			    			<a href=https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=show_all_coachs_profile>Profils</a>
 			    		</li>
 			    		<li>Séances</li>
 			    	</ul>
 			    </li>
-			   	<li class="listeli">Utilisateur
+			   	<li class="listeli">Client
 			   		<ul>
 			   			<li>
-			   				<a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=showClient">Profils</a>
+			   				<a href=https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=show_all_clients_profile>Profils</a>
 			   			</li>
 			   			<li>Séance Coach</li>
 			   			<li>Séance Perso</li>
@@ -37,27 +37,16 @@
 			    	</ul>
 			    </li>
 			    <li>
-			    	<a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=showContact">Contact</a>
+			    	<a href=https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=show_contact_message>Message contact</a>
 			    </li>
-			    <li class="listeli">Exercice
-			    	<ul>
-				    	<li>
-				    		<a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=addExo">Ajouter</a>
-				    	</li>
-				    	<li>
-				    		<a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=delExo">Supprimer</a>
-				    	</li>
-			    	</ul>
+			    <li>
+					<a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=show_exercise">Exercice</a>
 			    </li>
-			    <li class="listeli">Matériel
-			    	<ul>
-			    		<li>
-			    			<a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=addMateriel">Ajouter</a>
-			    		</li>
-			    		<li>
-			    			<a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=delMateriel">Supprimer</a>
-			    		</li>
-			    	</ul>
+			    <li>
+			    	<a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=update_material">Matériel</a>
+			    </li>
+			    <li>
+			    	<a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=show_resource_graph">Ressources</a>
 			    </li>
 		     </ul>
 	    </nav>

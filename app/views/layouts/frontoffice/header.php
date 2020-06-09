@@ -20,7 +20,7 @@
 			    </li>
 			    <li onclick="goToEntmnt()">ENTRAINEMENTS</li>
 			    <li onclick="goToAbo()">ABONNEMENTS</li>
-			    <li><a href="<?php echo get_url('profil') ?>">PROFIL</a></li>
+			    <li><a href="<?php echo get_url('pagemembre') ?>">PROFIL</a></li>
 			    <li onclick="goToCont()">CONTACT</li>
 		     </ul>
 	    </nav>
