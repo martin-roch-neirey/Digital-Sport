@@ -27,6 +27,7 @@ $dataNiveau = getOrderedLevel();
 
 
 <link rel="stylesheet" type="text/css" href="css/pagemembre_style.css">
+<link rel="stylesheet" type="text/css" href="css/pagemembre_informations_style.css">
 
 <header>
 <div id="menu-name">
@@ -58,7 +59,6 @@ $dataNiveau = getOrderedLevel();
 </ul>
 
 </header>
-<nav>
 
 <?php if(isset($success_message)): ?>
  						<h3><?php echo $success_message?></h3> <br>
@@ -74,14 +74,21 @@ $dataNiveau = getOrderedLevel();
 
  					?>
 
-Vous pouvez modifier vos informations ci-dessous :
+
+<main>
+      <br><br><br>
+<body>
 <form id="RegisterUserForm" action="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=pagemembre&action=update_user_profile_proceed" method="post">
 
 	<input hidden name="pseudo" type="text" value=<?php echo $sql['pseudo'] ?>>
 	<input hidden name="nom" type="text" value=<?php echo $sql['nom'] ?>>
 	<input hidden name="prenom" type="text" value=<?php echo $sql['prenom'] ?>>
 
-<table>
+
+<div class="table-name">
+  <h3>Vos Informations 💪</h3>
+</div>
+<table class="table-content">
     <thead>
         <tr>
             <th colspan="2"><?php echo(($_SESSION['prenom'])." ".($_SESSION['nom'])); ?> </th>
@@ -144,8 +151,16 @@ Vous pouvez modifier vos informations ci-dessous :
         </tr>
     </tbody>
 </table>
-
+<br><br>
 <button type="submit">Enregistrer mes modifications</button>
+<br><br><br>
 </form>
+</body>
+</main>
 
-</nav>
+
+<footer>
+
+    <h2>&copy; DigitalSport, 2020</h2>
+
+</footer>

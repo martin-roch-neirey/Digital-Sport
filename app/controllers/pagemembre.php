@@ -157,7 +157,7 @@ $oldInfo = getClientProfile(); // get old information from database
 
     if (!empty($existingEmail)){
       $local_data = [[$newInfo],getOrderedPrefixPhone(),getOrderedLevel(),'action_message'=>'client', 'presentation_message'=>'Modification profil client :', 'error_message' => 'Cet email est déja utilisé par un autre client.'];
-      display_view('pagemembre/update_user_profile', $local_data, false);
+      display_view('pagemembre/index', $local_data, false);
       exit;
     }
 

@@ -1,13 +1,13 @@
 	<link rel="stylesheet" type="text/css" href="css/admin_index.css"> <!-- load style -->
-	<nav>
+	<main>
 		<h2>Panel Admin</h2>
 		<?php
-			echo '<h3 id="statsTitle">'.$presentation_message.'</h3>'; // show several message (presentation/success/error)
+			echo '<h3 class="presentation_message">'.$presentation_message.'</h3>'; // show several message (presentation/success/error)
 			if (isset($error_message)){
-				echo '<h4>'.$error_message.'</h4>' ;
+				echo '<h4 class="error_message">'.$error_message.'</h4>' ;
 			}
 			if (isset($success_message)){
-				echo '<h4>'.$success_message.'</h4>' ;
+				echo '<h4 class="success_message">'.$success_message.'</h4>' ;
 			}
 
 		?>
@@ -15,7 +15,7 @@
 		<?php
 			$dataExercise = $data[0][0]; // affect $data parts to var
 			$dataMaterial = $data[0][1];
-			print("<form id='Exo_style' action='https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=update_exercise_proceed' method='POST'>");
+			print("<form class='form_add_exercise' action='https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=update_exercise_proceed' method='POST'>");
 			foreach ($dataExercise as $ligne) { // show result: list user's caracteristic with a table
 					$idexercice=$ligne["idexercice"];
 					$nomexo=$ligne["nomexo"];
@@ -25,25 +25,26 @@
 					$lienmusique=$ligne["lienmusique"];
 
 					echo "
+						<div>
 							<input type='hidden' name='idexercice' value=".$idexercice.">
-							<label>Nom :
+							<label>Nom &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
 								<input  minlength='1' maxlength='255' name='nomexo' value=".$nomexo." required>
 							</label>
-							<label>Description :
+							<label>Description &nbsp;&nbsp;&nbsp; :
 								<input minlength='1' maxlength='255' name='description' value=".$description." required>
 							</label>
-							<label>Lien vidéo :
+							<label>Lien vidéo &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
 								<input minlength='1' name='lienvideo' value=".$lienvideo." required>
 							</label>
 
-							<label>Lien image :
+							<label>Lien image &nbsp;&nbsp;&nbsp; :
 								<input minlength='1' name='lienimage' value=".$lienimage." required>
 							</label>
 
 							<label>Lien musique :
 								<input minlength='1' name='lienmusique' value=".$lienmusique." required>
 							</label>
-							<label>Matériel :
+							<label>Matériel &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
 					";
 
 					print('<select name="refmateriel">'); // show a drop-down box to select 'refmateriel'
@@ -54,9 +55,10 @@
 					print('</label>');
 					
 				}
-				echo '<button type="submit">Enregistrer</button>';
+				echo '<button type="submit" class="button_update_exercice">Enregistrer</button>';
+				echo '</div>';
 			echo '</form>';
 		?>
-	</nav>
+	</main>
 	
 	

@@ -4,50 +4,44 @@
 	margin: 0px;
 	padding: 0px;
 	font-family: "Gill Sans", sans-serif;
-	transition: all 0.5s ease;
-}
-
-a{
-	text-decoration: none;
-	color: white;
-	display: block;
 }
 
 body{
 	background-color: #232323;
+
 }
 
 /* Header ----------------------------------------------------------------------------------------------------------------- */
 
-header{
-	transition: 0.5s ease;
-	position: fixed;
+header {
+	display: inline-block;
+	vertical-align: top;
 }
 
-header nav{
-	width: 150px;
-	height: auto;
-	border-right: solid 1px white;
+header a {
+	text-decoration: none;
+	color: rgba(255,255,255,0.8);
+	display: block;
 }
 
 header li{
 	position: relative;
 	list-style-type: none;
-	width: 150px;
+	width: 12vw;
 	text-align: center;
-	color: grey;
-	padding: 15px 0px;
+	color: rgba(255,255,255,0.4);
+	padding: 2vh 0;
 	display: block;
-
+	font-size: 2.5vh;
 }
 
 header li:hover{
 	cursor: pointer;
 	background-color: #181818;
-
 }
 
-header ul{
+header nav {
+	border-right: solid 0.01vw rgba(255,255,255,0.6); 
 }
 
 header nav > ul > li:hover > ul {
@@ -65,7 +59,7 @@ header nav > ul > li > ul {
 
 header nav > ul > li > ul > li {
 	background-color: #181818;
-	width: 150px;
+	width: 12vw;
 	color: white;
 }
 
@@ -76,41 +70,37 @@ header nav > ul > li > ul > li {
 .listeli::after {
 	content: "";
 	position: absolute;
-	top: 20px;
-	right: 15px;
-	border-top: solid 4px transparent;
-	border-bottom: solid 4px transparent;
-	border-left: solid 10px grey;
+	top: 2.7vh;
+	right: 3vh;
+	border-top: solid 0.7vh transparent;
+	border-bottom: solid 0.7vh transparent;
+	border-left: solid 1.75vh rgba(255,255,255,0.4);
 }
 .listeli:hover::after {
 	content: "";
 	position: absolute;
-	top: 20px;
-	right: 15px;
-	border-top: solid 10px grey;
-	border-left: solid 4px transparent;
-	border-right: solid 4px transparent;
+	top: 2.7vh;
+	right: 3vh;
+	border-top: solid 1.75vh rgba(255,255,255,0.4);
+	border-left: solid 0.7vh transparent;
+	border-right: solid 0.7vh transparent;
 	transition: all 0.2s ease;
-}
-
-.test{
-	transition: 0.5s ease;
 }
 
 /* Footer ----------------------------------------------------------------------------------------------------------------- */
 
 footer{
 	position: absolute;
-	bottom: 0px;
-	border-top: solid 1px #7347FE;
-	height: 80px;
-	line-height: 80px;
+	bottom: 0;
+	border-top: solid 0.1vh #7347FE;
+	height: 8vh;
+	line-height: 8vh;
 	background-color: #232323;
-	width: 100%;
+	width: 100vw;
 }
 
 h1{
 	color: rgba(255,255,255,0.6);
 	text-align: center;
-	font-size: 25px;
+	font-size: 4vh;
 }

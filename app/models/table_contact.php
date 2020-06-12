@@ -25,13 +25,13 @@ function showContactMessage () // show contact message (from client)
 	$result = select($local_table, $local_fieldsParams, $local_whereParams, $local_orderParams, 0, 0);
 
 	if (empty($result) and empty($_POST['search'])){ // show all contact message or for a specific date
-		$local_data = ['presentation_message' => '','error_message' => "Il n'y a pas de messages !"];
+		$local_data = ['presentation_message' => 'Liste des messages :','error_message' => "Il n'y a pas de messages !"];
 	} elseif (empty($result)) {
-		$local_data = ['presentation_message' => '','error_message' => 'Aucun message pour le : ' . $_POST['search']];
+		$local_data = ['presentation_message' => 'Liste des messages :','error_message' => 'Aucun message pour le : ' . $_POST['search']];
 	} elseif (!empty($_POST['search'])) {
-		$local_data = ['action_message' => 'delete_date', 'presentation_message' => '','success_message' => 'Liste des messages pour le : ' . $_POST['search'], $result];
+		$local_data = ['action_message' => 'delete_date', 'presentation_message' => 'Liste des messages :','success_message' => 'Pour le : ' . $_POST['search'], $result];
 	} else{
-		$local_data = ['presentation_message' => 'Liste des messages :', $result];
+		$local_data = ['presentation_message' => 'Liste des messages :', 'success_message' => '', $result];
 	}
 
 	return $local_data;

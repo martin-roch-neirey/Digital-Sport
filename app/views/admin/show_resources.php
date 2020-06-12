@@ -1,14 +1,13 @@
 	<link rel="stylesheet" type="text/css" href="css/admin_index.css"> <!-- load style -->
-	<nav>
+	<main>
 		<h2>Panel Admin</h2>
 		<?php
-
-			echo '<h3 id="statsTitle">'.$presentation_message.'</h3>'; // show several message (presentation/success/error)
+			echo '<h3 class="presentation_message">'.$presentation_message.'</h3>'; // show several message (presentation/success/error)
 			if (isset($error_message)){
-				echo '<h4>'.$error_message.'</h4>' ;
+				echo '<h4 class="error_message">'.$error_message.'</h4>' ;
 			}
 			if (isset($success_message)){
-				echo '<h4>'.$success_message.'</h4>' ;
+				echo '<h4 class="success_message">'.$success_message.'</h4>' ;
 			}
 		?>
 
@@ -40,11 +39,11 @@
 
 		// print right image, button1 and button2 depending on the action message
 
-		print('<img src='.$image.' alt="resouces" />');
-		print('<button><a href='.$link_button1.'>'.$text_button1.'</a></button>');
+		print('<img src='.$image.' alt="resouces" /> <br>');
+		print('<button class="button_ressource"><a href='.$link_button1.'>'.$text_button1.'</a></button>');
 		print('<button><a href='.$link_button2.'>'.$text_button2.'</a></button>');
 		?>
-	</nav>
+	</main>
 
 
 

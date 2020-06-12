@@ -9,7 +9,7 @@ if ($sql['reftypeabonnement'] == 1) {
 } else if ($sql['reftypeabonnement'] == 2) {
   $typeabo = "SPORT+";
 } else {
-  $typeabo = 'Vous n\'avez pas d\'abonnement ! Choisissez un abonnement en cliquant <a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=pagemembre&action=choose_sub">ici</a>.';
+  $typeabo = 'Vous n\'avez pas d\'abonnement ! Profitez d\'avantages exclusifs, de vidéos de coaching, d\'astuces et bien plus encore en cliquant <a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=pagemembre&action=choose_sub">ici</a>.';
 }
 
 ?>
@@ -17,6 +17,7 @@ if ($sql['reftypeabonnement'] == 1) {
 
 
 <link rel="stylesheet" type="text/css" href="css/pagemembre_style.css">
+<link rel="stylesheet" type="text/css" href="css/pagemembre_abonnements_style.css">
 
 <header>
 <div id="menu-name">
@@ -48,20 +49,25 @@ if ($sql['reftypeabonnement'] == 1) {
 </ul>
 
 </header>
-<nav>Voici vos abonnements actuels :
+
+
+<main>
+  <br><br><br><br>
+    <menu class="menu">
+<nav> <p class="title-menu">Voici vos abonnements actuels : </p>
 <br><br>
 
-<div name="afficheAbo"><?php echo($typeabo) ?></div>
+<p class="article-menu-sub"><?php echo($typeabo) ?> <br><br></p>
 
 
 <?php
 
 if ($_SESSION['Sub'] != null) {
-  echo("Options d'abonnement : <br>");
-  echo('<a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=pagemembre&action=cancel_sub">Résilier mon abonnement</a>');
+  echo('<p class="options-menu"> Options d\'abonnement : </p> <br>');
+  echo('<p class="article-menu"> <a class="button-menu" href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=pagemembre&action=cancel_sub">Résilier mon abonnement</a> </p>');
 } echo "<br><br>";
 if ($_SESSION['Sub'] == 1) {
-  echo('<a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=pagemembre&action=choose_sub">Changer mon type d\'abonnement</a>');
+  echo('<p class="article-menu"> <a class="button-menu" href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=pagemembre&action=choose_sub">Changer mon type d\'abonnement</a> </p>');
 }
 ?>
 
@@ -77,6 +83,16 @@ if ($_SESSION['Sub'] == 1) {
 
 
 </nav>
+  </menu>
+  <br><br><br><br>
+
+</main>
+
+<footer>
+
+    <h2>&copy; DigitalSport, 2020</h2>
+
+</footer>
 
 
 

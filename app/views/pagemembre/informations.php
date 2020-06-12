@@ -46,10 +46,19 @@ if ($sql['refniveau'] == 1) {
 </ul>
 
 </header>
-<nav>Voici vos informations :
-  <br><br>
 
-<table>
+<main>
+
+    <br><br><br>
+
+
+
+
+<body>
+<div class="table-name">
+    <h3>Vos Informations 💪</h3>
+</div>
+<table class="table-content">
     <thead>
         <tr>
             <th colspan="2"><?php echo(($_SESSION['prenom'])." ".($_SESSION['nom'])); ?> </th>
@@ -98,13 +107,17 @@ if ($sql['refniveau'] == 1) {
         </tr>
     </tbody>
 </table>
+<br><br>
+<button type="button" class="button-informations"><a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=pagemembre&action=update_user_profile">Editer mes informations</a></button>
+<br><br><br>
+  </body>
+</main>
 
-<button><a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=pagemembre&action=update_user_profile">Editer mes informations</a></button>
 
+<footer>
 
+    <h2>&copy; DigitalSport</h2>
 
-
-</nav>
-
+</footer>
 
 

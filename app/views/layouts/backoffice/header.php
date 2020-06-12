@@ -48,6 +48,12 @@
 			    <li>
 			    	<a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=show_resource_graph">Ressources</a>
 			    </li>
+			    <li>
+			    	<a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=show_changelog">Changelog</a>
+			    </li>
+			    <li>
+			    	<a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=home&action=index">Retour au site</a>
+			    </li>
 		     </ul>
 	    </nav>
 	</header>

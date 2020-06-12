@@ -6,7 +6,6 @@
   <h2 id="bonjour">🔰 Bonjour <?php echo $_SESSION['prenom']?> !</h2>
   <h3>Accueil Membre</h3>
 </div>
-</nav>
 
 <ul id="menu-header">
   <li><a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=pagemembre&action=index">Accueil Membre</a>
@@ -31,6 +30,7 @@
 
 </header>
 
+<main>
 <?php if(isset($success_message)): ?>
             <h3><?php echo $success_message?></h3> <br>
     <?php endif; ?>
@@ -41,10 +41,13 @@
             <h3><?php echo $action_message?></h3> <br>
           <?php endif; ?>
 
+Il faut trouver des choses à dire ici !
 
+</main>
 
+<footer>
 
-<nav>
+    <h2>&copy; DigitalSport, 2020</h2>
 
-
+</footer>
 

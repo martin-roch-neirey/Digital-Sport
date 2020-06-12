@@ -1,26 +1,31 @@
 	<link rel="stylesheet" type="text/css" href="css/admin_index.css">  <!-- load style -->
-	<nav>
+	<main>
 		<h2>Panel Admin</h2> <!-- show several message (presentation/success/error) -->
 		<?php
-			echo '<h3>'.$presentation_message.'</h3>'; 
+			echo '<h3 class="presentation_message">'.$presentation_message.'</h3>'; // show several message (presentation/success/error)
 			if (isset($error_message)){
-				echo '<h4>'.$error_message.'</h4>' ;
+				echo '<h4 class="error_message">'.$error_message.'</h4>' ;
 			}
 			if (isset($success_message)){
-				echo '<h4>'.$success_message.'</h4>' ;
+				echo '<h4 class="success_message">'.$success_message.'</h4>' ;
 			}
+			if (isset($_COOKIE['cookie_success_message'])){
+				echo '<h4 class="success_message">'.$_COOKIE['cookie_success_message'].'</h4>' ;	
+			}
+
 		?>
+		
 		<!-- form to search users -->
-		<form method="POST"> rechercher un <?php '<h4>'.$action_message.'</h4>' ?>
-	 		<label>Nom :</label>
+		<form method="POST">
+	 		<label>Rechercher un nom :</label>
 	 		<input minlength="1" maxlength="255" type="text" placeholder="Dupont" name="search">
 	 		<button type="submit"> Rechercher !</button>
 	 	</form>
 	 	<!-- show result: list user's caracteristic with a table -->
 	 	<?php if(count($data) > 3): ?>
 				<div>
-		 			<table>
-						<tr>
+		 			<table class='table_giant'>
+						<tr class="tr_title">
 							<td>Nom</td>
 							<td>Prénom</td> 
 							<td>Date de naissance</td>
@@ -33,7 +38,6 @@
 							<td>Ville</td>
 							<td>Code Postal</td>
 							<td>Pseudo</td>
-							<td>Modifier</td>
 						</tr>
 
 						<?php
@@ -81,15 +85,13 @@
 							if ($action_message == 'client'){
 								echo "
 										<form action='https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=update_client_profile' method='POST'>
-											<td>
+											<td class='invs_table'>
 												<input type='hidden' name='refniveau' value=".$refniveau.">
 												<input type='hidden' name='refprefixetel' value=".$refprefixetel.">
 												<input type='hidden' name='iduser' value=".$iduser.">
 												<button type='submit'>Editer</button>
-											</td>
 										</form>
 										<form action='https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=delete_client_profile_proceed' method='POST'>
-											<td>
 												<input type='hidden' name='iduser' value=".$iduser.">
 												<button type='submit'>Supprimer</button>
 											</td>
@@ -99,14 +101,14 @@
 							} elseif ($action_message == 'coach') {
 								echo "
 										<form action='https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=update_coach_profile' method='POST'>
-											<td>
+											<td class='invs_table'>
 												<input type='hidden' name='refprefixetel' value=".$refprefixetel.">
 												<input type='hidden' name='iduser' value=".$iduser.">
 												<button type='submit'>Editer</button>
-											</td>
+											
 										</form>
 										<form action='https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=delete_coach_profile_proceed' method='POST'>
-											<td>
+											
 												<input type='hidden' name='iduser' value=".$iduser.">
 												<button type='submit'>Supprimer</button>
 											</td>
@@ -119,5 +121,5 @@
 					</table>
 				</div>
 			<?php endif; ?>
-	</nav>
+	</main>
 

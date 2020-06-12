@@ -1,0 +1,20 @@
+input {
+   width:100%;
+ margin-left:5px;
+ box-shadow:0px 0px 0px #D83F3D;
+ border: solid 1px gray;
+ border-radius: 5px;
+ padding: 5px;
+ cursor:pointer;
+}
+
+select {
+   width:100%;
+ margin-left:5px;
+ box-shadow:0px 0px 0px #D83F3D;
+ border: solid 1px gray;
+ border-radius: 5px;
+ padding: 5px;
+ cursor:pointer;
+
+}
