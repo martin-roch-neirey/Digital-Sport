@@ -1,5 +1,12 @@
 <!--- INDEX OF REGISTERING PAGE --->
 
+<?php
+
+$temp = $data[0];
+
+?>
+
+
 <link rel="stylesheet" href="css/inscription_style.css">
 <script type="text/javascript" src="js/script.js"></script>
 
@@ -26,8 +33,8 @@
             </div>
 
             <div>
-<!---- DEBUG : <?php //print_r($data) ?> ----->
 
+                <!---- DEBUG : <?php //print_r($data) ?> ----->
 
                 <h3>S'inscrire</h3>
 
@@ -36,9 +43,9 @@
                     <form id="RegisterUserForm" action="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=inscription&action=tentative_inscription" method="post">
                     <fieldset>
                         <div>
-                            <label for="nom">Nom</label> <input class="text" id="nom" type="text" name="nom" value="" minlenght="2" maxlength="100" required />
-                            <label for="prenom">Prénom</label> <input class="text" id="prenom" type="text" name="prenom" value="" minlenght="2" maxlength="100" required/>
-                            <label for="pseudo">Pseudonyme</label> <input class="text" id="pseudo" type="text" name="pseudo" value="" minlenght="2" maxlength="100" required/>
+                            <label for="nom">Nom</label> <input class="text" id="nom" type="text" name="nom" minlenght="1" maxlength="20" required />
+                            <label for="prenom">Prénom</label> <input class="text" id="prenom" type="text" name="prenom" minlenght="1" maxlength="20" required/>
+                            <label for="pseudo">Pseudonyme</label> <input class="text" id="pseudo" type="text" name="pseudo" minlenght="1" maxlength="20" required/>
                             <label for="sexe" class="control-label">Sexe</label>
                                 <select id="sexe" name="sexe">
                                     <option value="F">Femme</option>
@@ -46,25 +53,27 @@
                                     <option value="N">Neutre</option>
                                 </select>
                             <label for="niveau" class="control-label">Niveau estimé</label>
-                                <select id="niveau" name="refniveau">
-                                        <option value="1">Débutant</option>
-                                        <option value="2">Intermédiaire</option>
-                                        <option value="3">Expert</option>
-                                </select>
-                            <label for="poids">Poids (kg)</label> <input class="text" id="poids" type="number" name="poids" value="0" min="0" max="300" required/>
-                            <label for="taille">Taille (cm)</label> <input class="text" id="taille" type="number" name="taille" value="0" min="0" max="300" required/>
+                                <?php
+                                    print('<select name="refniveau">');
+                                    foreach ($temp[1] as $ligne) {
+                                            print('<option value='.$ligne["idniveau"].'>'.$ligne["nomniveau"].'</option>');
+                                            }
+                                            print( "</select>");
+                                                ?>
+                            <label for="poids">Poids (kg)</label> <input class="text" id="poids" name="poids" value="0" min="0" max="300" pattern="[0-9]{1,3}" title="ex : 75" required/>
+                            <label for="taille">Taille (cm)</label> <input class="text" id="taille" name="taille" value="0" min="0" max="300" pattern="[0-9]{1,3}" title="ex : 180" required/>
                             <label>Mot de passe
-                                <input name="motdepasse" id="password" type="password" onkeyup='check_password()' minlenght="2" maxlength="50" required />
+                                <input name="motdepasse" id="password" type="password" onkeyup='check_password()' minlenght="1" maxlength="50" required />
                             </label>
                         </div>
 
                         <div>
-                            <label for="email">Email</label> <input class="text" id="email" type="email" name="mail" value="" minlenght="2" maxlength="100" required/>
-                            <label for="ville">Ville</label> <input class="text" id="ville" type="text" name="ville" value="" minlenght="2" maxlength="100" required />
-                            <label for="rue">Rue</label> <input class="text" id="rue" type="text" name="rue" value="" required />
-                            <label for="numrue">Numéro</label> <input class="text" id="numrue" type="number" name="numrue" value="" minlenght="2" maxlength="100" required />
-                            <label for="cp">Code Postal</label> <input class="text" id="cp" type="number" name="codepostal" value="" minlenght="2" maxlength="100" required />
-                            <label for="dn">Date de naissance</label> <input class="text" id="dn" type="date" name="datenss" value="" required />
+                            <label for="email">Email</label> <input class="text" id="email" name="mail" minlenght="1" maxlength="255" pattern="([a-zA-Z0-9._-]{1,200})\@([a-zA-Z0-9._])+\.([a-zA-Z]){2,4}" title="ex : manon.dupont@gmail.com" required/>
+                            <label for="ville">Ville</label> <input class="text" id="ville" type="text" name="ville" minlenght="1" maxlength="50" required />
+                            <label for="rue">Rue</label> <input class="text" id="rue" type="text" name="rue" required />
+                            <label for="numrue">Numéro</label> <input class="text" id="numrue" type="number" name="numrue" minlenght="1" maxlength="8" required />
+                            <label for="cp">Code Postal</label> <input class="text" id="cp" name="codepostal" minlenght="5" maxlength="5" pattern="[0-9]{5}" title="ex : 75000" required />
+                            <label for="dn">Date de naissance</label> <input class="text" id="dn" type="date" name="datenss" required />
 
                             <!-------- PHONE --------->
 
@@ -73,20 +82,20 @@
                                 <label id="prefixeTel" required>
                                     <?php
                                     print('<select name="refprefixetel">');
-                                    foreach ($data[0] as $ligne) {
+                                    foreach ($temp[0] as $ligne) {
                                             print('<option value='.$ligne["idprefixetel"].'>'.$ligne["designationprefixetel"].'</option>');
                                             }
                                             print( "</select>");
                                                 ?>
                                 </label>
-                                <label for="tel">Téléphone</label> <input class="text" id="tel" type="number" name="tel" value="" min="0" required/>
+                                <label for="tel">Téléphone</label> <input class="text" id="tel" name="tel" minlength="6" maxlength="13" title="ex : 677889900" pattern="[0-9]{6,13}" required/>
 
                             </div>
 
                             <!----------------------->
 
                             <label>Confirmation
-                                <input type="password" name="confirm_password" id="confirm_password"  onkeyup='check_password()' minlenght="2" maxlength="50" required />
+                                <input type="password" name="confirm_password" id="confirm_password"  onkeyup='check_password()' minlenght="1" maxlength="50" required />
                             </label>
                         </div>
                     </fieldset>
@@ -101,11 +110,12 @@
                         <article name="acceptTerms" for="acceptTerms"> J'autorise ce site à conserver mes données transmises via ce formulaire.
                         </article>
 
-                        <!-------- 2 Buttons -> Work in progress --------->
 
-                        <!--- <button id="registerNew" type="button" class="form-submit-button" onclick='btn_click_check_password()'>Confirmer mon inscription</button> --->
                         <br>
-                        <button id="registerNew" type="submit" class="form-submit-button">Confirmer mon inscription</button>
+
+                        <!---- BUTTON IN SCRIPT.JS ---->
+                            <span id="button"></span>
+
                         <br><br><br>
                     </form>
 

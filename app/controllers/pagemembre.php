@@ -12,7 +12,7 @@ if (isset($_COOKIE['is_connected'])) {
 
     if ($_COOKIE['is_connected'] == true) {
 
-   display_view('pagemembre/index', [], false);
+   display_view('pagemembre/index', []);
 
   } else {
 
@@ -42,7 +42,7 @@ if (isset($_COOKIE['is_connected'])) {
       $local_data = ['success_message'=>'Il y a un resultat', $result];
    }
 
-  display_view('pagemembre/informations', [$local_data], false);
+  display_view('pagemembre/informations', [$local_data], true);
 
 
   } else {
@@ -73,7 +73,7 @@ if (isset($_COOKIE['is_connected'])) {
    }
 
 
-   display_view('pagemembre/abonnements', [$local_data], false);
+   display_view('pagemembre/abonnements', [$local_data], true);
 
   } else {
 
@@ -109,7 +109,7 @@ if (isset($_COOKIE['is_connected'])) {
       $local_data = ['success_message'=>'Il y a un resultat', $result, getOrderedPrefixPhone(), getOrderedLevel()];
    }
 
-   display_view('pagemembre/update_user_profile', [$local_data], false);
+   display_view('pagemembre/update_user_profile', [$local_data], true);
 
   } else {
 
@@ -157,33 +157,23 @@ $oldInfo = getClientProfile(); // get old information from database
 
     if (!empty($existingEmail)){
       $local_data = [[$newInfo],getOrderedPrefixPhone(),getOrderedLevel(),'action_message'=>'client', 'presentation_message'=>'Modification profil client :', 'error_message' => 'Cet email est déja utilisé par un autre client.'];
-      display_view('pagemembre/index', $local_data, false);
+      display_view('pagemembre/index', $local_data, true);
       exit;
     }
 
     updateClientProfile($newInfo['idclient'],$array_diff); // update information in the database with the new information of the client
 
-    display_view('pagemembre/index', $local_data, false);
+    display_view('pagemembre/index', $local_data, true);
     exit;
   } else {
     $local_data = [[$newInfo],getOrderedPrefixPhone(),getOrderedLevel(),'action_message'=>'client', 'presentation_message'=>'Modification profil client :', 'error_message' => "Aucune information n'a été modifiée !"];
-    display_view('pagemembre/index', $local_data, false);
+    display_view('pagemembre/index', $local_data, true);
     exit;
   }
 
-
-
-
-
-
-
-
-
    }
 
-
-
-   display_view('pagemembre/update_user_profile', [$local_data], false);
+   display_view('pagemembre/update_user_profile', [$local_data], true);
 
   } else {
 
@@ -219,7 +209,7 @@ if (isset($_COOKIE['is_connected'])) {
 
    $_SESSION['Sub'] = null;
 
-    display_view('pagemembre/cancel_sub', ['success_message' => 'Abonnement résilié !'], false);
+    display_view('pagemembre/cancel_sub', ['success_message' => 'Abonnement résilié !'], true);
 
   } else {
 
@@ -243,7 +233,7 @@ if (isset($_COOKIE['is_connected'])) {
 
       // HERE
 
-  display_view('pagemembre/choose_sub', [], false);
+  display_view('pagemembre/choose_sub', [], true);
 
   } else {
 
@@ -266,7 +256,7 @@ function choose_sub_recap() {
 
       // HERE
 
-  display_view('pagemembre/choose_sub_recap', [], false);
+  display_view('pagemembre/choose_sub_recap', [], true);
 
   } else {
 
@@ -292,7 +282,7 @@ function choose_sub_confirmed() {
 
   $_SESSION['Sub'] = $_SESSION['SubChoose'];
 
-  display_view('pagemembre/index', ['success_message' => 'Commande : Votre nouvel abonnement vous a été livré !'], false);
+  display_view('pagemembre/index', ['success_message' => 'Commande : Votre nouvel abonnement vous a été livré !'], true);
 
   } else {
 

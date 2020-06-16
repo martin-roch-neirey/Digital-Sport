@@ -21,6 +21,8 @@ function display_view(string $view_path, array $data = [], bool $use_layout = tr
 	
 	if (($use_layout) and ($layout[0] == 'admin')){
 		require_once VIEW_PATH ."/layouts/backoffice/header.php";
+	}elseif (($use_layout) and ($layout[0] == 'pagemembre')){
+		require_once VIEW_PATH ."/layouts/memberpage/header.php";
 	}elseif ($use_layout){
 		require_once VIEW_PATH ."/layouts/frontoffice/header.php";
 	}
@@ -29,6 +31,8 @@ function display_view(string $view_path, array $data = [], bool $use_layout = tr
 
 	if (($use_layout) and ($layout[0] == 'admin')){
 		require_once VIEW_PATH ."/layouts/backoffice/footer.php";
+	}elseif (($use_layout) and ($layout[0] == 'pagemembre')){
+		require_once VIEW_PATH ."/layouts/memberpage/footer.php";
 	}elseif ($use_layout){
 		require_once VIEW_PATH ."/layouts/frontoffice/footer.php";
 	}

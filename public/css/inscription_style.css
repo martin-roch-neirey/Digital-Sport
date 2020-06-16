@@ -132,6 +132,7 @@ main {
     width: 60vw;
     margin-left: 20vw;
     background: white;
+    border-radius: 15px;
 }
 a {
   outline: none;

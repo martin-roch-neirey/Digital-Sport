@@ -17,6 +17,9 @@
  					<?php if(isset($error_message)): ?>
  						<h3 class="error_message"><?php echo $error_message?></h3> <br>
  					<?php endif; ?>
+ 					<?php if(isset($success_message)): ?>
+ 						<h3 class="error_message"><?php echo $success_message?></h3> <br>
+ 					<?php endif; ?>
 						Accédez à votre Espace Membre
 					</span>
 
@@ -56,6 +59,14 @@
 
 							<!--- No account --->
 							Pas de compte ? Inscrivez-vous !
+						</a>
+					</div>
+
+					<div class="text-center">
+						<a class="txt2" href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=home&action=index">
+
+							<!--- Back to home page --->
+							Retour à l'accueil
 						</a>
 					</div>
 				</form>

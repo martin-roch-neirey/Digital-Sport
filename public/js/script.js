@@ -13,6 +13,9 @@ function goToCont(){
 	element.scrollIntoView({behavior: "smooth"});
 }
 
+
+// Button for the inscription
+
 var check_password = function() {
 	var stringPassword = document.getElementById('password').value;
 	var stringConfirmPassword = document.getElementById('confirm_password').value;
@@ -24,25 +27,18 @@ var check_password = function() {
           isMdpCorrect = true;
           document.getElementById('message').style.color = '';
           document.getElementById('message').innerHTML = '';
+          document.getElementById('button').innerHTML = '<button id="registerNew" type="submit" class="form-submit-button">Confirmer mon inscription</button>';
     } else {
       isMdpCorrect = false;
           document.getElementById('message').style.color = '#f40d42';
           document.getElementById('message').innerHTML = 'Les mots de passe ne correspondent pas';
+          document.getElementById('button').innerHTML = '';
     }
 
   } else {
     isMdpCorrect = false;
     document.getElementById('message').style.color = '#f40d42';
     document.getElementById('message').innerHTML = 'Le mot de passe est trop court (Minimum 5 caractères)';
-  }
-}
-
-var btn_click_check_password = function() {
-  if (isMdpCorrect === false) {
-    document.getElementById('message').innerHTML = 'Le motefefefefefefecourt (Minimum 5 caractères)';
-    return false;
-  } else {
-     document.getElementById('message').innerHTML = 'Le mteeeeeeeeeeeeeeeeestt (Minimum 5 caractères)';
-    document.forms["RegisterUserForm"].submit();
+    document.getElementById('button').innerHTML = '';
   }
 }

@@ -31,16 +31,16 @@
                 </select>
             </label>
 			<label class='label_space_add_coach'>Nom &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
-				<input  minlength='1' maxlength='255' name='nom' required>
+				<input  minlength='1' maxlength='20' name='nom' type='text' required>
 			</label>
 			<label class='label_space_add_coach'>Prénom &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
-				<input minlength='1' maxlength='255' name='prenom' required>
+				<input minlength='1' maxlength='20' name='prenom'  type='text' required>
 			</label>
 			<label class='label_space_add_coach'>Date de naissance :
 				<input type='date' name='datenss' required />
 			</label>
 			<label class='label_space_add_coach'>Mail &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
-				<input minlength='1' maxlength='255' name='mail' required>
+				<input minlength='1' maxlength='255' name='mail' pattern="([a-zA-Z0-9._-]{1,200})\@([a-zA-Z0-9._])+\.([a-zA-Z]){2,4}" title="ex : manon.dupont@gmail.com"  required>
 			</label>
 			<label class='label_space_add_coach'>Téléphone :
 
@@ -54,28 +54,28 @@
 
 			?>
 				
-			<input minlength='10' maxlength='13' name='tel' required>
+			<input minlength='6' maxlength='13' name='tel' required>
 			</label>
 			<label class='label_space_add_coach'>Taille &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
-				<input minlength='1' maxlength='3' name='taille'>
+				<input minlength='1' maxlength='3' name='taille' min="0" max="300" pattern="[0-9]{1,3}" title="ex : 180" value="0" required>
 			</label>
 			<label class='label_space_add_coach'>Poids &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
-				<input minlength='1' maxlength='3' name='poids'>
+				<input minlength='1' maxlength='3' name='poids' min="0" max="300" pattern="[0-9]{1,3}" title="ex : 75" value="0" required>
 			</label>
 			<label class='label_space_add_coach'>Rue &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-				<input minlength='1' name='rue' required>
+				<input minlength='1' name='rue' type='text' required>
 			</label>
 			<label class='label_space_add_coach'>Numéro de rue &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
-				<input minlength='1' maxlength='8' name='numrue' required>
+				<input minlength='1' maxlength='8' type='number' name='numrue' required>
 			</label>
 			<label class='label_space_add_coach'>Ville &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
-				<input minlength='1' maxlength='50' name='ville' required>
+				<input minlength='1' maxlength='50' name='ville' type='text' required>
 			</label>
 			<label class='label_space_add_coach'>Code postal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
-				<input minlength='1' maxlength='6' name='codepostal' required>
+				<input minlength='5' maxlength='5' attern="[0-9]{5}" title="ex : 75000" name='codepostal' required>
 			</label>
 			<label class='label_space_add_coach'>Pseudo &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
-				<input minlength='1' maxlength='20' name='pseudo' required>
+				<input minlength='1' maxlength='20' name='pseudo' type='text' required>
 			</label>
 			<label class='label_space_add_coach'>Mot de passe &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
                 <input id='password' type='password' name='motdepasse' onkeyup='check_password()' minlenght='1' maxlength='50' required />

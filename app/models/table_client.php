@@ -166,33 +166,6 @@ return [$resultsql,$success];
 
 }
 
-/*
-function isConnected(string $view, array $local_data, $headfoot) {
-
-if (isset($_COOKIE['is_connected'])) {
-
-    if ($_COOKIE['is_connected'] == true) {
-
-// $view      is a string which defines the view to set. EXAMPLE : "pagemembre/index"
-// $local_    data is an array which represents $local_data of the display_view function
-// $headfoot  is a boolean which represents the header / footer displays
-
-   display_view($view, $local_data, $headfoot);
-
-  } else {
-
-   display_view('connexion/index', ['success_message' => 'Vous êtes déconnecté.'], false);
-
-  }
-
-} else {
-
-  display_view('connexion/index', [], false);
-  }
-
-}
-*/
-
 function getRefAbo() {
 
     $local_table = 'client';
@@ -225,9 +198,6 @@ function setSub($idclient, $sublevel) {
 
     update($local_table, $local_fieldsParams, $local_whereParams);
 
-
-
-
 }
 
 function resetPassword() // reset client password with a random created one
@@ -255,19 +225,96 @@ function resetPassword() // reset client password with a random created one
     update($local_table, $local_fieldsParams, $local_whereParams);
 
     // send a mail to the client entered mail with the new password
-    $sujet = 'Reinitialisation de mot de passe';
 
-    $message = 'Bonjour,
 
-    Vous avez demandé à réinitialiser votre mot de passe.
-    Voici votre nouveau mot de passe provisoire à utiliser sur le site de DigitalSport : "'.$motdepasse.'".
+    $sujet = 'DigitalSport - Reinitialisation mot de passe';
 
-    Surtout, veillez à bien changer votre mot de passe dans votre espace membre pour ne pas garder celui que nous vous avons créé.
+    $message = '
+    <body>
+      <main>
 
-    Merci pour votre participation sur DigitalSport et à bientôt !'; 
+        <h2>Digital Sport - Réinitialisation mot de passe 💪</h2>
 
-    mail($mail, $sujet, $message);
+        <section>
+
+          <h3>Bonjour,</h3> <br>
+
+          Vous avez demandé à réinitialiser votre mot de passe. <br><br>
+
+          Le mot de passe pour votre compte sur DigitalSport a bien été réinitialisé. Voici votre nouveau mot de passe provisoire à utiliser sur le site de DigitalSport : "'.$motdepasse.'".<br><br>
+
+        Surtout, veillez à bien changer votre mot de passe dans votre espace membre pour ne pas garder celui que nous vous avons créé, tentez dès à présent de vous reconnecter avec ce nouveau mot de passe : <br><br>
+
+
+        <a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=pagemembre&action=abonnements">Page de connexion Digital Sport</a> <br><br>
+
+          Si vous rencontrez de nouveaux problèmes, recontactez nous !
+
+          <br><br> Cordialement, la Team DigitalSport.
+
+
+        </section>
+
+      </main>
+    </body>
+    ';
+
+
+
+    $headers = "From: \"DigitalSport Team\"<contact@digitalsport.com>\n";
+    $headers .= "Reply-To: contact@digitalsport.com\n";
+    $headers .= "Content-Type: text/html; charset=\"iso-8859-1\"";
+
+    mail($mail,$sujet,$message,$headers);
 
 }
+
+function mailInscription () // send a mail to confirm the registering
+{
+
+    $mail = strtolower($_POST['mail']);
+    $pseudo = $_POST['pseudo'];
+
+    $sujet = 'DigitalSport - Nouvelle Inscription';
+
+    // message is HTML iso-8859-1 encoded
+    $message = '
+    <body>
+      <main>
+
+        <h2>Digital Sport - Nouvelle Inscription 💪</h2>
+
+        <section>
+
+          <h3>Bonjour,</h3> <br>
+
+          Votre compte sur DigitalSport a bien été créé. Pour rappel, vous avez choisi "'.$pseudo.'" comme pseudonyme. Vous aurez besoin de votre adresse mail et de votre mot de passe pour vous connecter.
+
+        Commencez votre entraînement dès maintenant en souscrivant un abonnement : <br><br>
+
+        <a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=pagemembre&action=abonnements">Page de connexion Digital Sport</a> <br><br>
+
+          Nous sommes heureux de vous accueillir, et nous vous souhaitons la bienvenue dans votre nouvelle salle de sport préférée !
+
+          <br><br> Cordialement, la Team DigitalSport.
+
+
+        </section>
+
+      </main>
+    </body>
+    ';
+
+
+    // define the sender and the reply-to mail
+    $headers = "From: \"DigitalSport Team\"<contact@digitalsport.com>\n";
+    $headers .= "Reply-To: contact@digitalsport.com\n";
+    $headers .= "Content-Type: text/html; charset=\"iso-8859-1\"";
+
+    // send the mail
+    mail($mail,$sujet,$message,$headers);
+
+}
+
 
 ?>

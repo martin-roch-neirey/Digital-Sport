@@ -30,7 +30,7 @@ function connexion_try() { // trying to connect a new client : refers to functio
     $_SESSION['Sub'] = $resultsql['reftypeabonnement'];
     setcookie('is_connected', true, time() + 3600, null, null, false, true);
 
-    display_view('pagemembre/index', [], false);
+    display_view('pagemembre/index', [], true);
 
    // isConnected('pagemembre/index', ['success_message' => 'Bonjour '.$_SESSION['prenom'].' !'], false);
 

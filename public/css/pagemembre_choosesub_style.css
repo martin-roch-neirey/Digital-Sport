@@ -10,7 +10,6 @@
 body {
     background: #2e2a2a;
     color: #FFF;
-    font-size: 62.5%;
 }
 
 ul {
@@ -20,6 +19,9 @@ ul {
 a {
     color: #e95846;
     text-decoration: none;
+}
+main {
+    font-size: 62.5%;
 }
 
 .pricing-table-title {
