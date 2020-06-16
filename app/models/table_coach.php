@@ -58,6 +58,55 @@ function getModificationCoachProfile () // get modified coach information profil
 
 }
 
+function getAddCoachInfo () // get coach info from coach form 
+{
+
+    return $local_data = [
+            'sexe' => $_POST['sexe'],
+            'nom' => $_POST['nom'],
+            'datenss' => $_POST['datenss'],
+            'prenom' => $_POST['prenom'],
+            'refprefixetel' => $_POST['refprefixetel'],
+            'mail' => $_POST['mail'],
+            'tel' => $_POST['tel'],
+            'rue' => $_POST['rue'],
+            'numrue' => $_POST['numrue'],
+            'ville' => $_POST['ville'],
+            'codepostal' => $_POST['codepostal'],
+            'pseudo' => $_POST['pseudo'],
+            'motdepassse' => $_POST['motdepasse'],
+            'poids' => $_POST['poids'],
+            'taille' => $_POST['taille'],      
+    ];
+
+}
+
+function addCoachProceed ()
+{
+    $local_table = 'coach';
+    $local_mdp = password_hash($_POST['motdepasse'], PASSWORD_DEFAULT); // password automaticaly hashed
+
+    $local_data = [
+            'nom' => ucwords(strtolower($_POST['nom'])),
+            'prenom' => $_POST['prenom'],
+            'sexe' => $_POST['sexe'],
+            'mail' => $_POST['mail'],
+            'datenss' => $_POST['datenss'],
+            'pseudo' => $_POST['pseudo'],
+            'ville' => $_POST['ville'],
+            'rue' => $_POST['rue'],
+            'numrue' => $_POST['numrue'],
+            'codepostal' => $_POST['codepostal'],
+            'tel' => $_POST['tel'],
+            'motdepasse' => $local_mdp,
+            'refprefixetel' => $_POST['refprefixetel'],
+            'poids' => $_POST['poids'],
+            'taille' => $_POST['taille'],
+    ];
+
+    insert($local_table , $local_data);
+}
+
 function updateCoachProfile ($idcoach, $dataUpdate) // update coach profile in the database (with coach modification, on website)
 {
 

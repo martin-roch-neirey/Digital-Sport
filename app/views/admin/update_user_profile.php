@@ -1,6 +1,12 @@
 	<link rel="stylesheet" type="text/css" href="css/admin_index.css"> <!-- load style -->
 	<main>
-		<h2>Panel Admin</h2>
+		<h2>Panel Admin 
+	 		<span>utilisateur : <?php echo $_SESSION['nomutilisateur'] ?> <br>
+				<button>
+					<a href=<?php echo get_url('connexion_admin','disconnect_admin') ?> >Déconnexion</a>
+				</button>
+			</span>
+		</h2>
 		<?php
 			echo '<h3 class="presentation_message">'.$presentation_message.'</h3>'; // show several message (presentation/success/error)
 			if (isset($error_message)){
@@ -11,21 +17,23 @@
 			}
 
 			if ($action_message == 'client'){ // depending on user, change form if it is a client or a coach
-				echo "<form method='POST' action='https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=update_client_profile_proceed'>";
+				echo "<form method='POST' action=". get_url('admin', 'update_client_profile_proceed') .">";
 			} elseif ($action_message == 'coach'){
-				echo "<form method='POST' action='https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=update_coach_profile_proceed'>";
+				echo "<form method='POST' action=". get_url('admin', 'update_coach_profile_proceed') .">";
 			}
 
 			$dataUser = $data[0]; // affect $data parts to var ('refniveau' if it is a client)
 			$dataPrefixetel = $data[1];
 			if ($action_message == 'client'){
 				$dataNiveau = $data[2];
+				$dataTypeAbonnement = $data[3];
 			}
 
 			foreach ($dataUser as $ligne) { // show result: list user's caracteristic with a table
 				if ($action_message == 'client'){
 						$iduser=$ligne["idclient"];
 						$refniveau=$ligne["refniveau"];
+						$reftypeabonnement=$ligne["reftypeabonnement"];
 					} elseif ($action_message == 'coach'){
 						$iduser=$ligne["idcoach"];
 					}
@@ -89,14 +97,23 @@
 					";
 				}
 				if ($action_message == 'client'){ // show a drop-down box to select 'niveau' (for client)
-					print('<label class="label_space_usr_prfl"> Niveau &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :');
+					print('<label class="label_space_usr_prfl"> Niveau &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : ');
 			 		print('<select name="refniveau">');
 			           	foreach ($dataNiveau as $ligne) {
 			                print( '<option value='.$ligne["idniveau"].'>'. $ligne["nomniveau"] .'</option>');
 			          	}
 			        print('</select>');
 			        print('</label>');
+
+			        print('<label class="label_space_usr_prfl"> Abonnement &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : ');
+			 		print('<select name="reftypeabonnement">');
+			           	foreach ($dataTypeAbonnement as $ligne) {
+			                print( '<option value='.$ligne["idtypeabonnement"].'>'. $ligne["nomtypeabonnement"] .'</option>');
+			          	}
+			        print('</select>');
+			        print('</label>');
 				}
+
 				echo '<button class="button_update_user" type="submit">Enregistrer</button>';
 				echo '</div>';
 			echo '</form>';

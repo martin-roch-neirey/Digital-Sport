@@ -129,7 +129,7 @@ div	{
 	height: 50vh;
 }
 
-select{
+select {
 	appearance: none;
 	border: none;
 	width: 20vw;
@@ -138,6 +138,31 @@ select{
 	background-color: #333333;
 	color: white;
 	text-align: center;
+}
+
+span {
+	position: absolute;
+	font-size: 2.7vh;
+	margin-left: 22vw;
+}
+
+span button {
+	border: none;
+	background: none;
+}
+
+span a {
+	color: grey;
+	text-decoration: underline;
+}
+
+span a:hover {
+	color: white;
+}
+
+span button:hover{
+	border: none;
+	background: none;
 }
 
 .td_contact_message{
@@ -172,11 +197,26 @@ select{
 
 .button_update_user{
 	margin-left: 37vw; 
-	margin-top: 4ch;
+	margin-top: 1vh;
 }
 
 .label_space_usr_prfl{
-	margin: 0.4vh;
+	margin: 0.2vh;
+}
+
+.label_space_add_coach{
+	margin: 0.15vh;
+}
+
+.button_add_coach{
+	margin-left: 37vw;
+	margin-top: 0.4vh;
+}
+
+.div_add_coach{
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 .table_giant{

@@ -1,6 +1,12 @@
 	<link rel="stylesheet" type="text/css" href="css/admin_index.css"> <!-- load style -->
 	<main>
-		<h2>Panel Admin</h2> <!-- show several message (presentation/success/error) -->
+		<h2>Panel Admin 
+	 		<span>utilisateur : <?php echo $_SESSION['nomutilisateur'] ?> <br>
+				<button>
+					<a href=<?php echo get_url('connexion_admin','disconnect_admin') ?> >Déconnexion</a>
+				</button>
+			</span>
+		</h2>
 		<?php
 			echo '<h3 class="presentation_message">'.$presentation_message.'</h3>'; // show several message (presentation/success/error)
 			if (isset($error_message)){
@@ -15,7 +21,7 @@
 		?>
 
 		<!-- form to search a date -->
-	 	<form method="POST" action="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=show_contact_message">
+	 	<form method="POST" action="<?php echo get_url('admin','show_contact_message') ?>">
 	 		<label>Date :</label>
 	 		<input type="date" name="search" minlength="1" maxlength="10">
 	 		<button type="submit"> Rechercher !</button>
@@ -39,7 +45,7 @@
 				if (isset($action_message)){ // check if the user require a date, and show him a button to suppress messages for the day required
 				 	if ($action_message == 'delete_date'){
 				 		echo "
-				 		<form method='POST' action='https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=delete_day_contact_message'>
+				 		<form method='POST' action=". get_url('admin','delete_day_contact_message') .">
 					 		<label>Supprimer les messages pour ce jour: 
 					 			<button type='submit'>Supprimer !</button>
 					 			<input type='hidden' name='date' value=".$data_message[0]['date'].">
@@ -57,7 +63,7 @@
 							<td> ".$date."</td> 
 							<td> ".$mail." </td> 
 							<td> ".$message." </td>
-							<form method='POST' action='https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=delete_contact_message'>
+							<form method='POST' action=". get_url('admin','delete_contact_message') .">
 								<td class='invs_table'>
 									<input type='hidden' name='idcontact' value=".$idcontact.">
 									<button type='submit'>Supprimer</button> 

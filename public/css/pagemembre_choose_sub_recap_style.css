@@ -1,0 +1,39 @@
+button {
+ width:100px;
+ cursor:pointer;
+ background: #f40d42;
+
+color: white;
+
+border-radius: 10px;
+margin-left: 22vw;
+
+border-color: #f40d42;
+
+font-size: 100%;
+
+height: 50px;
+
+width: 150px;
+}
+
+table,
+td {
+    border: 1px solid #333;
+    width: 50vw;
+    height: 5vh;
+}
+
+thead,
+tfoot {
+    background-color: #333;
+    color: #fff;
+}
+
+section {
+  margin-left: 22vw;
+}
+
+h1 {
+  font-size: 200%;
+}

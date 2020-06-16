@@ -1,6 +1,12 @@
 	<link rel="stylesheet" type="text/css" href="css/admin_index.css">  <!-- load style -->
 	<main>
-		<h2>Panel Admin</h2> <!-- show several message (presentation/success/error) -->
+		<h2>Panel Admin 
+	 		<span>utilisateur : <?php echo $_SESSION['nomutilisateur'] ?> <br>
+				<button>
+					<a href=<?php echo get_url('connexion_admin','disconnect_admin') ?> >Déconnexion</a>
+				</button>
+			</span>
+		</h2>
 		<?php
 			echo '<h3 class="presentation_message">'.$presentation_message.'</h3>'; // show several message (presentation/success/error)
 			if (isset($error_message)){
@@ -47,6 +53,7 @@
 							if ($action_message == 'client'){
 								$iduser=$ligne["idclient"];
 								$refniveau=$ligne["refniveau"];
+								$reftypeabonnement=$ligne["reftypeabonnement"];
 							} elseif ($action_message == 'coach'){
 								$iduser=$ligne["idcoach"];
 							}
@@ -84,14 +91,15 @@
 							// depending on 'action_message', we send different information (coach has no 'refniveau')
 							if ($action_message == 'client'){
 								echo "
-										<form action='https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=update_client_profile' method='POST'>
+										<form action=". get_url('admin','update_client_profile') ." method='POST'>
 											<td class='invs_table'>
 												<input type='hidden' name='refniveau' value=".$refniveau.">
 												<input type='hidden' name='refprefixetel' value=".$refprefixetel.">
+												<input type='hidden' name='reftypeabonnement' value=".$reftypeabonnement.">
 												<input type='hidden' name='iduser' value=".$iduser.">
 												<button type='submit'>Editer</button>
 										</form>
-										<form action='https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=delete_client_profile_proceed' method='POST'>
+										<form action=". get_url('admin','delete_client_profile_proceed') ." method='POST'>
 												<input type='hidden' name='iduser' value=".$iduser.">
 												<button type='submit'>Supprimer</button>
 											</td>
@@ -100,14 +108,14 @@
 								";
 							} elseif ($action_message == 'coach') {
 								echo "
-										<form action='https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=update_coach_profile' method='POST'>
+										<form action=". get_url('admin','update_coach_profile') ." method='POST'>
 											<td class='invs_table'>
 												<input type='hidden' name='refprefixetel' value=".$refprefixetel.">
 												<input type='hidden' name='iduser' value=".$iduser.">
 												<button type='submit'>Editer</button>
 											
 										</form>
-										<form action='https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=delete_coach_profile_proceed' method='POST'>
+										<form action=". get_url('admin','delete_coach_profile_proceed') ." method='POST'>
 											
 												<input type='hidden' name='iduser' value=".$iduser.">
 												<button type='submit'>Supprimer</button>

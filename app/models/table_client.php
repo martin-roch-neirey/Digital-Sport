@@ -13,7 +13,7 @@ function countClient () // count client in database
 function showAllClientsProfile () { //show profile for all/searched client
 
     $local_table = 'client';
-	$local_fieldsParams = ['idclient','nom','refniveau','refprefixetel','prenom','datenss','mail','tel','taille','poids','rue','numrue','ville','codepostal','pseudo'];
+	$local_fieldsParams = ['idclient','nom','refniveau','refprefixetel','reftypeabonnement','prenom','datenss','mail','tel','taille','poids','rue','numrue','ville','codepostal','pseudo'];
 	$local_whereParams = [];
 	$local_orderParams = 'nom ASC';
 	if (!empty($_POST['search'])){ // check if a client is searched
@@ -28,7 +28,7 @@ function getClientProfile () // get client information profile (in database)
 {
 
     $local_table = 'client';
-    $local_fieldsParams = ['idclient','nom','prenom','refprefixetel','refniveau','mail','tel','taille','poids','rue','numrue','ville','codepostal','pseudo'];
+    $local_fieldsParams = ['idclient','nom','prenom','reftypeabonnement','refprefixetel','refniveau','mail','tel','taille','poids','rue','numrue','ville','codepostal','pseudo'];
     $local_whereParams = [['idclient','=',$_POST['iduser']]];
 
     return select($local_table, $local_fieldsParams, $local_whereParams, '', 0, 0);
@@ -38,7 +38,7 @@ function getClientProfile () // get client information profile (in database)
 function getModificationClientProfile () // get modified client information profile (on website)
 {
 
-    return $local_data = [
+    $local_data = [
             'idclient' => $_POST['iduser'],
             'nom' => $_POST['nom'],
             'prenom' => $_POST['prenom'],
@@ -54,6 +54,14 @@ function getModificationClientProfile () // get modified client information prof
             'codepostal' => $_POST['codepostal'],
             'pseudo' => $_POST['pseudo'],
     ];
+
+        if (!is_numeric($_POST['reftypeabonnement'])){ //check if a material is specified, if not, the value in database is 'NULL'
+        $local_data += ['reftypeabonnement' => NULL];
+    } else{
+        $local_data += ['reftypeabonnement' => $_POST['reftypeabonnement']];
+    }
+
+    return $local_data;
 
 }
 
@@ -222,6 +230,44 @@ function setSub($idclient, $sublevel) {
 
 }
 
+function resetPassword() // reset client password with a random created one
+{
 
+    $mail = strtolower($_POST['mail']);
+
+    $listeCar = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; // caracter list to form a new random password
+
+    // create the new random password
+    $motdepasse = '';
+    $max = mb_strlen($listeCar, '8bit') - 1;
+    for ($i = 0; $i < 10; ++$i) {
+    $motdepasse .= $listeCar[random_int(0, $max)];
+    }
+
+    // hash the new password before submiting it to the database
+    $chaine_hash = password_hash($motdepasse, PASSWORD_DEFAULT);
+
+    $local_table = 'client';
+    $local_fieldsParams = ["motdepasse" => $chaine_hash];
+    $local_whereParams = ['mail','=',$mail];
+
+    // submit the new password to the database
+    update($local_table, $local_fieldsParams, $local_whereParams);
+
+    // send a mail to the client entered mail with the new password
+    $sujet = 'Reinitialisation de mot de passe';
+
+    $message = 'Bonjour,
+
+    Vous avez demandé à réinitialiser votre mot de passe.
+    Voici votre nouveau mot de passe provisoire à utiliser sur le site de DigitalSport : "'.$motdepasse.'".
+
+    Surtout, veillez à bien changer votre mot de passe dans votre espace membre pour ne pas garder celui que nous vous avons créé.
+
+    Merci pour votre participation sur DigitalSport et à bientôt !'; 
+
+    mail($mail, $sujet, $message);
+
+}
 
 ?>

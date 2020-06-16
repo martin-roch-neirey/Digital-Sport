@@ -13,7 +13,7 @@ function getLevel () // get different level
 
 }
 
-function getOrderedLevel () { // get/show different phone prefix with the users one at the top
+function getOrderedLevel () { // get/show different level with the users one at the top
 
 	$local_table = 'niveau';
 	$local_fieldsParams = ['idniveau','nomniveau'];

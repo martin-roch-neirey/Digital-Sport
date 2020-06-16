@@ -6,6 +6,7 @@ $_SESSION['SubChoose'] = $_POST['reftypeabonnement'];
 
 
 <link rel="stylesheet" type="text/css" href="css/pagemembre_style.css">
+<link rel="stylesheet" type="text/css" href="css/pagemembre_choose_sub_recap_style.css">
 
 <header>
 <div id="menu-name">
@@ -37,16 +38,18 @@ $_SESSION['SubChoose'] = $_POST['reftypeabonnement'];
 </ul>
 
 </header>
+<main>
 <br><br>
-
-
-<h1>Confirmation</h1>
-
 <section>
 
+<h1>Confirmation 💪</h1>
+<br><br>
+
 <h2><?php echo(($_SESSION['prenom'])." ".($_SESSION['nom'])); ?>, vous souhaitez soucrire à un abonnement mensuel <?php echo($_POST['nomabonnement']) ?>.</h2>
+<br>
 
 <h3>Récapitulatif de commande</h3>
+<br>
 
 <table>
     <thead>
@@ -78,35 +81,17 @@ $_SESSION['SubChoose'] = $_POST['reftypeabonnement'];
     </tbody>
 </table>
 
-<a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=pagemembre&action=choose_sub_confirmed">Confirmer ma commande</a>
+<br><br>
 
+<button> <a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=pagemembre&action=choose_sub_confirmed">Confirmer ma commande</a> </button>
 
-
-
-
-
-
-
-
-
-
+<br><br><br>
 
 </section>
+</main>
+<footer>
 
-<style>
+    <h2>&copy; DigitalSport, 2020</h2>
 
+</footer>
 
-table,
-td {
-    border: 1px solid #333;
-    width: 50vw;
-    height: 5vh;
-}
-
-thead,
-tfoot {
-    background-color: #333;
-    color: #fff;
-}
-
-</style>

@@ -1,0 +1,16 @@
+section {
+  padding: 20px;
+  margin-left: 25vw;
+  border: solid 1px white;
+  width: 50%;
+ background-color:#403e3d;
+ text-align: center;
+}
+
+h3 {
+  color: #f40d42;
+}
+
+section>p {
+  color: white;
+}

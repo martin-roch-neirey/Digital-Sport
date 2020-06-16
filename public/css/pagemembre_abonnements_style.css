@@ -54,3 +54,8 @@ display: inline-block;
 .button-menu:hover {
   color:#f40d42;
 }
+
+.options-menu {
+color: #f40d42;
+font-size: 150%;
+}

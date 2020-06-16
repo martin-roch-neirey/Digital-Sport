@@ -292,7 +292,7 @@ function choose_sub_confirmed() {
 
   $_SESSION['Sub'] = $_SESSION['SubChoose'];
 
-  display_view('pagemembre/choose_sub_confirmed', [], false);
+  display_view('pagemembre/index', ['success_message' => 'Commande : Votre nouvel abonnement vous a été livré !'], false);
 
   } else {
 

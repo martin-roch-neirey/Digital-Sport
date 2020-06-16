@@ -6,7 +6,7 @@
 			<?php if(isset($success_message)): ?>
  				<p><?php echo $success_message ?></p>
 			<?php else: ?>
-				<form action="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=home&action=submit_contact_message" method="POST">
+				<form action="<?php echo get_url('home','submit_contact_message') ?>" method="POST">
 				    <div>
 				        <label for="mail">Mail :</label>
 				        <input type="email" placeholder="manon.dupont@gmail.com" name="contact_mail" maxlength="255" required>

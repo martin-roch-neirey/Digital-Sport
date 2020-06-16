@@ -57,7 +57,7 @@ if ($sql['reftypeabonnement'] == 1) {
 <nav> <p class="title-menu">Voici vos abonnements actuels : </p>
 <br><br>
 
-<p class="article-menu-sub"><?php echo($typeabo) ?> <br><br></p>
+<p class="article-menu-sub"><?php echo($typeabo) ?> <br><br><br></p>
 
 
 <?php
@@ -72,15 +72,7 @@ if ($_SESSION['Sub'] == 1) {
 ?>
 
 
-<br><br>
-
-
-
-<style>
-
-</style>
-
-
+<br>
 
 </nav>
   </menu>

@@ -13,14 +13,16 @@
 		    <ul>
 			    <li onclick="goToAcc()">
 			    	<a id="logo">
-			    		<img src="images/haltere.png" alt="haltere"/>
+			    		<img src="<?php echo get_asset('images/haltere.png') ?>" alt="haltere"/>
 			    			DigitalSport
-			    		<img src="images/haltere_reverse.png" alt="haltere"/>
+			    		<img src="<?php echo get_asset('images/haltere_reverse.png') ?>" alt="haltere"/>
 			    	</a>
 			    </li>
 			    <li onclick="goToEntmnt()">ENTRAINEMENTS</li>
 			    <li onclick="goToAbo()">ABONNEMENTS</li>
-			    <li><a href="<?php echo get_url('pagemembre') ?>">PROFIL</a></li>
+			    <li>
+			    	<a href=<?php echo get_url('pagemembre','index') ?> >PROFIL</a>
+			    </li>
 			    <li onclick="goToCont()">CONTACT</li>
 		     </ul>
 	    </nav>

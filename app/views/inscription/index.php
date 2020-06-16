@@ -1,6 +1,7 @@
 <!--- INDEX OF REGISTERING PAGE --->
 
 <link rel="stylesheet" href="css/inscription_style.css">
+<script type="text/javascript" src="js/script.js"></script>
 
 <main>
     <menu>
@@ -14,12 +15,9 @@
                     <h3><?php echo $success_message?></h3>
                 <?php endif; ?>
 
-                <h3>Formulaire d'inscription</h3>
+                <h3>Formulaire d'inscription 💪</h3>
 
                 <article>🔰 Ici, votre aventure parmis nous peut commencer dès à présent.
-                Remplissez les champs demandés en vérifiant bien chaque information.
-                DigitalSport s'engage à ne rendre publique aucune de vos données.
-
                 <br><br>
 
                 Nous respectons les lois européennes sur la protection des données personnelles. <a target="_blank" rel="noopener noreferrer" href="https://fr.wikipedia.org/wiki/R%C3%A8glement_g%C3%A9n%C3%A9ral_sur_la_protection_des_donn%C3%A9es">En savoir plus sur la RGPD.</a>
@@ -56,7 +54,7 @@
                             <label for="poids">Poids (kg)</label> <input class="text" id="poids" type="number" name="poids" value="0" min="0" max="300" required/>
                             <label for="taille">Taille (cm)</label> <input class="text" id="taille" type="number" name="taille" value="0" min="0" max="300" required/>
                             <label>Mot de passe
-                                <input name="motdepasse" id="password" type="password" onkeyup='check()' minlenght="2" maxlength="100" required />
+                                <input name="motdepasse" id="password" type="password" onkeyup='check_password()' minlenght="2" maxlength="50" required />
                             </label>
                         </div>
 
@@ -72,7 +70,7 @@
 
                             <div id="divTel">
 
-                                <label id="prefixTel" required>
+                                <label id="prefixeTel" required>
                                     <?php
                                     print('<select name="refprefixetel">');
                                     foreach ($data[0] as $ligne) {
@@ -88,7 +86,7 @@
                             <!----------------------->
 
                             <label>Confirmation
-                                <input type="password" name="confirm_password" id="confirm_password"  onkeyup='check()' minlenght="2" maxlength="100" required />
+                                <input type="password" name="confirm_password" id="confirm_password"  onkeyup='check_password()' minlenght="2" maxlength="50" required />
                             </label>
                         </div>
                     </fieldset>
@@ -100,18 +98,23 @@
                         <br><br>
 
                         <input type="checkbox" name="acceptTerms" required />
-                        <article name="acceptTerms" for="acceptTerms"> J'accepte les <a>termes et conditions</a> et j'autorise ce site à <a>conserver mes données  </a> transmises via ce formulaire.
+                        <article name="acceptTerms" for="acceptTerms"> J'autorise ce site à conserver mes données transmises via ce formulaire.
                         </article>
 
                         <!-------- 2 Buttons -> Work in progress --------->
 
-                        <button id="registerNew" type="button" class="form-submit-button" onclick='return btnClick();'>Confirmer mon inscription</button>
+                        <!--- <button id="registerNew" type="button" class="form-submit-button" onclick='btn_click_check_password()'>Confirmer mon inscription</button> --->
+                        <br>
                         <button id="registerNew" type="submit" class="form-submit-button">Confirmer mon inscription</button>
+                        <br><br><br>
                     </form>
 
-                    <br>
+
+                    <a class="bottom-link" href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=connexion&action=index">J'ai déjà un compte.</a>
+
+            <a class="bottom-link" href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=home&action=index">Retour à l'accueil.</a>
             </div>
-            <a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=connexion&action=index">J'ai déjà un compte.</a>
+
         </section>
     </menu>
 </main>

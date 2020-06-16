@@ -18,3 +18,23 @@ select {
  cursor:pointer;
 
 }
+
+button {
+ width:100px;
+ margin-left:6.5vw;
+ cursor:pointer;
+ background: #f40d42;
+
+color: white;
+
+border-radius: 10px;
+margin-left: 45vw;
+
+border-color: #f40d42;
+
+font-size: 100%;
+
+height: 50px;
+
+width: 150px;
+}

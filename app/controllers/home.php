@@ -3,6 +3,7 @@
 //----------------------------- load needed functions from model -----------------------------
 
 require_once(MODEL_PATH . '/table_contact.php');
+require_once(MODEL_PATH . '/table_client.php');
 
 //----------------------------- show website home page (presentation page) -----------------------------
 

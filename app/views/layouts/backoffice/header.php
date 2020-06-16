@@ -11,12 +11,15 @@
 		<nav>
 		    <ul>
 			    <li>
-			    	<a href=https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=index>Tableau de bord</a>
+			    	<a href=<?php echo get_url('admin','index') ?> >Tableau de bord</a>
 			    </li>
 			    <li class="listeli">Coach
 			    	<ul>
 			    		<li>
-			    			<a href=https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=show_all_coachs_profile>Profils</a>
+			    			<a href=<?php echo get_url('admin','show_all_coachs_profile') ?> >Profils</a>
+			    		</li>
+			    		<li>
+			    			<a href=<?php echo get_url('admin','add_coach') ?> >Ajouter</a>
 			    		</li>
 			    		<li>Séances</li>
 			    	</ul>
@@ -24,7 +27,7 @@
 			   	<li class="listeli">Client
 			   		<ul>
 			   			<li>
-			   				<a href=https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=show_all_clients_profile>Profils</a>
+			   				<a href=<?php echo get_url('admin','show_all_clients_profile') ?> >Profils</a>
 			   			</li>
 			   			<li>Séance Coach</li>
 			   			<li>Séance Perso</li>
@@ -37,22 +40,22 @@
 			    	</ul>
 			    </li>
 			    <li>
-			    	<a href=https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=show_contact_message>Message contact</a>
+			    	<a href=<?php echo get_url('admin','show_contact_message') ?> >Message contact</a>
 			    </li>
 			    <li>
-					<a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=show_exercise">Exercice</a>
+					<a href=<?php echo get_url('admin','show_exercise') ?> >Exercice</a>
 			    </li>
 			    <li>
-			    	<a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=update_material">Matériel</a>
+			    	<a href=<?php echo get_url('admin','update_material') ?> >Matériel</a>
 			    </li>
 			    <li>
-			    	<a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=show_resource_graph">Ressources</a>
+			    	<a href=<?php echo get_url('admin','show_resource_graph') ?> >Ressources</a>
 			    </li>
 			    <li>
-			    	<a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=show_changelog">Changelog</a>
+			    	<a href=<?php echo get_url('admin','show_changelog') ?> >Changelog</a>
 			    </li>
 			    <li>
-			    	<a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=home&action=index">Retour au site</a>
+			    	<a href=<?php echo get_url('home','index') ?> >Retour au site</a>
 			    </li>
 		     </ul>
 	    </nav>
