@@ -40,7 +40,7 @@ $temp = $data[0];
 
                      <!--- Form start --->
 
-                    <form id="RegisterUserForm" action="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=inscription&action=tentative_inscription" method="post">
+                    <form id="RegisterUserForm" action='<?php echo get_url('inscription','tentative_inscription') ?>' method="post">
                     <fieldset>
                         <div>
                             <label for="nom">Nom</label> <input class="text" id="nom" type="text" name="nom" minlenght="1" maxlength="20" required />
@@ -99,30 +99,39 @@ $temp = $data[0];
                             </label>
                         </div>
                     </fieldset>
+                    <br><br>
 
-                        <br><br>
-
+                    <section id="bottom-form">
                         <span id='message'></span>
 
                         <br><br>
 
-                        <input type="checkbox" name="acceptTerms" required />
+                        <label class="container">
+
+                            <input type="checkbox" name="acceptTerms" required />
+
+                            <span class="checkmark"></span>
+
+                        </label>
+
                         <article name="acceptTerms" for="acceptTerms"> J'autorise ce site à conserver mes données transmises via ce formulaire.
                         </article>
 
 
-                        <br>
+
+                        <br><br>
 
                         <!---- BUTTON IN SCRIPT.JS ---->
                             <span id="button"></span>
+                    </section>
 
                         <br><br><br>
                     </form>
 
 
-                    <a class="bottom-link" href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=connexion&action=index">J'ai déjà un compte.</a>
+                    <a class="bottom-link" href='<?php echo get_url('connexion','index') ?>'>J'ai déjà un compte.</a>
 
-            <a class="bottom-link" href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=home&action=index">Retour à l'accueil.</a>
+            <a class="bottom-link" href='<?php echo get_url('home','index') ?>'>Retour à l'accueil.</a>
             </div>
 
         </section>

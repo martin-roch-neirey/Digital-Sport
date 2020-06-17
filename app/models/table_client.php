@@ -35,6 +35,18 @@ function getClientProfile () // get client information profile (in database)
 
 }
 
+function getClientProfileMemberpage () // get client information profile for memberpage only (in database)
+{
+
+    $local_table = 'client';
+    $local_fieldsParams = ['idclient','nom','prenom','reftypeabonnement','refprefixetel','nomniveau','mail','tel','taille','poids','rue','numrue','ville','codepostal','pseudo'];
+    $local_innerJoinParams = [['niveau','refniveau','idniveau']];
+    $local_whereParams = [['idclient','=',$_POST['iduser']]];
+
+    return select_ij($local_table,$local_fieldsParams,$local_innerJoinParams,$local_whereParams);
+
+}
+
 function getModificationClientProfile () // get modified client information profile (on website)
 {
 
@@ -113,11 +125,19 @@ function enregistreClient () // register a new client
     $local_table = 'client';
     $local_mdp = $_POST['motdepasse'];
     $mdp = password_hash($local_mdp, PASSWORD_DEFAULT); // password automaticaly hashed
-    $mail = $_POST['mail'];
+    $mail = strtolower($_POST['mail']);
+
+    // Form : Xxxxx Yyyyy
+    $local_nom = $_POST['nom'];
+    $nom = ucfirst(strtolower($local_nom));
+
+    $local_prenom = $_POST['prenom'];
+    $prenom = ucfirst(strtolower($local_prenom));
+
 
     $local_data = [
-            'nom' => $_POST['nom'],
-            'prenom' => $_POST['prenom'],
+            'nom' => $nom,
+            'prenom' => $prenom,
             'sexe' => $_POST['sexe'],
             'mail' => $mail,
             'datenss' => $_POST['datenss'],
@@ -135,6 +155,7 @@ function enregistreClient () // register a new client
 
     ];
 
+    // pushing new client in BDD
     return insert($local_table , $local_data);
 
 }
@@ -314,6 +335,63 @@ function mailInscription () // send a mail to confirm the registering
     // send the mail
     mail($mail,$sujet,$message,$headers);
 
+}
+
+function tryChangePassword() {
+
+    $local_table = 'client';
+
+    $local_idclient = $_SESSION['idclient'];
+
+    $local_leMDP = $_POST['actual_password'];
+
+    $local_newMDP = $_POST['new_password'];
+
+
+    $result = select($local_table,['motdepasse'],[['idclient','=',$local_idclient]], '', 0, 0);
+
+if (isset($result[0])) {
+
+        $resultsql = $result[0];
+
+            $isPasswordCorrect = password_verify($local_leMDP, $resultsql['motdepasse']);
+
+        $success = $isPasswordCorrect;
+
+
+        if ($success == true) {
+
+        $chaine_hash = password_hash($local_newMDP, PASSWORD_DEFAULT);
+
+        $local_table = 'client';
+        $local_fieldsParams = ["motdepasse" => $chaine_hash];
+        $local_whereParams = ['idclient','=',$local_idclient];
+
+        // submit the new password to the database
+        update($local_table, $local_fieldsParams, $local_whereParams);
+
+        $success = true;
+
+        } else {
+        $success = false;
+        }
+
+
+} else {
+
+    $success = false;
+
+}
+
+return $success;
+
+}
+
+function checkClientConnexion() {
+    if (!isset($_COOKIE['is_connected']) or $_COOKIE['is_connected'] == false){
+        header('Location: https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=connexion&action=index'); // redirect on connexion page
+        exit;
+    }
 }
 
 

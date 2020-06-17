@@ -9,7 +9,50 @@
 </head>
 
 <body class="stackedit">
-  <div class="stackedit__html"><h1 id="digital-sport---projet-rt1---retour-au-site">Digital Sport - Projet RT1 - <a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&amp;action=index">Retour au site</a></h1>
+  <div class="stackedit__html"><h1 id="digital-sport---projet-rt1">Digital Sport - Projet RT1</h1>
+<h2 id="changelog-17.06.2020-">Changelog 17.06.2020 <img src="https://livevox.com/wp-content/uploads/2017/05/resources-gear-icon.png" alt="en" width="40" height="40"></h2>
+<p><img src="https://cdn2.iconfinder.com/data/icons/documents-files-2/48/31-512.png" alt="img" width="15"> <strong>Récapitulatif :</strong></p>
+<ul>
+<li>Amélioration de la fonction générale pour les requêtes SQL préparées avec <em>INNER JOIN</em>.</li>
+<li>Il est désormais possible de voir, modifier, supprimer et ajouter des exercices depuis le panel admin.</li>
+<li>Bug fix : Affichage d’un formulaire sans listes déroulantes SQL après l’envoi de ce même formulaire avec une erreur.</li>
+<li>Modification du graphe, MCD et MLD pour correspondre au cahier des charges sur la gestion des entraînements.</li>
+<li>Bug fix : Erreur PHP lorsqu’un client modifie ses informations dans son espace membre.</li>
+<li>Un client peut désormais modifier son mot de passe (avec vérification du mot de passe actuel).</li>
+<li>Factorisation du code du contrôleur de la page membre avec la création d’une fonction <em>checkClientConnexion</em>.</li>
+<li>Utilisation de la nouvelle requête préparée <em>INNER JOIN</em> pour obtenir le <em>nomniveau</em> du client lors de l’affichage de ses informations.</li>
+<li>Le renvoi d’un formulaire lors du rafraîchissement de la page est désormais impossible (utilisation de la fonction PHP <em>header</em>).</li>
+<li>Le nom et le prénom du client sont désormais automatiquement formatés sous la forme “Xxxxx Yyyyy” lors de l’inscription.</li>
+<li>L’adresse e-mail entrée lors de l’inscription est désormais forcée en minuscule lors de l’insertion dans la BDD.</li>
+<li>Redéfinition de tous les liens et actions des formulaires en utilisant la fonction “<em>get_url</em>”.</li>
+</ul>
+<blockquote>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Circle-icons-dev.svg/1200px-Circle-icons-dev.svg.png" alt="DEV" width="14" height="14"> Développeurs  : Martin &amp; Malo</p>
+</blockquote>
+<h2 id="changelog-16.06.2020-">Changelog 16.06.2020 <img src="https://livevox.com/wp-content/uploads/2017/05/resources-gear-icon.png" alt="en" width="40" height="40"></h2>
+<p><img src="https://cdn2.iconfinder.com/data/icons/documents-files-2/48/31-512.png" alt="img" width="15"> <strong>Récapitulatif :</strong></p>
+<ul>
+<li>Le visuel de la page de réinitialisation du mot de passe client est terminé.</li>
+<li>Visuel de la page connexion amélioré.</li>
+<li>Un client peut désormais réinitialiser son mot de passe (envoi d’un e-mail automatique avec un mot de passe généré aléatoirement).</li>
+<li>Refonte du visuel de la page d’inscription.</li>
+<li>Visuel de la page de choix d’abonnement terminé.</li>
+<li>Création d’une partie “Panneau d’informations personnelles” sur la page d’accueil de l’espace membre.</li>
+<li>Ajout d’un bouton “Retour à l’accueil” sur la page de connexion.</li>
+<li>Page d’inscription :
+<ul>
+<li>Mise à jour des <em>min-length</em> et <em>max-length</em> de la page d’inscription pour correspondre aux spécifications de la BDD.</li>
+<li>La liste déroulante sur le choix du niveau estimé est désormais relié à la BDD.</li>
+<li>Un email est désormais envoyé pour confirmer l’inscription du client.</li>
+</ul>
+</li>
+<li>Refonte de l’email de réinitialisation du mot de passe client.</li>
+<li>La page membre a désormais son propre <em>layout header</em> et <em>footer</em> (centralisation similaire aux pages admin et d’accueil).</li>
+<li>Refonte visuelle du header de la page membre.</li>
+</ul>
+<blockquote>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Circle-icons-dev.svg/1200px-Circle-icons-dev.svg.png" alt="DEV" width="14" height="14"> Développeurs  : Martin &amp; Malo</p>
+</blockquote>
 <h2 id="changelog-13.06.2020-">Changelog 13.06.2020 <img src="https://livevox.com/wp-content/uploads/2017/05/resources-gear-icon.png" alt="en" width="40" height="40"></h2>
 <p><img src="https://cdn2.iconfinder.com/data/icons/documents-files-2/48/31-512.png" alt="img" width="15"> <strong>Récapitulatif :</strong></p>
 <ul>
@@ -27,8 +70,9 @@
 </ul>
 </li>
 <li>Passages des unités CSS Responsive de la page d’accueil en vh et vw.</li>
-<li>Un administrateur peut désormais réinitialiser le mot de passe d’un client en lui envoyant un e-mail automatique avec un mot de passe généré aléatoirement.</li>
+<li>Un client peut désormais réinitialiser son mot de passe (envoi d’un e-mail automatique avec un mot de passe généré aléatoirement).</li>
 <li>Passage du code JavaScript sur l’architecture MVC pour la vérification du mot de passe lors de l’inscription.</li>
+<li>Amélioration du CSS de la page de connexion.</li>
 </ul>
 <blockquote>
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Circle-icons-dev.svg/1200px-Circle-icons-dev.svg.png" alt="DEV" width="14" height="14"> Développeurs  : Martin &amp; Malo</p>

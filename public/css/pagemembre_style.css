@@ -14,12 +14,10 @@
 
 #menu-name {
   text-align: center;
-  padding: 50px;
+  padding: 30px;
   line-height: 50px;
   background: #f40d42;
-  background: -o-linear-gradient(-135deg, #f40d42, #f40d42);
-  background: -moz-linear-gradient(-135deg, #f40d42, #f40d42);
-  background: linear-gradient(-135deg, #f40d42, #4158d0);
+  background: linear-gradient(180deg, #f40d42, #696866);
   background: contain;
   color: white;
 }
@@ -28,12 +26,15 @@
 padding:0;
 margin:0;
 list-style:none;
-background: #d48194;
+background: #696866;
 }
 #menu-header li{
 display:inline-block;
 position:relative;
 border-radius:8px 8px 0 0;
+}
+.menu-header-main-button {
+  box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.3);
 }
 #menu-header ul li{
 display:inherit;
@@ -53,6 +54,7 @@ overflow:hidden;
 -moz-transition: .5s all .3s;
 -webkit-transition: .8s all .3s;
 transition: .8s all .3s;
+
 }
 #menu-header li:hover ul{
 max-height:15em;
@@ -113,6 +115,7 @@ color:#000;
 /* Content */
 
 main {
+  border-top: solid 3px white;
 background: white url("../images/background_grey.png") top left 100%;
 background-color: gray;
 
@@ -241,18 +244,6 @@ color: #f40d42;
 text-align: center;
 line-height: 70px;
 background: black;
-
-}
-
-.button-informations {
-text-align: center;
-color:black;
-margin-left: 45%;
-border-radius: 50px;
-height: 50px;
-padding: 10px;
-border: 0px;
-display: block;
 
 }
 

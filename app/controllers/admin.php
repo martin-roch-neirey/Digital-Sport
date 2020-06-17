@@ -13,6 +13,9 @@ require_once(MODEL_PATH . '/table_seanceclient.php');
 require_once(MODEL_PATH . '/table_seancecoach.php');
 require_once(MODEL_PATH . '/table_admin.php');
 require_once(MODEL_PATH . '/table_typeabonnement.php');
+require_once(MODEL_PATH . '/table_choixexo.php');
+require_once(MODEL_PATH . '/table_muscle.php');
+require_once(MODEL_PATH . '/table_typemuscu.php');
 
 //----------------------------- show statistics from database (about clients and coachs) -----------------------------
 
@@ -396,6 +399,92 @@ function show_changelog ()
 {
 	checkAdminConnexion();
 	display_view('admin/show_changelog', ['presentation_message' => 'Changelog DigitalSport :']);
+}
+
+//----------------------------- show exercise training -----------------------------
+
+function show_exercise_training ()
+{
+	checkAdminConnexion();
+
+	$local_data = showExercisetraining();
+
+	display_view('admin/show_exercise_training', ['presentation_message' => "Exercices d'entrainement :", $local_data]);
+}
+
+//----------------------------- add exercise training -----------------------------
+
+function add_exercise_training () // show form to add exercise training
+{
+	checkAdminConnexion();
+
+	$local_data = [getExercise(),getMuscle(),getTypeTraining(),getLevel()];
+
+	display_view('admin/add_exercise_training', ['presentation_message' => "Exercices d'entrainement :", $local_data]);
+}
+
+function add_exercise_training_proceed () // proceeds to the exercise training addition
+{
+	checkAdminConnexion();
+
+	$result = checkExistingExerciceTraining();
+
+	if (!empty($result)){ // check if the training exercise already exists or not
+		$local_data = [getExercise(),getMuscle(),getTypeTraining(),getLevel()];
+		display_view('admin/add_exercise_training', ['presentation_message' => "Exercices d'entrainement :", 'error_message' => "Cet exercice d'entrainement existe déjà !", $local_data]);
+	} else{
+		addExerciseTrainingProceed();
+
+		header('Location: https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=show_exercise_training');
+		setcookie('cookie_success_message', "Exercice d'entrainement ajouté ! 💪", time() + 1, null, null, false, true); // cookie to set success message
+
+	}
+
+}
+
+//----------------------------- update exercise training -----------------------------
+
+function update_exercise_training () // show form to update exercise training
+{
+	checkAdminConnexion();
+
+	$local_data = [getOrderedExercise(),getOrderedMuscle(),getOrderedTypeTraining(),getOrderedLevel(),getExerciseTrainingInformation()];
+
+	display_view('admin/update_exercise_training', ['presentation_message' => "Modification d'exercices d'entrainement :", $local_data]);
+
+}
+
+function update_exercise_training_proceed () // proceeds to the exercise training update
+{
+	checkAdminConnexion();
+	$oldInfo = getExerciseTrainingInformation(); // get old information from database
+	$newInfo = getExerciseTrainingModification(); // get new information from website (with update)
+
+	$array_diff = array_diff_assoc($newInfo,$oldInfo[0]); // get the information to update by comparing old and new information
+	$local_data = [[getOrderedExercise(),getOrderedMuscle(),getOrderedTypeTraining(),getOrderedLevel(),[$newInfo]],'presentation_message'=>"Modification d'exercices d'entrainement :",'success_message' => "Exercice d'entrainement édité avec succès ! 💪"];
+
+	if (!empty($array_diff)) // check whether the information has been changed
+	{
+		updateExerciseTraining($newInfo['idchoixexo'],$array_diff); // update information in the database with the new information of the training exercise
+
+		display_view('admin/update_exercise_training', $local_data);
+	} else {
+		$local_data = [[getOrderedExercise(),getOrderedMuscle(),getOrderedTypeTraining(),getOrderedLevel(),[$newInfo]],'presentation_message'=>"Modification d'exercices d'entrainement :", 'error_message' => "Aucune information n'a été modifiée"];
+		display_view('admin/update_exercise_training', $local_data);
+	}
+
+}
+
+//----------------------------- delete exercise training -----------------------------
+
+function delete_exercise_training_proceed () // proceeds to the exercise training deletion
+{
+	checkAdminConnexion();
+	deleteExerciseTrainingProceed();
+
+	header('Location: https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=show_exercise_training');
+
+	setcookie('cookie_success_message', "Exercice d'entrainement supprimé ! 💪", time() + 1, null, null, false, true); // cookie to set success message
 }
 
 ?>

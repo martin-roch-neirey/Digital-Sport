@@ -1,4 +1,4 @@
-
+<!--- Member main page --->
 
 <main>
 
@@ -6,21 +6,26 @@
   <section>
 
       <h3>Panneau d'informations personnelles</h3>
+
       <br>
+<!--- Success/error message after success/fail action --->
+    <p>
+        <?php
 
-    <?php if(isset($success_message)): ?>
-            <p><?php echo $success_message?></p> <br>
-    <?php endif; ?>
-    <?php if(isset($error_message)): ?>
-            <p><?php echo $error_message?></p> <br>
-    <?php endif; ?>
-    <?php if(isset($action_message)): ?>
-            <p><?php echo $action_message?></p> <br>
-    <?php endif; ?>
+            if (isset($_COOKIE['cookie_success_message'])) {
+              echo $_COOKIE['cookie_success_message'];
+            } else if (isset($success_message)) {
+              echo $success_message;
+            } else if (isset($error_message)) {
+              echo $error_message;
+            } else if (isset($action_message)) {
+              echo $action_message;
+            } else {
+              echo ("Vous n'avez pas de nouvelle information !");
+            }
 
-    <?php if(isset($success_message) == false): ?>
-      <p><?php echo("Vous n'avez pas de nouvelle information !")?></p> <br>
-    <?php endif; ?>
+        ?>
+    </p>
 
   </section>
   <br><br>

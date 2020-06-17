@@ -5,36 +5,28 @@
 require_once(MODEL_PATH . '/table_client.php');
 require_once(MODEL_PATH . '/table_prefixetel.php');
 require_once(MODEL_PATH . '/table_niveau.php');
+require_once(MODEL_PATH . '/table_materiel.php');
+require_once(MODEL_PATH . '/table_muscle.php');
+require_once(MODEL_PATH . '/table_typemuscu.php');
+require_once(MODEL_PATH . '/table_choixexo.php');
 
 function index()
 {
-if (isset($_COOKIE['is_connected'])) {
 
-    if ($_COOKIE['is_connected'] == true) {
+  checkClientConnexion();
 
-   display_view('pagemembre/index', []);
+  display_view('pagemembre/index', []);
 
-  } else {
-
-   display_view('connexion/index', ['success_message' => 'Vous êtes déconnecté.'], false);
-
-  }
-
-} else {
-
-  display_view('connexion/index', [], false);
-}
 }
 
 function informations()
 {
-if (isset($_COOKIE['is_connected'])) {
 
-    if ($_COOKIE['is_connected'] == true) {
+  checkClientConnexion();
 
-     $_POST['iduser'] = $_SESSION['idclient'];
+  $_POST['iduser'] = $_SESSION['idclient'];
 
-     $result = getClientProfile();
+     $result = getClientProfileMemberpage();
 
     if (empty($result)){ // check if requested profile exists
       $local_data = ['success_message'=>"Nous n'avons pas trouvé votre profil."];
@@ -43,26 +35,13 @@ if (isset($_COOKIE['is_connected'])) {
    }
 
   display_view('pagemembre/informations', [$local_data], true);
-
-
-  } else {
-
-   display_view('connexion/index', ['success_message' => 'Vous êtes déconnecté.'], false);
-
-  }
-
-} else {
-
-  display_view('connexion/index', [], false);
-}
 }
 
 function abonnements() {
-if (isset($_COOKIE['is_connected'])) {
 
-    if ($_COOKIE['is_connected'] == true) {
+  checkClientConnexion();
 
-      $_POST['iduser'] = $_SESSION['idclient'];
+  $_POST['iduser'] = $_SESSION['idclient'];
 
       $result = getRefAbo();
 
@@ -72,30 +51,15 @@ if (isset($_COOKIE['is_connected'])) {
         $local_data = ['success_message'=>'Il y a un resultat', $result];
    }
 
-
    display_view('pagemembre/abonnements', [$local_data], true);
-
-  } else {
-
-   display_view('connexion/index', ['success_message' => 'Vous êtes déconnecté.'], false);
-
-  }
-
-} else {
-
-  display_view('connexion/index', [], false);
-}
-
-
 
 }
 
 function update_user_profile() {
-if (isset($_COOKIE['is_connected'])) {
 
-    if ($_COOKIE['is_connected'] == true) {
+  checkClientConnexion();
 
-      $_POST['iduser'] = $_SESSION['idclient'];
+  $_POST['iduser'] = $_SESSION['idclient'];
       $_POST["refprefixetel"] = null;
       $_POST["refniveau"] = null;
 
@@ -111,24 +75,13 @@ if (isset($_COOKIE['is_connected'])) {
 
    display_view('pagemembre/update_user_profile', [$local_data], true);
 
-  } else {
-
-   display_view('connexion/index', ['success_message' => 'Vous êtes déconnecté.'], false);
-
-  }
-
-} else {
-
-  display_view('connexion/index', [], false);
-}
 }
 
 function update_user_profile_proceed() {
-if (isset($_COOKIE['is_connected'])) {
 
-    if ($_COOKIE['is_connected'] == true) {
+  checkClientConnexion();
 
-      $_POST['iduser'] = $_SESSION['idclient'];
+  $_POST['iduser'] = $_SESSION['idclient'];
 
       $result = getClientProfile();
 
@@ -138,16 +91,13 @@ if (isset($_COOKIE['is_connected'])) {
       $local_data = ['success_message'=>'Il y a un resultat', $result];
 
 
-
-
-
-
 $oldInfo = getClientProfile(); // get old information from database
   $newInfo = getModificationClientProfile(); // get new information from website (with update)
 
 
   $array_diff = array_diff_assoc($newInfo,$oldInfo[0]); // get the information to update by comparing old and new information
-  $local_data = [[$newInfo],getOrderedPrefixPhone(),getOrderedLevel(), 'action_message'=>'client','presentation_message'=>'Modification profil client :','success_message' => 'Votre profil a été mis à jour ! 💪'];
+
+  $success_message = "Votre profil a été mis à jour ! 💪";
 
   if (!empty($array_diff)) // check whether the information has been changed
   {
@@ -156,39 +106,37 @@ $oldInfo = getClientProfile(); // get old information from database
     }
 
     if (!empty($existingEmail)){
-      $local_data = [[$newInfo],getOrderedPrefixPhone(),getOrderedLevel(),'action_message'=>'client', 'presentation_message'=>'Modification profil client :', 'error_message' => 'Cet email est déja utilisé par un autre client.'];
-      display_view('pagemembre/index', $local_data, true);
+
+      $success_message = "Erreur : Cet email est déja utilisé par un autre client.";
+
+      header('Location: '.get_url('pagemembre','index'));
+
+      setcookie('cookie_success_message', $success_message, time() + 1, null, null, false, true); // cookie to set success message
       exit;
     }
 
     updateClientProfile($newInfo['idclient'],$array_diff); // update information in the database with the new information of the client
 
-    display_view('pagemembre/index', $local_data, true);
+    // display_view('pagemembre/index', $local_data, true);
+
+    header('Location: '.get_url('pagemembre','index'));
+
+    setcookie('cookie_success_message', $success_message, time() + 1, null, null, false, true); // cookie to set success message
     exit;
   } else {
-    $local_data = [[$newInfo],getOrderedPrefixPhone(),getOrderedLevel(),'action_message'=>'client', 'presentation_message'=>'Modification profil client :', 'error_message' => "Aucune information n'a été modifiée !"];
-    display_view('pagemembre/index', $local_data, true);
-    exit;
+      $success_message = "Erreur : Aucune information n'a été modifiée.";
+
+      header('Location: '.get_url('pagemembre','index'));
+
+      setcookie('cookie_success_message', $success_message, time() + 1, null, null, false, true); // cookie to set success message
+      exit;
   }
 
    }
 
    display_view('pagemembre/update_user_profile', [$local_data], true);
 
-  } else {
-
-   display_view('connexion/index', ['success_message' => 'Vous êtes déconnecté.'], false);
-
-  }
-
-} else {
-
-  display_view('connexion/index', [], false);
 }
-}
-
-
-
 
 function deconnexion_member() {
 
@@ -199,101 +147,104 @@ display_view('home/index', ['deconnexion_message' => "Vous êtes bien déconnect
 
 function cancel_sub() {
 
-if (isset($_COOKIE['is_connected'])) {
+  checkClientConnexion();
 
-    if ($_COOKIE['is_connected'] == true) {
+  $success = cancelSub($_SESSION['idclient']);
 
-      // HERE
+  $_SESSION['Sub'] = null;
 
-   $success = cancelSub($_SESSION['idclient']);
-
-   $_SESSION['Sub'] = null;
-
-    display_view('pagemembre/cancel_sub', ['success_message' => 'Abonnement résilié !'], true);
-
-  } else {
-
-   display_view('connexion/index', ['success_message' => 'Vous êtes déconnecté.'], false);
-
-  }
-
-} else {
-
-  display_view('connexion/index', [], false);
-}
+  display_view('pagemembre/index', ['success_message' => 'Votre abonnement a été résilié.'], true);
 
 
 }
 
 function choose_sub() {
 
-if (isset($_COOKIE['is_connected'])) {
-
-    if ($_COOKIE['is_connected'] == true) {
-
-      // HERE
+  checkClientConnexion();
 
   display_view('pagemembre/choose_sub', [], true);
-
-  } else {
-
-   display_view('connexion/index', ['success_message' => 'Vous êtes déconnecté.'], false);
-
-  }
-
-} else {
-
-  display_view('connexion/index', [], false);
-}
 
 }
 
 function choose_sub_recap() {
 
-  if (isset($_COOKIE['is_connected'])) {
-
-    if ($_COOKIE['is_connected'] == true) {
-
-      // HERE
+  checkClientConnexion();
 
   display_view('pagemembre/choose_sub_recap', [], true);
 
-  } else {
-
-   display_view('connexion/index', ['success_message' => 'Vous êtes déconnecté.'], false);
-
-  }
-
-} else {
-
-  display_view('connexion/index', [], false);
-}
 }
 
 function choose_sub_confirmed() {
 
-  if (isset($_COOKIE['is_connected'])) {
-
-    if ($_COOKIE['is_connected'] == true) {
-
-      // HERE
+  checkClientConnexion();
 
   $success = setSub($_SESSION['idclient'], $_SESSION['SubChoose']);
 
   $_SESSION['Sub'] = $_SESSION['SubChoose'];
 
-  display_view('pagemembre/index', ['success_message' => 'Commande : Votre nouvel abonnement vous a été livré !'], true);
 
+header('Location: '.get_url('pagemembre','index'));
+
+setcookie('cookie_success_message', 'Commande : Votre nouvel abonnement vous a été livré !', time() + 1, null, null, false, true); // cookie to set success message
+
+}
+
+function change_password() {
+
+  checkClientConnexion();
+
+  display_view('pagemembre/change_password', [], true);
+
+}
+
+function change_password_proceed() {
+
+  checkClientConnexion();
+
+  $proceed = tryChangePassword();
+
+
+  if ($proceed == true) {
+
+      $success_message = "Votre mot de passe a bien été modifié.";
   } else {
 
-   display_view('connexion/index', ['success_message' => 'Vous êtes déconnecté.'], false);
-
+    $success_message = "Mot de passe actuel erroné. Annulation du changement de mot de passe.";
   }
 
-} else {
+  $local_data = $success_message;
 
-  display_view('connexion/index', [], false);
+  header('Location: '.get_url('pagemembre','index'));
+
+  setcookie('cookie_success_message', $success_message, time() + 1, null, null, false, true); // cookie to set success message
+
 }
+
+function exercise_training ()
+{
+  checkClientConnexion();
+
+  $local_data = [getMaterial(),getMuscle(),getTypeTraining()];
+  display_view('pagemembre/exercise_training', $local_data);
+
+}
+
+function exercise_training_proceed ()
+{
+
+  checkClientConnexion();
+  $local_data = selectClientExerciseTraining();
+
+  if (empty($local_data)){
+    $local_data = [getMaterial(),getMuscle(),getTypeTraining(),'error_message' => "Aucun exercice n'existe avec ces caractéristiques !"];
+    display_view('pagemembre/exercise_training', $local_data);
+  } elseif (count($local_data) <= 3) {
+    display_view('pagemembre/exercise_training_proceed', $local_data, false);
+  } else {
+    
+  }
+
+
 
 }
 

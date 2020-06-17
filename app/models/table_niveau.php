@@ -17,7 +17,7 @@ function getOrderedLevel () { // get/show different level with the users one at 
 
 	$local_table = 'niveau';
 	$local_fieldsParams = ['idniveau','nomniveau'];
-	$refPrefixPhone = $_POST["refniveau"];
+	$refNiveau = $_POST["refniveau"];
 
 	$local_ordered_level = [];
 	$local_ordered_level_others = [];
@@ -25,7 +25,7 @@ function getOrderedLevel () { // get/show different level with the users one at 
 
 
 	foreach ($result as $array => $littleArray) { // loop to split the user's value from others
-		if ($littleArray["idniveau"] == $refPrefixPhone){
+		if ($littleArray["idniveau"] == $refNiveau){
 			array_push($local_ordered_level, $littleArray);
 		} else{
 			array_push($local_ordered_level_others, $littleArray);

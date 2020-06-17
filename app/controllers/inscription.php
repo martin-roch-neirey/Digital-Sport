@@ -30,7 +30,7 @@ $pseudo = $_POST['pseudo'];
 $checkMail = verifyExistingClientMail($mail);
 $checkPseudo = verifyExistingClientPseudo($pseudo);
 
-$local_data = getPrefixPhone();
+$local_data = [getPrefixPhone(), getLevel()];
 
 if (!empty($checkMail)) {
   display_view('inscription/index', ['success_message' => "Cette adresse mail est déjà utilisée !", $local_data], false);
@@ -47,23 +47,14 @@ $success = enregistreClient();
 // print_r($success);
 
 if (!empty($success)) {
-display_view('connexion/index', ['success_message' => 'Vous êtes inscris ! Connectez-vous pour accéder à votre espace membre.'], false);
+header('Location: '.get_url('connexion','index'));
+
+setcookie('cookie_success_message', 'Vous êtes bien inscris ! 💪', time() + 1, null, null, false, true); // cookie to set success message
 
 // Success Mail
-// $msg = 'Bonjour,
-
-// Votre compte sur DigitalSport a bien été créé. Pour rappel, vous avez choisi "'.$pseudo.'" comme pseudonyme. Vous aurez besoin de votre adresse mail et de votre mot de passe pour vous connecter.
-
-// Pour accéder directement à la page de connexion, cliquez sur ce lien :
-
-
-// Nous sommes heureux de vous accueillir, et nous vous souhaitons la bienvenue dans votre nouvelle salle de sport préférée !
-
-// Cordialement, l équipe DigitalSport.';
-
-// sendMail($mail, $msg);
-
 mailInscription();
+
+
 
 } else {
   display_view('inscription/index', ['success_message' => "Echec de l'inscription."], false);
@@ -71,15 +62,6 @@ mailInscription();
 
 }
 
-
-
-  /*
-  if ($success) {
-    display_view('connexion/index', ['success_message' => 'Vous êtes inscris ! Connectez-vous pour accéder à votre espace membre.'], false);
-  } else {
-    display_view('inscription/index', ['success_message' => "Echec de l'inscription."], false);
-  }
-  */
 
 }
 

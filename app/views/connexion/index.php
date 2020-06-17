@@ -8,18 +8,27 @@
 
 		<div class="wrap-login">
 			<div class="login100-pic login100-pic-index" data-tilt>
-				<a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=home&action=index"><img src="images/connexion_haltere.png" alt="IMG"></a>
+				<a href='<?php echo get_url('home','index') ?>'><img src="images/connexion_haltere.png" alt="IMG"></a>
 			</div>
 
-				<form class="login-form validate-form" action="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=connexion&action=connexion_try" method="post">
+				<form class="login-form validate-form" action='<?php echo get_url('connexion','connexion_try') ?>' method="post">
 					<span class="login-form-title">
 						<!--- Success/error message after success/fail registering --->
- 					<?php if(isset($error_message)): ?>
- 						<h3 class="error_message"><?php echo $error_message?></h3> <br>
- 					<?php endif; ?>
- 					<?php if(isset($success_message)): ?>
- 						<h3 class="error_message"><?php echo $success_message?></h3> <br>
- 					<?php endif; ?>
+ 						<h3>
+				        <?php
+
+				            if (isset($_COOKIE['cookie_success_message'])) {
+				              echo $_COOKIE['cookie_success_message'];
+				            } else if (isset($success_message)) {
+				              echo $success_message;
+				            } else if (isset($error_message)) {
+				              echo $error_message;
+				            } else if (isset($action_message)) {
+				              echo $action_message;
+				            }
+
+				        ?>
+    				</h3>
 						Accédez à votre Espace Membre
 					</span>
 
@@ -46,16 +55,16 @@
 
 					<!--- PASSWORD FORGOTTEN --->
 					<div class="text-center">
+
+						<a class="txt2" href='<?php echo get_url('connexion','reset_password') ?>'>
+							Mot de passe</a>
 						<span class="txt1">
-							Oubli de mon
+							oublié ?
 						</span>
-						<a class="txt2" href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=connexion&action=reset_password">
-							Mot de passe...
-						</a>
 					</div>
 
 					<div class="text-center">
-						<a class="txt2" href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=inscription&action=index">
+						<a class="txt2" href='<?php echo get_url('inscription','index') ?>'>
 
 							<!--- No account --->
 							Pas de compte ? Inscrivez-vous !
@@ -63,7 +72,7 @@
 					</div>
 
 					<div class="text-center">
-						<a class="txt2" href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=home&action=index">
+						<a class="txt2" href='<?php echo get_url('home','index') ?>'>
 
 							<!--- Back to home page --->
 							Retour à l'accueil

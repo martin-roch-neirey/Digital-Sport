@@ -17,11 +17,6 @@ $dataPrefixetel = getOrderedPrefixPhone();
 $_POST["refniveau"] = $sql['refniveau'];
 $dataNiveau = getOrderedLevel();
 
-
-
-
-
-
 ?>
 
 
@@ -29,29 +24,30 @@ $dataNiveau = getOrderedLevel();
 <link rel="stylesheet" type="text/css" href="css/pagemembre_style.css">
 <link rel="stylesheet" type="text/css" href="css/pagemembre_informations_style.css">
 
-<?php if(isset($success_message)): ?>
- 						<h3><?php echo $success_message?></h3> <br>
- 					<?php endif; ?>
- 					<?php if(isset($error_message)): ?>
- 						<h3><?php echo $error_message?></h3> <br>
- 					<?php endif; ?>
- 					<?php if(isset($action_message)): ?>
- 						<h3><?php echo $action_message?></h3> <br>
- 					<?php endif;
+<?php
 
+    if (isset($_COOKIE['cookie_success_message'])) {
+      echo $_COOKIE['cookie_success_message'];
+    } else if (isset($success_message)) {
+      echo $success_message;
+    } else if (isset($error_message)) {
+      echo $error_message;
+    } else if (isset($action_message)) {
+      echo $action_message;
+    }
 
-
- 					?>
+?>
 
 
 <main>
       <br><br><br>
 <body>
-<form id="RegisterUserForm" action="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=pagemembre&action=update_user_profile_proceed" method="post">
+<form id="RegisterUserForm" action='<?php echo get_url('pagemembre','update_user_profile_proceed') ?>' method="post">
 
 	<input hidden name="pseudo" type="text" value=<?php echo $sql['pseudo'] ?>>
 	<input hidden name="nom" type="text" value=<?php echo $sql['nom'] ?>>
 	<input hidden name="prenom" type="text" value=<?php echo $sql['prenom'] ?>>
+    <input hidden name="reftypeabonnement" type="text" value=<?php echo $sql['reftypeabonnement'] ?>>
 
 
 <div class="table-name">
@@ -121,7 +117,7 @@ $dataNiveau = getOrderedLevel();
     </tbody>
 </table>
 <br><br>
-<button type="submit">Enregistrer mes modifications</button>
+<button type="submit" class="button-informations">Enregistrer mes modifications</button>
 <br><br><br>
 </form>
 </body>

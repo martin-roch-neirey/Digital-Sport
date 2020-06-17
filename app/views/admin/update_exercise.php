@@ -21,7 +21,7 @@
 		<?php
 			$dataExercise = $data[0][0]; // affect $data parts to var
 			$dataMaterial = $data[0][1];
-			print("<form action=". get_url('admin', 'update_exercise_proceed') ." method='POST'>");
+			print("<form class='form_update_exercise' action=". get_url('admin', 'update_exercise_proceed') ." method='POST'>");
 			foreach ($dataExercise as $ligne) { // show result: list user's caracteristic with a table
 					$idexercice=$ligne["idexercice"];
 					$nomexo=$ligne["nomexo"];
@@ -34,21 +34,21 @@
 						<div>
 							<input type='hidden' name='idexercice' value=".$idexercice.">
 							<label>Nom &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
-								<input  minlength='1' maxlength='255' name='nomexo' value=".$nomexo." required>
+								<input  minlength='1' maxlength='255' name='nomexo' value='".$nomexo."' required>
 							</label>
 							<label>Description &nbsp;&nbsp;&nbsp; :
-								<input minlength='1' maxlength='255' name='description' value=".$description." required>
+								<input minlength='1' maxlength='255' name='description' value='".$description."' required>
 							</label>
 							<label>Lien vidéo &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
-								<input minlength='1' name='lienvideo' value=".$lienvideo." required>
+								<input minlength='1' name='lienvideo' value=".$lienvideo.">
 							</label>
 
 							<label>Lien image &nbsp;&nbsp;&nbsp; :
-								<input minlength='1' name='lienimage' value=".$lienimage." required>
+								<input minlength='1' name='lienimage' value=".$lienimage.">
 							</label>
 
 							<label>Lien musique :
-								<input minlength='1' name='lienmusique' value=".$lienmusique." required>
+								<input minlength='1' name='lienmusique' value=".$lienmusique.">
 							</label>
 							<label>Matériel &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
 					";

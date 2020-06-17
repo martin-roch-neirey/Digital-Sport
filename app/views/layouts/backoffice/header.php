@@ -33,11 +33,8 @@
 			   			<li>Séance Perso</li>
 			   		</ul>
 			   	</li>
-			    <li class="listeli">Séances
-			    	<ul>
-			    		<li>Séances passées</li>
-			    		<li>Séances à venir</li>
-			    	</ul>
+			    <li>
+			    	<a href=<?php echo get_url('admin','show_exercise_training') ?> >Exercices d'entrainement</a>
 			    </li>
 			    <li>
 			    	<a href=<?php echo get_url('admin','show_contact_message') ?> >Message contact</a>

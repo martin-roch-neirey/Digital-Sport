@@ -22,6 +22,9 @@ function connexion_try() { // trying to connect a new client : refers to functio
   $success = $success[1];
 
   if ($success == true) {
+
+    // Session values declaration
+
     $_SESSION['prenom'] = $resultsql['prenom'];
     $_SESSION['nom'] = $resultsql['nom'];
     $_SESSION['idclient'] = $resultsql['idclient'];
@@ -34,11 +37,7 @@ function connexion_try() { // trying to connect a new client : refers to functio
 
    // isConnected('pagemembre/index', ['success_message' => 'Bonjour '.$_SESSION['prenom'].' !'], false);
 
-
-
-
-
-    //print_r($success);
+   // DEBUG : print_r($success);
 
 
   } else {
@@ -73,27 +72,5 @@ function reset_password_proceed() // proceed the reset client password
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ?>

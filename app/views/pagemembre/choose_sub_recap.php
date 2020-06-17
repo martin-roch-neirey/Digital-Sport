@@ -9,13 +9,13 @@ $_SESSION['SubChoose'] = $_POST['reftypeabonnement'];
 <link rel="stylesheet" type="text/css" href="css/pagemembre_choose_sub_recap_style.css">
 
 <main>
-<br><br>
+<br><br><br><br>
 <section>
 
-<h1>Confirmation 💪</h1>
+<h1 class="text-confirm">Confirmation 💪</h1>
 <br><br>
 
-<h2><?php echo(($_SESSION['prenom'])." ".($_SESSION['nom'])); ?>, vous souhaitez soucrire à un abonnement mensuel <?php echo($_POST['nomabonnement']) ?>.</h2>
+<h2 class="text-confirm"><?php echo(($_SESSION['prenom'])." ".($_SESSION['nom'])); ?>, vous souhaitez soucrire à un abonnement mensuel <?php echo($_POST['nomabonnement']) ?>.</h2>
 <br>
 
 <h3>Récapitulatif de commande</h3>
@@ -57,5 +57,7 @@ $_SESSION['SubChoose'] = $_POST['reftypeabonnement'];
 
 <br><br><br>
 
+
 </section>
+<br><br><br><br>
 </main>

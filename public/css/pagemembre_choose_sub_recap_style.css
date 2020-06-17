@@ -6,7 +6,7 @@ button {
 color: white;
 
 border-radius: 10px;
-margin-left: 22vw;
+margin-left: 4vw;
 
 border-color: #f40d42;
 
@@ -36,4 +36,7 @@ section {
 
 h1 {
   font-size: 200%;
+}
+.text-confirm {
+  color:white;
 }

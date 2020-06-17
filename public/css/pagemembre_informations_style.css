@@ -19,22 +19,16 @@ select {
 
 }
 
-button {
- width:100px;
- margin-left:6.5vw;
- cursor:pointer;
- background: #f40d42;
+.button-informations {
+text-align: center;
+color:black;
+margin-left: 45%;
+border-radius: 50px;
+width: 10vw;
+margin-bottom: 10px;
+height: 30px;
+padding: 10px;
+border: 0px;
+display: inline-block;
 
-color: white;
-
-border-radius: 10px;
-margin-left: 45vw;
-
-border-color: #f40d42;
-
-font-size: 100%;
-
-height: 50px;
-
-width: 150px;
 }

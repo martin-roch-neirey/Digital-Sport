@@ -46,6 +46,7 @@
 		 			foreach ($data as $tab) {
 		 				if (is_array($tab)){
 		 					print('<select name="refmateriel">');
+		 					print('<option value="">Aucun</option>');
 		                	foreach ($tab as $ligne) {
 		                        print( '<option value='.$ligne["idmateriel"].'>'. $ligne["nommateriel"] .'</option>');
 		                	}

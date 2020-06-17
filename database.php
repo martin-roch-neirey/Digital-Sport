@@ -176,23 +176,73 @@ function update(string $table, array $fieldsParams , array $whereParams){
 
 }
 
+// /**
+//  * forme une requete select avec inner join
+//  * du type: select_ij(['client','niveau'],'nomniveau',['refniveau','idniveau'],['idclient','=','4']);
+//  *
+//  * @param  array    $table          [description]
+//  * @param  string   $fieldsParams   [description]
+//  * @param  array    $compareParams  [description]
+//  * @param  array    $whereParams    [description]
+//  */
+
+// function select_ij(array $table, string $fieldsParam, array $compareParams, array $whereParams){
+
+//     $where = ($whereParams[0] . ' ' . $whereParams[1] . ' :' . $whereParams[0]);
+// 	$data_prepare = [':'.$whereParams[0] => $whereParams[2]];
+
+//     $sql = 'SELECT ' . $fieldsParam . ' FROM ' . $table[0] . ' INNER JOIN ' . $table[1] . ' ON ' . $compareParams[0] . ' = ' . $compareParams[1] . ' WHERE ' . $where ;
+
+// 	return pdo_query($sql,$data_prepare);
+
+// }
+
+
 /**
- * forme une requete select avec inner join
- * du type: select_ij(['client','niveau'],'nomniveau',['refniveau','idniveau'],['idclient','=','4']);
+ * forme une requete select des 'inner join' et des options 'where'
+ * du type: select_ij('client',['nomniveau','nommuscle','nomtypemuscu'],[['niveau','refniveau','idniveau'],['exercice','idexercice','idrefexercice']],[['idclient','=','4'],['age','=','3']]);
  *
- * @param  array    $table          [description]
- * @param  string   $fieldsParams   [description]
- * @param  array    $compareParams  [description]
- * @param  array    $whereParams    [description]
+ * @param  string   $table            [description]
+ * @param  array    $fieldsParams     [description]
+ * @param  array    $innerJoinParams  [description]
+ * @param  array    $whereParams      [description]
  */
 
-function select_ij(array $table, string $fieldsParam, array $compareParams, array $whereParams){
+function select_ij(string $table, array $fieldsParams, array $innerJoinParams, array $whereParams){
 
-    $where = ($whereParams[0] . ' ' . $whereParams[1] . ' :' . $whereParams[0]);
-	$data_prepare = [':'.$whereParams[0] => $whereParams[2]];
+	$fields = '';
 
-    $sql = 'SELECT ' . $fieldsParam . ' FROM ' . $table[0] . ' INNER JOIN ' . $table[1] . ' ON ' . $compareParams[0] . ' = ' . $compareParams[1] . ' WHERE ' . $where ;
+	foreach ($fieldsParams as $param){
+		$fields .= $param.', ';
+	}
+	$fields = substr($fields,0,-2);
 
-	return pdo_query($sql,$data_prepare);
+
+	if (!empty($whereParams)){
+		$where = '';
+		$data_whereArray = [];
+		$bindParamsWH_array = [];
+		foreach ($whereParams as $param){
+	        $where .= ($param[0] . ' ' . $param[1] . ' :' . $param[0] . ' AND ');
+	        array_push($data_whereArray, $param[2]);
+	        array_push($bindParamsWH_array, (':'.$param[0]));
+		}
+		$where = substr($where,0,-5);
+		$data_prepare = array_combine($bindParamsWH_array, array_values($data_whereArray));
+
+	} else{
+		$data_prepare = [];
+	}
+	
+	$innerJoin = '';
+	foreach ($innerJoinParams as $param){
+        $innerJoin .= (' INNER JOIN ' . $param[0] . ' ON ' . $param[1] . ' = ' . $param[2]);
+	}
+
+
+    $sql = 'SELECT ' . $fields . ' FROM ' . $table . $innerJoin;
+    $sql .= !empty($whereParams) ? ' WHERE ' . $where: '';
+    
+    return pdo_query($sql,$data_prepare);
 
 }

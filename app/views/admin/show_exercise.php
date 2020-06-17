@@ -22,11 +22,10 @@
 		
 		<!-- show exercise to update (add/update/delete) -->
 		<form>
-			<label>Un nouvel exercice :
-				<button>
-					<a href=<?php echo get_url('admin','add_exercise') ?> >Ajouter</a>
-				</button>
-			</label>
+			<label>Un nouvel exercice :</label>
+			<button>
+				<a href=<?php echo get_url('admin','add_exercise') ?> >Ajouter</a>
+			</button>
 		</form>
 		<div>
  			<table class='table_show_exercice'>
@@ -55,7 +54,7 @@
 									<button type='submit'>Editer</button>
 							</form>
 							
-							<form action=".get_url('admin','delete_exercise_proceed')." method='POST'>
+							<form action=". get_url('admin','delete_exercise_proceed') ." method='POST'>
 									<input type='hidden' name='idexercice' value=".$idexercice.">
 									<button type='submit'>Supprimer</button>
 								</td>
