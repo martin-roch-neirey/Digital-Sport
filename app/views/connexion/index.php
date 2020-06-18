@@ -1,5 +1,7 @@
 <!--- INDEX OF CONNEXION PAGE --->
-
+<head>
+	<title>Connexion DigitalSport</title>
+</head>
 <link rel="stylesheet" type="text/css" href="css/connexion_style.css">
 
 
@@ -35,12 +37,12 @@
 					<!--- DEBUG : print_r($data) --->
 					<div class="wrap-input validate-input" data-validate = "Adresse email requise : ex@abc.xyz">
 						<!--- EMAIL --->
-						<input class="input input-field" type="text" name="P_email" placeholder="Email" minlenght="2" maxlength="100" required>
+						<input class="input input-field" type="text" name="P_email" placeholder="📧 Email" minlenght="2" maxlength="100" required>
 					</div>
 
 					<div class="wrap-input validate-input" data-validate = "Un mot de passe est requis">
 						<!--- PASSWORD --->
-						<input class="input input-field" type="password" name="P_password" placeholder="Mot de passe" minlenght="2" maxlength="100" required>
+						<input class="input input-field" type="password" name="P_password" placeholder="🔐 Mot de passe" minlenght="2" maxlength="100" required>
 						<span class="focus-input"></span>
 						<span class="symbol-input">
 						</span>

@@ -64,7 +64,7 @@
             <ul class="table-list">
                 <li>🔓 Tous les avantages START</li>
                 <li>🤸‍♂️ Séances personnalisées exclusives</li>
-                <li>💯 Accès prioritaire<span> à la salle physique, limitée à 100 usagers pour votre confort.</span></li>
+                <li>💯 Accès prioritaire<span> à la salle physique, limitée à 100 usagers pour vous.</span></li>
                 <li>👬 Inviter un ami à la salle <span class="unlimited">ILLIMITÉ !</span></li>
             </ul>
             <!-- Choisir -->

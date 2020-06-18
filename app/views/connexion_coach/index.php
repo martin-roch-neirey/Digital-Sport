@@ -1,15 +1,15 @@
 <!--- INDEX OF CONNEXION PAGE --->
 
-<link rel="stylesheet" type="text/css" href="css/connexion_admin_style.css">
+<link rel="stylesheet" type="text/css" href="css/connexion_coach_style.css">
 <head>
-	<title>Connexion Admin</title>
+	<title>Connexion Coach</title>
 </head>
 
 	<div class="container-login100">
 
 		<div class="wrap-login100">
 
-				<form action='<?php echo get_url('connexion_admin','connexion_try_admin') ?>' method="post">
+				<form action='<?php echo get_url('connexion_coach','connexion_try_coach') ?>' method="post">
 					<span class="login100-form-title">
 
 					<!--- Success message after connexion success registering --->
@@ -21,7 +21,7 @@
 						}
 
 					?>
-						🔐 Accès au pannel admin :
+						🔐 Accès au pannel coach :
 					</span>
 
 					<div class="wrap-input100" data-validate = "Adresse email requise : ex@abc.xyz">

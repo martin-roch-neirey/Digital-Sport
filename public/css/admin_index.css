@@ -165,6 +165,18 @@ span button:hover{
 	background: none;
 }
 
+textarea{
+	background-color: #333333;
+	border: solid 0.1vh #333333;
+	border-radius: 2vh;
+	color: white;
+	font-weight: bold;
+	height: 9vh;
+	width: 20vw;
+	min-height: 3vh;
+	min-width: 20vw;
+}
+
 .td_contact_message{
 	min-width: 62vw;
 }
@@ -211,11 +223,6 @@ span button:hover{
 
 .label_space_add_coach{
 	margin: 0.15vh;
-}
-
-.button_add_coach{
-	margin-left: 37vw;
-	margin-top: 0.4vh;
 }
 
 .div_add_coach{

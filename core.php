@@ -2,7 +2,7 @@
 
 /**
  * affiche une page
- * 
+ *
  * @param  string       $view_path  [description]
  * @param  array        $data       [description]
  * @param  bool|boolean $use_layout [description]
@@ -18,11 +18,13 @@ function display_view(string $view_path, array $data = [], bool $use_layout = tr
 		require_once VIEW_PATH . "/errors/500.php";
 		return false;
 	}
-	
+
 	if (($use_layout) and ($layout[0] == 'admin')){
 		require_once VIEW_PATH ."/layouts/backoffice/header.php";
 	}elseif (($use_layout) and ($layout[0] == 'pagemembre')){
 		require_once VIEW_PATH ."/layouts/memberpage/header.php";
+	}elseif (($use_layout) and ($layout[0] == 'coach')){
+		require_once VIEW_PATH ."/layouts/coachpanel/header.php";
 	}elseif ($use_layout){
 		require_once VIEW_PATH ."/layouts/frontoffice/header.php";
 	}
@@ -33,6 +35,8 @@ function display_view(string $view_path, array $data = [], bool $use_layout = tr
 		require_once VIEW_PATH ."/layouts/backoffice/footer.php";
 	}elseif (($use_layout) and ($layout[0] == 'pagemembre')){
 		require_once VIEW_PATH ."/layouts/memberpage/footer.php";
+	}elseif (($use_layout) and ($layout[0] == 'coach')){
+		require_once VIEW_PATH ."/layouts/coachpanel/footer.php";
 	}elseif ($use_layout){
 		require_once VIEW_PATH ."/layouts/frontoffice/footer.php";
 	}
@@ -46,7 +50,7 @@ function display_view(string $view_path, array $data = [], bool $use_layout = tr
 function get_item_rec(array $arr, string $path)
 {
 	if(!isset($arr) || empty($arr))
-		return NULL;	
+		return NULL;
 
 	if(strpos($path, '.') === FALSE)
 	{
@@ -77,7 +81,7 @@ function get_config(string $item)
 
 /**
  * cree une url pour un lien de l'application
- * 
+ *
  * @param  string      $controller le controller sur lequel on navigue
  * @param  string|null $action     l'action du controller
  * @param  array       $get_params les parametres get qu'on veux dans l'url sous la forme de tableau cle => valeur
@@ -95,9 +99,9 @@ function get_url(string $controller, string $action = null,array $get_params = [
 
 /**
  * renvoi l'url vers un asset
- * 
+ *
  * @param  [type] $path le chemin relatif de l'asset par rapport a mvc/public/
- * @return [type]       
+ * @return [type]
  */
 function get_asset($path) {
 	if(!file_exists(PUBLIC_PATH . '/' . $path)) {

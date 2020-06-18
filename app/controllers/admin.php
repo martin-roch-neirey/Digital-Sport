@@ -34,7 +34,6 @@ function index () // admin home page, get statistics from database
 				  ];
 
 	display_view('admin/index', $local_data);
-
 }
 
 //----------------------------- show all client and coach profiles -----------------------------
@@ -65,7 +64,6 @@ function show_all_clients_profile () // show all client profile
 	}
 
 	display_view('admin/show_user_profile', $local_data);
-
 }
 
 //----------------------------- show contact message -----------------------------
@@ -76,7 +74,6 @@ function show_contact_message () // show contact message (from client)
 	$local_data = showContactMessage();
 
 	display_view('admin/show_contact_message', $local_data); // array format needed
-
 }
 
 //----------------------------- delete contact message -----------------------------
@@ -86,10 +83,9 @@ function delete_contact_message () // delete contact message (from database)
 	checkAdminConnexion();
 	deleteContactMessageProceed();
 
-	header('Location: https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=show_contact_message'); // redirect on the view to show contact message with success message
+	header('Location: '. get_url('admin','show_contact_message')); // redirect on the view to show contact message with success message
 
 	setcookie('cookie_success_message', 'Le message a été supprimé ! 💪', time() + 1, null, null, false, true); // cookie to set success message
-
 }
 
 function delete_day_contact_message () // delete contact message for a specific day (from database)
@@ -97,7 +93,7 @@ function delete_day_contact_message () // delete contact message for a specific 
 	checkAdminConnexion();
 	deleteDayContactMessageProceed();
 
-	header('Location: https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=show_contact_message'); // redirect on the view to show contact message with success message
+	header('Location: '. get_url('admin','show_contact_message')); // redirect on the view to show contact message with success message
 
 	setcookie('cookie_success_message', 'Les messages ont été supprimés ! 💪', time() + 1, null, null, false, true); // cookie to set success message
 }
@@ -117,7 +113,7 @@ function add_exercise_proceed () // proceeds to the exercise addition
 	checkAdminConnexion();
 	addExerciseProceed();
 
-	header('Location: https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=show_exercise');
+	header('Location: '. get_url('admin','show_exercise')); // redirect on the view to show exercise with success message
 
 	setcookie('cookie_success_message', 'Exercice ajouté ! 💪', time() + 1, null, null, false, true); // cookie to set success message
 }
@@ -134,7 +130,7 @@ function show_exercise () // show exercise
 
 //----------------------------- update exercise -----------------------------
 
-function update_exercise () // show exercise to delete
+function update_exercise () // show exercise to update
 {
 	checkAdminConnexion();
 	$local_data = [getExerciseInformation(),getOrderedMaterial()]; // get all exercise to update
@@ -147,7 +143,7 @@ function update_exercise_proceed () // proceeds to the exercise update
 	checkAdminConnexion();
 	$oldInfo = getExerciseInformation(); // get old information from database
 	$newInfo = getExerciseModification(); // get new information from website (with update)
-	
+
 
 	$array_diff = array_diff_assoc($newInfo,$oldInfo[0]); // get the information to update by comparing old and new information
 	$local_data = [[[$newInfo],getOrderedMaterial()],'presentation_message'=>'Exercice à modifier :','success_message' => 'Exercice édité avec succès ! 💪'];
@@ -161,7 +157,6 @@ function update_exercise_proceed () // proceeds to the exercise update
 		$local_data = [[[$newInfo],getOrderedMaterial()],'presentation_message'=>'Exercice à modifier :', 'error_message' => "Aucune information n'a été modifiée"];
 		display_view('admin/update_exercise', $local_data);
 	}
-
 }
 
 //----------------------------- delete exercise -----------------------------
@@ -171,7 +166,7 @@ function delete_exercise_proceed () // proceeds to the exercise deletion
 	checkAdminConnexion();
 	deleteExerciseProceed();
 
-	header('Location: https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=show_exercise');
+	header('Location: '. get_url('admin','show_exercise')); // redirect on the view to show exercise with success message
 
 	setcookie('cookie_success_message', 'Exercice supprimé ! 💪', time() + 1, null, null, false, true); // cookie to set success message
 }
@@ -179,13 +174,11 @@ function delete_exercise_proceed () // proceeds to the exercise deletion
 //----------------------------- update material -----------------------------
 
 function update_material () // show form to update material
-{ 
-
+{
 	checkAdminConnexion();
 	$local_data = getMaterial();
 
 	display_view('admin/update_material', ['presentation_message' => 'Modification matériel :', 'success_message' => '', $local_data]);
-
 }
 
 //----------------------------- add material -----------------------------
@@ -195,7 +188,7 @@ function add_material_proceed () // proceeds to the material addition
 	checkAdminConnexion();
 	addMaterialProceed();
 
-	header('Location: https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=update_material');
+	header('Location: '. get_url('admin','update_material')); // redirect on the view to show updated material with success message
 
 	setcookie('cookie_success_message', 'Matériel ajouté ! 💪 ', time() + 1, null, null, false, true); // cookie to set success message
 }
@@ -207,7 +200,7 @@ function delete_material_proceed () // proceeds to the material deletion
 	checkAdminConnexion();
 	deleteMaterialProceed();
 
-	header('Location: https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=update_material');
+	header('Location: '. get_url('admin','update_material')); // redirect on the view to show updated material with success message
 
 	setcookie('cookie_success_message', 'Matériel supprimé ! 💪', time() + 1, null, null, false, true); // cookie to set success message
 }
@@ -227,10 +220,10 @@ function update_client_profile_proceed () // proceeds to the update of a client 
 	checkAdminConnexion();
 	$oldInfo = getClientProfile(); // get old information from database
 	$newInfo = getModificationClientProfile(); // get new information from website (with update)
-	
+
 
 	$array_diff = array_diff_assoc($newInfo,$oldInfo[0]); // get the information to update by comparing old and new information
-	$local_data = [[$newInfo],getOrderedPrefixPhone(),getOrderedLevel(), getOrderedSubsciption(), 'action_message'=>'client','presentation_message'=>'Modification profil client :','success_message' => 'Le profil du client à été édité avec succès ! 💪'];
+	$local_data = [[$newInfo],getOrderedPrefixPhone(),getOrderedLevel(), getOrderedSubsciption(), 'action_message'=>'client','presentation_message'=>'Modification profil client :','success_message' => 'Le profil du client à été édité avec succès ! 💪 Il se peut que le client ait besoin de se déconnecter / reconnecter pour observer les changements complets.'];
 
 	if (!empty($array_diff)) // check whether the information has been changed
 	{
@@ -255,13 +248,12 @@ function update_client_profile_proceed () // proceeds to the update of a client 
 		}
 
 		updateClientProfile($newInfo['idclient'],$array_diff); // update information in the database with the new information of the client
-
 		display_view('admin/update_user_profile', $local_data);
+
 	} else {
 		$local_data = [[$newInfo],getOrderedPrefixPhone(),getOrderedLevel(), getOrderedSubsciption(),'action_message'=>'client', 'presentation_message'=>'Modification profil client :', 'error_message' => "Aucune information n'a été modifiée"];
 		display_view('admin/update_user_profile', $local_data);
 	}
-
 }
 
 //----------------------------- delete client profile -----------------------------
@@ -271,8 +263,7 @@ function delete_client_profile_proceed () // proceeds the client profile deletio
 	checkAdminConnexion();
 	deleteClientProfileProceed();
 
-	header('Location: https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=show_all_clients_profile'); // redirect on the view to show client profile with success message
-
+	header('Location: '. get_url('admin','show_all_clients_profile')); // redirect on the view to show all client profile with success message
 	setcookie('cookie_success_message', 'Le client à bien été supprimé ! 💪', time() + 1, null, null, false, true); // cookie to set success message
 }
 
@@ -291,7 +282,7 @@ function update_coach_profile_proceed () // proceeds to the update of a coach pr
 	checkAdminConnexion();
 	$oldInfo = getCoachProfile(); // get old information from database
 	$newInfo = getModificationCoachProfile(); // get new information from website (with update)
-	
+
 
 	$array_diff = array_diff_assoc($newInfo,$oldInfo[0]); // get the information to update by comparing old and new information
 	$local_data = [[$newInfo],getOrderedPrefixPhone(), 'action_message'=>'coach', 'presentation_message'=>'Modification profil coach :', 'success_message' => 'Le profil du coach à été édité avec succès ! 💪'];
@@ -319,13 +310,12 @@ function update_coach_profile_proceed () // proceeds to the update of a coach pr
 		}
 
 		updateCoachProfile($newInfo['idcoach'],$array_diff); // update information in the database with the new information of the coach
-
 		display_view('admin/update_user_profile', $local_data);
+
 	} else {
 		$local_data = [[$newInfo],getOrderedPrefixPhone(), 'action_message'=>'coach', 'presentation_message'=>'Modification profil coach :', 'error_message' => "Aucune information n'a été modifiée"];
 		display_view('admin/update_user_profile', $local_data);
 	}
-
 }
 
 //----------------------------- delete coach profile -----------------------------
@@ -335,7 +325,7 @@ function delete_coach_profile_proceed () // proceeds the coach profile deletion
 	checkAdminConnexion();
 	deleteCoachProfileProceed();
 
-	header('Location: https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=show_all_coachs_profile'); // redirect on the view to show coach profile with success message
+	header('Location: '. get_url('admin','show_all_coachs_profile')); // redirect on the view to show all coach profile with success message
 
 	setcookie('cookie_success_message', 'Le coach à bien été supprimé ! 💪', time() + 1, null, null, false, true); // cookie to set success message
 }
@@ -348,10 +338,9 @@ function add_coach () // show coach form
 	$local_data = getPrefixPhone();
 
 	display_view('admin/add_coach', ['presentation_message' => "Formulaire d'ajout de coach :", $local_data]);
-
 }
 
-function add_coach_proceed () // show coach form
+function add_coach_proceed () // proceeds to the coach addition
 {
 	checkAdminConnexion();
 	$local_data = getAddCoachInfo();
@@ -366,11 +355,8 @@ function add_coach_proceed () // show coach form
 	}
 
 	addCoachProceed();
-
-	header('Location: https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=show_all_coachs_profile'); // redirect on the view to show coach profile with success message
-
+	header('Location: '. get_url('admin','show_all_coachs_profile')); // redirect on the view to show all coach profile with success message
 	setcookie('cookie_success_message', 'Le coach à bien été ajouté ! 💪', time() + 1, null, null, false, true); // cookie to set success message
-
 }
 
 //----------------------------- show resources -----------------------------
@@ -395,7 +381,7 @@ function show_resource_mld () // show mld
 
 //----------------------------- show changelog -----------------------------
 
-function show_changelog ()
+function show_changelog () // show current changelog
 {
 	checkAdminConnexion();
 	display_view('admin/show_changelog', ['presentation_message' => 'Changelog DigitalSport :']);
@@ -403,7 +389,7 @@ function show_changelog ()
 
 //----------------------------- show exercise training -----------------------------
 
-function show_exercise_training ()
+function show_exercise_training () // show all exercise training
 {
 	checkAdminConnexion();
 
@@ -435,11 +421,10 @@ function add_exercise_training_proceed () // proceeds to the exercise training a
 	} else{
 		addExerciseTrainingProceed();
 
-		header('Location: https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=show_exercise_training');
+		header('Location: '. get_url('admin','show_exercise_training')); // redirect on the view to show  exercise training with success message
+
 		setcookie('cookie_success_message', "Exercice d'entrainement ajouté ! 💪", time() + 1, null, null, false, true); // cookie to set success message
-
 	}
-
 }
 
 //----------------------------- update exercise training -----------------------------
@@ -451,7 +436,6 @@ function update_exercise_training () // show form to update exercise training
 	$local_data = [getOrderedExercise(),getOrderedMuscle(),getOrderedTypeTraining(),getOrderedLevel(),getExerciseTrainingInformation()];
 
 	display_view('admin/update_exercise_training', ['presentation_message' => "Modification d'exercices d'entrainement :", $local_data]);
-
 }
 
 function update_exercise_training_proceed () // proceeds to the exercise training update
@@ -472,7 +456,6 @@ function update_exercise_training_proceed () // proceeds to the exercise trainin
 		$local_data = [[getOrderedExercise(),getOrderedMuscle(),getOrderedTypeTraining(),getOrderedLevel(),[$newInfo]],'presentation_message'=>"Modification d'exercices d'entrainement :", 'error_message' => "Aucune information n'a été modifiée"];
 		display_view('admin/update_exercise_training', $local_data);
 	}
-
 }
 
 //----------------------------- delete exercise training -----------------------------
@@ -482,7 +465,7 @@ function delete_exercise_training_proceed () // proceeds to the exercise trainin
 	checkAdminConnexion();
 	deleteExerciseTrainingProceed();
 
-	header('Location: https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=show_exercise_training');
+	header('Location: '. get_url('admin','show_exercise_training')); // redirect on the view to show  exercise training with success message	
 
 	setcookie('cookie_success_message', "Exercice d'entrainement supprimé ! 💪", time() + 1, null, null, false, true); // cookie to set success message
 }

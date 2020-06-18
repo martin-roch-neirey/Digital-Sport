@@ -1,4 +1,5 @@
 	<link rel="stylesheet" type="text/css" href="css/admin_index.css"> <!-- load style -->
+	<script type="text/javascript" src="js/script.js"></script>
 	<main>
 		<h2>Panel Admin 
 	 		<span>utilisateur : <?php echo $_SESSION['nomutilisateur'] ?> <br>
@@ -78,14 +79,13 @@
 				<input minlength='1' maxlength='20' name='pseudo' type='text' required>
 			</label>
 			<label class='label_space_add_coach'>Mot de passe &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
-                <input id='password' type='password' name='motdepasse' onkeyup='check_password()' minlenght='1' maxlength='50' required />
+                <input id='password' type='password' name='motdepasse' onkeyup='check_coach_password()' minlenght='1' maxlength='50' required />
             </label>
             <label class='label_space_add_coach'>Confirmation &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
-                <input id='confirm_password' type='password' name='confirm_password' onkeyup='check_password()' minlenght='1' maxlength='50' required />
+                <input id='confirm_password' type='password' name='confirm_password' onkeyup='check_coach_password()' minlenght='1' maxlength='50' required />
             </label>
             <h5 id="message"></h5>
-				
-			<button class="button_add_coach" type="submit">Ajouter</button>
+			<article id="button"></article>
 		</div>
 		</form>
 	</main>

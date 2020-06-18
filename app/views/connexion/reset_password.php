@@ -1,5 +1,7 @@
 <link rel="stylesheet" type="text/css" href="css/connexion_style.css"> <!-- load style from connexion_style.css -->
-
+<head>
+	<title>Connexion DigitalSport</title>
+</head
 <div class="limiter"> <!--- Reset password page --->
 	<div class="container-login">
 
@@ -18,11 +20,11 @@
  					<?php elseif(isset($error_message)): ?>
  						<h3 class="error_message"><?php echo $error_message ?></h3> <br>
  					<?php endif; ?>
-						Réinitialisation de mot de passe
+						Réinitialisation de Mot de Passe
 					</span>
 
 					<div class="wrap-input validate-input" data-validate = "Adresse email requise : ex@abc.xyz">
-						<input class="input input-field" type="text" name="mail" placeholder="Email" minlenght="1" maxlength="255" required>
+						<input class="input input-field" type="text" name="mail" placeholder="📧 Email" minlenght="1" maxlength="255" required>
 					</div>
 
 					<!-- button to submit form -->

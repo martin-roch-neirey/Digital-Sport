@@ -9,9 +9,7 @@ require_once(MODEL_PATH . '/table_client.php');
 
 function index ()
 {
-
 	display_view('home/index');
-	
 }
 
 //----------------------------- submit contact message (from client) -----------------------------
@@ -24,10 +22,8 @@ function index_message_submit () // show idnex page with success message (messag
 
 function submit_contact_message() // submit message
 {
-	
 	submitContactMessage();
-	header('Location: https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=home&action=index_message_submit');
-
+	header('Location: '. get_url('home','index')); // redirect on the view to show index home page
 }
 
 ?>

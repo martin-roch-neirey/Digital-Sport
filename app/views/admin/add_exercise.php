@@ -21,19 +21,19 @@
  		<form class='form_add_exercise' action='<?php echo get_url('admin','add_exercise_proceed') ?>' method='POST'>
  			<div>
 	 			<label>Nom &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
-	 				<input minlength="1" maxlength="255" type="text" name="nomexercice" required>
+	 				<input minlength="1" maxlength="255" type="text" name="nomexo" required>
 	 			</label>
 		 		
 		 		<label>Description &nbsp;&nbsp;&nbsp;&nbsp; :
-		 			<input minlength="1" maxlength="255" type="" name="description" required>	
+		 			<textarea minlength="1" type="text" name="description" required></textarea>
 		 		</label>
 		 		
 		 		<label>Lien vidéo &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
-		 			<input type="text" name="lienvideo">	
+		 			<input type="text" name="lienvideo" required>	
 		 		</label>
 		 		
 		 		<label>Lien image &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
-		 			<input type="text" name="lienimage">	
+		 			<input type="text" name="lienimage" required>	
 		 		</label>
 		 		
 		 		<label>Lien musique &nbsp; :

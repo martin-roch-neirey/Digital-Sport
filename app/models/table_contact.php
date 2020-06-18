@@ -4,11 +4,9 @@
 
 function countContactMessage () // count contact message in database
 {
-
 	$local_table = 'contact';
     $local_fieldsParams = ['COUNT(*)'];
     return select($local_table, $local_fieldsParams, [], '', 0, 0);
-
 }
 
 function showContactMessage () // show contact message (from client)

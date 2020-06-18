@@ -4,16 +4,13 @@
 
 function countCoach () // count coach in database
 {
-
 	$local_table = 'coach';
     $local_fieldsParams = ['COUNT(*)'];
     return select($local_table, $local_fieldsParams, [], '', 0, 0);
-
 }
 
 function showAllCoachsProfile () //show profile for all/searched coach
 {
-
 	$local_table = 'coach';
 	$local_fieldsParams = ['idcoach','nom','refprefixetel','prenom','datenss','mail','tel','taille','poids','rue','numrue','ville','codepostal','pseudo'];
 	$local_whereParams = [];
@@ -23,23 +20,19 @@ function showAllCoachsProfile () //show profile for all/searched coach
 	}
 
 	return select($local_table, $local_fieldsParams, $local_whereParams, $local_orderParams, 0, 0);
-
 }
 
 function getCoachProfile () // get coach information profile (in database)
 {
-
     $local_table = 'coach';
     $local_fieldsParams = ['idcoach','nom','prenom','refprefixetel','mail','tel','taille','poids','rue','numrue','ville','codepostal','pseudo'];
     $local_whereParams = [['idcoach','=',$_POST['iduser']]];
 
     return select($local_table, $local_fieldsParams, $local_whereParams, '', 0, 0);
-
 }
 
 function getModificationCoachProfile () // get modified coach information profile (on website)
 {
-
     return $local_data = [
             'idcoach' => $_POST['iduser'],
             'nom' => $_POST['nom'],
@@ -55,12 +48,10 @@ function getModificationCoachProfile () // get modified coach information profil
             'codepostal' => $_POST['codepostal'],
             'pseudo' => $_POST['pseudo'],
     ];
-
 }
 
-function getAddCoachInfo () // get coach info from coach form 
+function getAddCoachInfo () // get coach info from coach form
 {
-
     return $local_data = [
             'sexe' => $_POST['sexe'],
             'nom' => $_POST['nom'],
@@ -76,21 +67,20 @@ function getAddCoachInfo () // get coach info from coach form
             'pseudo' => $_POST['pseudo'],
             'motdepassse' => $_POST['motdepasse'],
             'poids' => $_POST['poids'],
-            'taille' => $_POST['taille'],      
+            'taille' => $_POST['taille'],
     ];
-
 }
 
-function addCoachProceed ()
+function addCoachProceed () // proceeds the coach addition
 {
     $local_table = 'coach';
     $local_mdp = password_hash($_POST['motdepasse'], PASSWORD_DEFAULT); // password automaticaly hashed
 
     $local_data = [
             'nom' => ucwords(strtolower($_POST['nom'])),
-            'prenom' => $_POST['prenom'],
+            'prenom' => ucwords(strtolower($_POST['prenom'])),
             'sexe' => $_POST['sexe'],
-            'mail' => $_POST['mail'],
+            'mail' => strtolower($_POST['mail']),
             'datenss' => $_POST['datenss'],
             'pseudo' => $_POST['pseudo'],
             'ville' => $_POST['ville'],
@@ -107,45 +97,62 @@ function addCoachProceed ()
     insert($local_table , $local_data);
 }
 
-function updateCoachProfile ($idcoach, $dataUpdate) // update coach profile in the database (with coach modification, on website)
+function updateCoachProfile (int $idcoach,array $dataUpdate) // update coach profile in the database (with coach modification, on website)
 {
-
     $local_table = 'coach';
     $local_fieldsParams = $dataUpdate;
-    
     $local_whereParams = ['idcoach','=',$idcoach];
 
     update($local_table, $local_fieldsParams, $local_whereParams);
-
 }
 
-function verifyExistingCoachMail ($mail) // verify in the database if the email address entered is already used or not
+function verifyExistingCoachMail (string $mail) // verify in the database if the email address entered is already used or not
 {
-
     $local_table = 'coach';
     $local_fieldsParams = ['mail'];
     $local_whereParams = [['mail','=',$mail]];
     return select($local_table, $local_fieldsParams, $local_whereParams, '', 0, 0);
-
 }
 
-function verifyExistingCoachPseudo ($pseudo) // verify in the database if the pseudo entered is already used or not
+function verifyExistingCoachPseudo (string $pseudo) // verify in the database if the pseudo entered is already used or not
 {
-
     $local_table = 'coach';
     $local_fieldsParams = ['pseudo'];
     $local_whereParams = [['pseudo','=',$pseudo]];
+
     return select($local_table, $local_fieldsParams, $local_whereParams, '', 0, 0);
 }
 
 function deleteCoachProfileProceed () // proceeds the coach profile deletion in database
 {
-
     $local_table = 'coach';
     $local_whereParams = [['idcoach','=', $_POST['iduser']]];
 
     delete($local_table, $local_whereParams);
+}
 
+function ConnexionTryCoach() // try to connect a coach
+{
+    $local_table = 'coach';
+    $local_mail = strtolower($_POST['mail']);
+    $local_password = $_POST['password'];
+
+    $result = select($local_table,['motdepasse','prenom','idcoach'],[['mail','=',$local_mail]], '', 0, 0);
+
+    if (isset($result[0])) {
+        $isPasswordCorrect = password_verify($_POST['password'], $result[0]['motdepasse']);
+        return [$result[0],$isPasswordCorrect];
+    }
+}
+
+function checkCoachConnexion() // check if the coach is connected
+{
+    if (!isset($_COOKIE['is_coach_connected']) or $_COOKIE['is_coach_connected'] == false){
+        header('Location: '. get_url('connexion_coach','index')); // redirect on the view to connexion index (expect a coach connexion)
+        exit;
+    } else {
+        setcookie('is_coach_connected', true, time()+3600, null, null, false, true);
+    }
 }
 
 ?>

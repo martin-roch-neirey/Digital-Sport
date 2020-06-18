@@ -1,0 +1,118 @@
+* {
+    font-family: "Gill Sans", sans-serif;
+    transition: all 0.5s ease;
+    padding: 0px;
+    margin: 0px;
+}
+
+/* CONTENU PAGE CONNEXION */
+a {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #666666;
+    margin: 0px;
+    transition: all 0.4s ease;
+}
+
+a:hover {
+  text-decoration: none;
+  color: grey;
+}
+
+input {
+    outline: none;
+    border: none;
+}
+
+textarea {
+  outline: none;
+  border: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.container-login100 {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  background: linear-gradient(-135deg, black, #28c9a7);
+
+}
+
+.wrap-login100 {
+  width: 40vw;
+  background: white;
+  border-radius: 6vh;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: space-between;
+  padding: 8vh 5vw 8vh 5vw;
+}
+
+.login100-form-title {
+  font-size: 4vh;
+  color: black;
+  line-height: 8vh;
+  text-align: center;
+  font-weight: bold;
+  width: 35vw;
+  margin-left: 2.5vw;
+  display: inline-block;
+}
+
+.wrap-input100 {
+
+  width: 100vw;
+  margin-bottom: 1.5vh;
+
+}
+
+.input100 {
+  font-size: 3vh;
+  line-height: 4vh;
+  color: black;
+  margin-left: 7vw;
+  display: block;
+  background: #e6e6e6;
+  height: 5vh;
+  border-radius: 6vh;
+  width: 26vw;
+      padding: 3vh;
+      text-align: center;
+}
+
+
+.login100-form-btn {
+  font-size: 3vh;
+  line-height: 3vh;
+  color: white;
+  margin-left: 7vw;
+  width: 26vw;
+  height: 6vh;
+  border-radius: 6vh;
+  background: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2vh;
+}
+
+.login100-form-btn:hover {
+  background: black;
+  cursor: pointer;
+}
+
+.success_message {
+  color: green;
+}
+
+.error_message{
+  color: red;
+}
+

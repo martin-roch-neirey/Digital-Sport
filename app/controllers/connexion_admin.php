@@ -8,9 +8,7 @@ require_once(MODEL_PATH . '/table_admin.php');
 
 function index() // connexion page
 {
-
   display_view('connexion_admin/index', [], false);
-
 }
 
 //----------------------------- try connexion for admin -----------------------------
@@ -26,43 +24,22 @@ function connexion_try_admin() { // trying to connect a new admin : refers to fu
     $_SESSION['nomutilisateur'] = $resultsql['nomutilisateur'];
     setcookie('is_admin_connected', true, time() + 3600, null, null, false, true);
 
-    header('Location: https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=admin&action=index'); // redirect on the view to show index admin page
+    header('Location: '. get_url('admin','index')); // redirect on the view to show index admin page
 
   } else {
     display_view('connexion_admin/index', ['error_message' => 'Echec de la connexion, identifiants incorrects.'], false);
   }
-
 }
 
-function disconnect_admin() { // disconect admin by deleting his cookie session
+//----------------------------- disconnect coach -----------------------------
+
+function disconnect_admin() { // disconect admin by setting his cookie session to 'false'
 
   setcookie('is_admin_connected', false, time(), null, null, false, true);
 
-  header('Location: https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=connexion_admin&action=index');
+  header('Location: '. get_url('connexion_admin','index')); // redirect on the view to show index connexion_admin page
   setcookie('cookie_success_message', 'Vous avez été déconnecté', time() + 1, null, null, false, true);
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ?>

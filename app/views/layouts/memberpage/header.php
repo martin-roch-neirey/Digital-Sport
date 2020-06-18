@@ -1,6 +1,9 @@
 <link rel="stylesheet" type="text/css" href="css/pagemembre_style.css">
 <link rel="stylesheet" type="text/css" href="css/pagemembre_index_style.css">
-
+<head>
+  <title>DigitalSport</title>
+  <meta http-equiv="Content-Type" content="text/HTML; charset=UTF-8" />
+</head>
 <header>
 <div id="menu-name">
   <h1>Mon Espace Virtuel</h1>

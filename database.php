@@ -222,10 +222,16 @@ function select_ij(string $table, array $fieldsParams, array $innerJoinParams, a
 		$where = '';
 		$data_whereArray = [];
 		$bindParamsWH_array = [];
+		$nullParam = [];
 		foreach ($whereParams as $param){
-	        $where .= ($param[0] . ' ' . $param[1] . ' :' . $param[0] . ' AND ');
-	        array_push($data_whereArray, $param[2]);
-	        array_push($bindParamsWH_array, (':'.$param[0]));
+			if ($param[1] == 'NULL') {
+				$where .= ($param[0] . ' ' . 'IS NULL' . ' AND ');
+			} else {
+				$where .= ($param[0] . ' ' . $param[1] . ' :' . $param[0] . ' AND ');
+	        	array_push($data_whereArray, $param[2]);
+	       	    array_push($bindParamsWH_array, (':'.$param[0]));
+			}
+
 		}
 		$where = substr($where,0,-5);
 		$data_prepare = array_combine($bindParamsWH_array, array_values($data_whereArray));
