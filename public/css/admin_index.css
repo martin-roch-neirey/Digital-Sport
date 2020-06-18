@@ -173,12 +173,11 @@ textarea{
 	font-weight: bold;
 	height: 9vh;
 	width: 20vw;
-	min-height: 3vh;
-	min-width: 20vw;
+	resize: none;
 }
 
 .td_contact_message{
-	min-width: 62vw;
+	min-width: 52vw;
 }
 
 

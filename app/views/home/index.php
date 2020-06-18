@@ -14,7 +14,7 @@
 
 				<p>Faites des exercices chez vous pour renforcer vos muscles et atteignez vos objectifs.</p>
 				<p>Seul(e) ou suivi(e) par un Coach, faites des entrainements qui vous correspondent.</p>
-				<p>Inscrivez vous et bénéficiez de cette expérience unique !</p>
+				<p>Inscrivez-vous et bénéficiez de cette expérience unique !</p>
 			</div>
 		</div>
 		<img class="imageronde" src="<?php echo get_asset('images/warmup.jpg') ?>" alt="warmup"/>

@@ -22,14 +22,14 @@
 
 
 <?php
+	
+	$trainingExercise1 = [$_SESSION['data'][0]];
 
-	$trainingExercise1 = [$data[0]];
-
-	if (isset($data[1])){
-		$trainingExercise2 = [$data[1]];
+	if (isset($_SESSION['data'][1])){
+		$trainingExercise2 = [$_SESSION['data'][1]];
 	}
-	if (isset($data[2])){
-		$trainingExercise3 = [$data[2]];
+	if (isset($_SESSION['data'][2])){
+		$trainingExercise3 = [$_SESSION['data'][2]];
 	}
 
 	print('<div>');

@@ -7,6 +7,10 @@ session_start();
 
 // www.monsite.com/index.php?controller=home&action=index
 
+if (get_config('debug') === false ) {
+	ini_set('display_errors', 'off');
+}
+
 
 $controller_file = CONTROLLER_PATH . '/' . basename($_GET['controller']) . '.php';
 

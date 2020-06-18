@@ -9,13 +9,18 @@ require_once(MODEL_PATH . '/table_materiel.php');
 require_once(MODEL_PATH . '/table_muscle.php');
 require_once(MODEL_PATH . '/table_typemuscu.php');
 require_once(MODEL_PATH . '/table_choixexo.php');
+require_once(MODEL_PATH . '/table_seanceclient.php');
+require_once(MODEL_PATH . '/table_listerexo.php');
 
 //----------------------------- show index pagemembre page -----------------------------
 
 function index() // show index page
 {
   checkClientConnexion();
-  display_view('pagemembre/index', []);
+
+  $local_data = [calculIMC(),countClientSession(),countClientExercise()];
+
+  display_view('pagemembre/index', $local_data);
 }
 
 //----------------------------- show client information -----------------------------
@@ -230,15 +235,29 @@ function exercise_training_proceed () // proceeds to the exercise training searc
 
   } elseif (count($local_data) <= 3) {
 
-    display_view('pagemembre/exercise_training_proceed', $local_data);
+    addClientSession(); // create a new session number
 
-    
+    $all_client_session = getAllClientSession(); // get all client session
+
+    $local_current_session = 0;
+    foreach ($all_client_session as $session) {
+      if ($session['idseanceclient'] > $local_current_session)
+        $local_current_session = $session['idseanceclient'];
+    }
+
+    foreach ($local_data as $exercise => $caractexercise) {
+      addListExercise($local_current_session,$caractexercise['idchoixexo']);
+    }
+
+    $_SESSION['data'] = $local_data;
+    header('Location: '.get_url('pagemembre','show_exercise_training'));
 
   } else {
 
     $selected_exercise = [];
     $max = count($local_data)-1;
     $unique = [];
+
     for ($i = 0; $i < 3; ++$i) { // choose randomly training exercise
       $rand_int = random_int(0, $max);
       if (in_array($rand_int, $unique)){
@@ -248,8 +267,29 @@ function exercise_training_proceed () // proceeds to the exercise training searc
         array_push($selected_exercise, $local_data[$rand_int]);
       }
     }
-    display_view('pagemembre/exercise_training_proceed', $selected_exercise);
+
+    addClientSession(); // create a new session number
+
+    $all_client_session = getAllClientSession(); // get all client session
+
+    $local_current_session = 0;
+    foreach ($all_client_session as $session) {
+      if ($session['idseanceclient'] > $local_current_session)
+        $local_current_session = $session['idseanceclient'];
+    }
+
+    foreach ($selected_exercise as $exercise => $caractexercise) {
+      addListExercise($local_current_session,$caractexercise['idchoixexo']);
+    }
+
+    $_SESSION['data'] = $selected_exercise;
+    header('Location: '.get_url('pagemembre','show_exercise_training'));
   }
+}
+
+function show_exercise_training () // show form to choose a specific training
+{
+  display_view('pagemembre/exercise_training_proceed', []);
 }
 
 ?>

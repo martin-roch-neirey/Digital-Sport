@@ -223,7 +223,7 @@ function update_client_profile_proceed () // proceeds to the update of a client 
 
 
 	$array_diff = array_diff_assoc($newInfo,$oldInfo[0]); // get the information to update by comparing old and new information
-	$local_data = [[$newInfo],getOrderedPrefixPhone(),getOrderedLevel(), getOrderedSubsciption(), 'action_message'=>'client','presentation_message'=>'Modification profil client :','success_message' => 'Le profil du client à été édité avec succès ! 💪 Il se peut que le client ait besoin de se déconnecter / reconnecter pour observer les changements complets.'];
+	$local_data = [[$newInfo],getOrderedPrefixPhone(),getOrderedLevel(), getOrderedSubsciption(), 'action_message'=>'client','presentation_message'=>'Modification profil client :','success_message' => 'Le profil du client à été édité avec succès ! 💪'];
 
 	if (!empty($array_diff)) // check whether the information has been changed
 	{
@@ -465,7 +465,7 @@ function delete_exercise_training_proceed () // proceeds to the exercise trainin
 	checkAdminConnexion();
 	deleteExerciseTrainingProceed();
 
-	header('Location: '. get_url('admin','show_exercise_training')); // redirect on the view to show  exercise training with success message	
+	header('Location: '. get_url('admin','show_exercise_training')); // redirect on the view to show  exercise training with success message
 
 	setcookie('cookie_success_message', "Exercice d'entrainement supprimé ! 💪", time() + 1, null, null, false, true); // cookie to set success message
 }

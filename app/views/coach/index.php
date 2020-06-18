@@ -8,7 +8,21 @@
 
   <body>
 
+    <h3 class="message-display">
+        <?php
 
+            if (isset($_COOKIE['cookie_success_message'])) {
+              echo $_COOKIE['cookie_success_message'];
+            } else if (isset($success_message)) {
+              echo $success_message;
+            } else if (isset($error_message)) {
+              echo $error_message;
+            } else if (isset($action_message)) {
+              echo $action_message;
+            }
+
+        ?>
+    </h3>
 
     <?php
       echo '<h3 class="presentation_message title-menu">'.$presentation_message.'</h3>'; // show several message (presentation/success/error)

@@ -171,4 +171,9 @@ footer h2{
   	font-size: 5vh;
 }
 
-
+.success_message{
+	margin-top: 10vh;
+	margin-bottom: 30vh;
+	font-size: 6vh;
+	color: green;
+}

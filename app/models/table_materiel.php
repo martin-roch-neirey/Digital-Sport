@@ -24,7 +24,7 @@ function addMaterialProceed () // proceeds the material addition in database
 {
 	$local_table = 'materiel';
 	$local_data = [
-		'nommateriel' => $_POST['nommateriel'],
+		'nommateriel' => ucfirst(strtolower($_POST['nommateriel'])),
 	];
 
 	insert($local_table , $local_data);

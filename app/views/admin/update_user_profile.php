@@ -60,7 +60,7 @@
 								<input minlength='1' maxlength='255' name='prenom' value=".$prenom." required>
 							</label>
 							<label class='label_space_usr_prfl'>Mail &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
-								<input minlength='1' maxlength='255' name='mail' value=".$mail." required>
+								<input minlength='1' maxlength='255' name='mail' value='".$mail."' required>
 							</label>
 							<label class='label_space_usr_prfl'>Téléphone :
 					";

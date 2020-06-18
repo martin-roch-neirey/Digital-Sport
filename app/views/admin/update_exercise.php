@@ -37,7 +37,7 @@
 								<input  minlength='1' maxlength='255' name='nomexo' value='".$nomexo."' required>
 							</label>
 							<label>Description &nbsp;&nbsp;&nbsp; :
-								<textarea minlength='1' type='text' name='".$description."'' required></textarea>
+								<textarea minlength='1' type='text' name='description' required>".$description."</textarea>
 							</label>
 							<label>Lien vidéo &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
 								<input minlength='1' name='lienvideo' required value=".$lienvideo.">

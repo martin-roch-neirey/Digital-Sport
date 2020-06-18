@@ -22,6 +22,7 @@ function connexion_try_coach() { // trying to connect a new coach
 
   if ($success == true) {
     $_SESSION['prenomcoach'] = $resultsql['prenom'];
+    $_SESSION['nomcoach'] = $resultsql['nom'];
     $_SESSION['idcoach'] = $resultsql['idcoach'];
     setcookie('is_coach_connected', true, time() + 3600, null, null, false, true);
 

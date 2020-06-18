@@ -105,6 +105,12 @@ background:#f40d42;
 #menu-header li:nth-child(2):hover, #menu-header li:nth-child(2) li:hover{
 background:#f40d42;
 }
+#menu-header li:nth-child(3):hover, #menu-header li:nth-child(3) li:hover{
+background:#f40d42;
+}
+#menu-header li:nth-child(4):hover, #menu-header li:nth-child(4) li:hover{
+background:#f40d42;
+}
 #menu-header li:last-child:hover, #menu-header li:last-child li:hover{
 background:#f40d42;
 }
@@ -169,7 +175,7 @@ div.table-name {
   margin: auto;
   max-width: 600px;
   padding:5px;
-  width: 100%;
+  width:100%;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   animation: float 5s infinite;
 }
@@ -296,6 +302,20 @@ font-size: 1em;
 
  }
 
+ .large-menu {
+width: 90vw;
+padding: 15px;
+text-align: center;
+margin-left: 3.5%;
+background: pink;
+border: 0px;
+border-radius: 5px;
+background: #403e3d;
+line-height: 30px;
+font-size: 1em;
+
+ }
+
  .title-menu {
 font-size: 2em;
 color:#f40d42;
@@ -391,4 +411,14 @@ p {
 
 .success_message {
   color:green;
+}
+
+.error_message {
+  color: red;
+}
+
+.message-display {
+  text-align: center;
+  margin-top: 5vh;
+  color: white;
 }

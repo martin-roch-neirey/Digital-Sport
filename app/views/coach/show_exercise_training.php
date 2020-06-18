@@ -1,7 +1,12 @@
 	<link rel="stylesheet" type="text/css" href="css/coach_style.css"> <!-- load style -->
 	<main>
+
+		<br><br>
+
+		<menu class='large-menu'>
+
 		<?php
-			echo '<h3 class="presentation_message">'.$presentation_message.'</h3>'; // show several message (presentation/success/error)
+			echo '<h3 class="presentation_message title-menu">'.$presentation_message.'</h3>'; // show several message (presentation/success/error)
 			if (isset($error_message)){
 				echo '<h4 class="error_message">'.$error_message.'</h4>' ;
 			}
@@ -16,7 +21,7 @@
 		<!-- show exercise to update (add/update/delete) -->
 
 		<div>
- 			<table class='table_show_exercice_training'>
+ 			<table class='table_show_exercice_training table-content'>
 				<tr class="tr_title">
 					<td>Exercice</td>
 					<td>Muscle</td>
@@ -24,6 +29,7 @@
 					<td>Niveau</td>
 					<td>Répétitions</td>
 					<td>Temps</td>
+					<td>Actions</td>
 				</tr>
 
 				<?php
@@ -58,13 +64,13 @@
 									<input type='hidden' name='reftypemuscu' value=".$reftypemuscu.">
 									<input type='hidden' name='refniveau' value=".$refniveau.">
 
-									<button type='submit'>Editer</button>
+									<button type='submit' class='little-button'>Editer</button>
 							</form>
 
 							<form action=".get_url('coach','delete_exercise_training_proceed')." method='POST'>
 									<input type='hidden' name='idchoixexo' value=".$idchoixexo.">
 
-									<button type='submit'>Supprimer</button>
+									<button type='submit' class='little-button'>Supprimer</button>
 								</td>
 							</form>
 						</tr>
@@ -73,5 +79,10 @@
 				?>
 			</table>
 		</div>
+		<br>
+	</menu>
+
+<br><br>
+
 	</main>
 

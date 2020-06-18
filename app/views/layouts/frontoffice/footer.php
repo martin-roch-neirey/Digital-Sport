@@ -4,7 +4,7 @@
 		<h3>🔰 Vous souhaitez obtenir des informations complémentaires ? Nous poser une quelconque question ? Nous proposer un dîner ? Tout se passe avec le formulaire ci-dessous...</h3>
 		<div>
 			<?php if(isset($success_message)): ?>
- 				<p><?php echo $success_message ?></p>
+ 				<p class="success_message"><?php echo $success_message ?></p>
 			<?php else: ?>
 				<form action="<?php echo get_url('home','submit_contact_message') ?>" method="POST">
 				    <div>

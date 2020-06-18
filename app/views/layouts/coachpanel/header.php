@@ -20,7 +20,7 @@
   </li>
   <li class="menu-header-main-button"><a href="<?php echo get_url('coach','show_exercise_training')?>">Exercices Training</a>
     <ul>
-      <li><a href="<?php echo get_url('coach','add_exercise')?>">Ajouter</a></li>
+      <li><a href="<?php echo get_url('coach','add_exercise_training')?>">Ajouter</a></li>
     </ul>
   </li>
   <li class="menu-header-main-button"><a href="<?php echo get_url('coach','update_material')?>">Matériel</a>

@@ -6,8 +6,8 @@
 </head>
 <header>
 <div id="menu-name">
-  <h1>Mon Espace Virtuel</h1>
-  <h2 id="bonjour">🔰 Bonjour <?php echo $_SESSION['prenom']?> !</h2>
+  <h1>🤾‍♀️ Mon Espace Virtuel 🤾‍♀️</h1>
+  <h2 id="bonjour">Bonjour <?php echo $_SESSION['prenom']?> !</h2>
 </div>
 
 <ul id="menu-header">
@@ -19,7 +19,6 @@
   <li class="menu-header-main-button"><a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=pagemembre&action=index">Training</a>
     <ul>
       <li><a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=pagemembre&action=exercise_training">Je veux m'entraîner</a></li>
-      <li><a href="#">Mes statistiques</a></li>
     </ul>
   </li>
   <li class="menu-header-main-button"><a href="https://srv-prj.iut-acy.local/RT/1projet17/mvc/public/index.php?controller=pagemembre&action=index">Mon Profil</a>

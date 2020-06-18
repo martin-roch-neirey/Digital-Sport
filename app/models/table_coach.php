@@ -38,7 +38,6 @@ function getModificationCoachProfile () // get modified coach information profil
             'nom' => $_POST['nom'],
             'prenom' => $_POST['prenom'],
             'refprefixetel' => $_POST['refprefixetel'],
-            'mail' => $_POST['mail'],
             'tel' => $_POST['tel'],
             'taille' => $_POST['taille'],
             'poids' => $_POST['poids'],
@@ -137,7 +136,7 @@ function ConnexionTryCoach() // try to connect a coach
     $local_mail = strtolower($_POST['mail']);
     $local_password = $_POST['password'];
 
-    $result = select($local_table,['motdepasse','prenom','idcoach'],[['mail','=',$local_mail]], '', 0, 0);
+    $result = select($local_table,['motdepasse','prenom','nom','idcoach'],[['mail','=',$local_mail]], '', 0, 0);
 
     if (isset($result[0])) {
         $isPasswordCorrect = password_verify($_POST['password'], $result[0]['motdepasse']);
@@ -153,6 +152,40 @@ function checkCoachConnexion() // check if the coach is connected
     } else {
         setcookie('is_coach_connected', true, time()+3600, null, null, false, true);
     }
+}
+
+function tryChangeCoachPassword() // try to change coach password
+{
+    $local_table = 'coach';
+    $local_idcoach = $_SESSION['idcoach'];
+    $local_leMDP = $_POST['actual_password'];
+    $local_newMDP = $_POST['new_password'];
+
+    $result = select($local_table,['motdepasse'],[['idcoach','=',$local_idcoach]], '', 0, 0);
+
+    if (isset($result[0])) {
+
+        $resultsql = $result[0];
+        $isPasswordCorrect = password_verify($local_leMDP, $resultsql['motdepasse']);
+        $success = $isPasswordCorrect;
+
+        if ($success == true) {
+            $chaine_hash = password_hash($local_newMDP, PASSWORD_DEFAULT);
+
+            $local_table = 'coach';
+            $local_fieldsParams = ["motdepasse" => $chaine_hash];
+            $local_whereParams = ['idcoach','=',$local_idcoach];
+
+            // submit the new password to the database
+            update($local_table, $local_fieldsParams, $local_whereParams);
+            $success = true;
+        } else {
+            $success = false;
+        }
+    } else {
+        $success = false;
+    }
+    return $success;
 }
 
 ?>

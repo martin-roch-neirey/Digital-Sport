@@ -52,7 +52,7 @@
 			    	<a href=<?php echo get_url('admin','show_changelog') ?> >Changelog</a>
 			    </li>
 			    <li>
-			    	<a href=<?php echo get_url('home','index') ?> >Retour au site</a>
+			    	<a target='blank' href=<?php echo get_url('home','index') ?> >Retour au site</a>
 			    </li>
 		     </ul>
 	    </nav>

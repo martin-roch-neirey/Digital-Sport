@@ -48,7 +48,7 @@ function pdo_query(string $sql,array $params = null)
 
 /**
  * forme une requete select
- * du type: select('mesClients',[unNom,unPrenom,unedate],[['unNom','=','Dupont'],['unPrenom','=','manon']],'unNom ASC',10,20);
+ * du type: select('mesClients',['unNom','unPrenom','unedate'],[['unNom','=','Dupont'],['unPrenom','=','manon']],'unNom ASC',10,20);
  *
  * @param  string     $table        [description]
  * @param  array      $fieldsParams [description]
@@ -90,7 +90,7 @@ function select(string $table, array $fieldsParams, array $whereParams, string $
 
 /**
  * forme une requete insert
- * du type: select('mesClients',['unNom' => 'Dupont','unPrenom' => 'manon']);
+ * du type: insert('mesClients',['unNom' => 'Dupont','unPrenom' => 'manon']);
  *
  * @param  string     $table [description]
  * @param  array      $data  [description]

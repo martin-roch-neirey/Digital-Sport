@@ -349,5 +349,17 @@ function checkClientSub() // check if the client has a subscription
     }
 }
 
+function calculIMC() // calcul client BMI
+{
+    $local_table = 'client';
+    $local_fieldsParams = ['poids','taille'];
+    $local_whereParams = [['idclient','=',$_SESSION['idclient']]];
+
+    $result = select($local_table, $local_fieldsParams, $local_whereParams, '', 0, 0);
+
+    $imc = ($result[0]['poids']/($result[0]['taille']*0.0001*$result[0]['taille']));
+
+    return round($imc, 1);
+}
 
 ?>

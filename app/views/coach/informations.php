@@ -75,9 +75,11 @@ $sql = $temp[0];
 <button type="button" class="button"><a href='<?php echo get_url('coach','update_user_profile') ?>'>Editer mes informations</a></button>
 
 <button type="button" class="button"><a href='<?php echo get_url('coach','change_password') ?>'>Modifier mon mot de passe</a></button>
-<br><br><br>
+<br><br>
   </body>
 
 </menu>
+
+<br><br>
 
 </main>

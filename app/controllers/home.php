@@ -23,7 +23,7 @@ function index_message_submit () // show idnex page with success message (messag
 function submit_contact_message() // submit message
 {
 	submitContactMessage();
-	header('Location: '. get_url('home','index')); // redirect on the view to show index home page
+	header('Location: '. get_url('home','index_message_submit')); // redirect on the view to show index home page
 }
 
 ?>
