@@ -36,6 +36,7 @@ function getModificationCoachProfile () // get modified coach information profil
     return $local_data = [
             'idcoach' => $_POST['iduser'],
             'nom' => $_POST['nom'],
+            'mail' => $_POST['mail'],
             'prenom' => $_POST['prenom'],
             'refprefixetel' => $_POST['refprefixetel'],
             'tel' => $_POST['tel'],

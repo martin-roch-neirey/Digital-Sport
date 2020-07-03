@@ -13,7 +13,7 @@
 
 
 				<p>Faites des exercices chez vous pour renforcer vos muscles et atteignez vos objectifs.</p>
-				<p>Seul(e) ou suivi(e) par un Coach, faites des entrainements qui vous correspondent.</p>
+				<p>Seul(e) ou suivi(e) par un Coach, faites des entraînements qui vous correspondent.</p>
 				<p>Inscrivez-vous et bénéficiez de cette expérience unique !</p>
 			</div>
 		</div>
@@ -42,16 +42,16 @@
 		<div id="corps">
 			<div id="bandeau1">
 				<img class="imageronde" src="<?php echo get_asset('images/work_home.jpg') ?>" alt="work_home"/>
-				<h3>Vous pouvez librement réaliser des exercices chez vous, à votre rythme pour garder la forme. Vous avez la possibilité de sélectionner le muscle, le matériel et le type de musculation pour évoluer suivant vos envies. Ces entrainements sont uniques : vous êtes votre propre entraineur !
+				<h3>Vous pouvez librement réaliser des exercices chez vous, à votre rythme pour garder la forme. Vous avez la possibilité de sélectionner le muscle, le matériel et le type de musculation pour évoluer suivant vos envies. Ces entraînements sont uniques : vous êtes votre propre entraîneur !
 					<br/><br/>
-					<a href="#">Je pars m'entrainer !</a>
+					<a href=<?php echo get_url('pagemembre','abonnements') ?>>Je pars m'entraîner !</a>
 				</h3>
 			</div>
 			<div id="bandeau2">
 				<img class="imageronde" src="<?php echo get_asset('images/work_room.jpg') ?>" alt="work_room"/>
 				<h3>Vous pouvez opter pour un suivi par un coach en salle. Vous vous entrainerez en suivant ses directives durant la séance, ils sont des motivateurs exceptionnels et vous poussent à performer et à dépasser vos limites. Inscrivez vous en amont pour profiter de ces séances !
 					<br/><br/>
-					<a href="#">Je réserve ma séance !</a>
+					<a href=<?php echo get_url('pagemembre','abonnements') ?>>Je réserve ma séance !</a>
 				</h3>
 			</div>
 		</div>

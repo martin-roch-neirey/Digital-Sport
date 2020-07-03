@@ -10,14 +10,34 @@
 
 <body class="stackedit">
   <div class="stackedit__html"><h1 id="digital-sport---projet-rt1">Digital Sport - Projet RT1</h1>
+<h2 id="changelog-18.06.2020-">Changelog 18.06.2020 <img src="https://livevox.com/wp-content/uploads/2017/05/resources-gear-icon.png" alt="en" width="40" height="40"></h2>
+<p><img src="https://cdn2.iconfinder.com/data/icons/documents-files-2/48/31-512.png" alt="img" width="15"> <strong>Récapitulatif :</strong></p>
+<ul>
+<li>Review de code :
+<ul>
+<li>Contrôleurs.</li>
+<li>Tables.</li>
+<li>Vues.</li>
+<li>database.php</li>
+<li>core.php</li>
+<li>bootstrap.php</li>
+</ul>
+</li>
+<li>Le panel coach est créé, fonctionnel, et visuellement terminé.</li>
+<li>Le visuel de la page d’entraînement est terminé.</li>
+<li>Ajout de fonctions statistiques pour affichage à la page d’accueil de la page membre.</li>
+</ul>
+<blockquote>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Circle-icons-dev.svg/1200px-Circle-icons-dev.svg.png" alt="DEV" width="14" height="14"> Développeurs  : Martin &amp; Malo</p>
+</blockquote>
 <h2 id="changelog-17.06.2020-">Changelog 17.06.2020 <img src="https://livevox.com/wp-content/uploads/2017/05/resources-gear-icon.png" alt="en" width="40" height="40"></h2>
 <p><img src="https://cdn2.iconfinder.com/data/icons/documents-files-2/48/31-512.png" alt="img" width="15"> <strong>Récapitulatif :</strong></p>
 <ul>
 <li>Amélioration de la fonction générale pour les requêtes SQL préparées avec <em>INNER JOIN</em>.</li>
 <li>Il est désormais possible de voir, modifier, supprimer et ajouter des exercices depuis le panel admin.</li>
-<li>Bug fix : Affichage d’un formulaire sans listes déroulantes SQL après l’envoi de ce même formulaire avec une erreur.</li>
+<li>Résolution de l’affichage d’un formulaire sans listes déroulantes SQL après l’envoi de ce même formulaire avec une erreur.</li>
 <li>Modification du graphe, MCD et MLD pour correspondre au cahier des charges sur la gestion des entraînements.</li>
-<li>Bug fix : Erreur PHP lorsqu’un client modifie ses informations dans son espace membre.</li>
+<li>Résolution de l’erreur PHP lorsqu’un client modifie ses informations dans son espace membre.</li>
 <li>Un client peut désormais modifier son mot de passe (avec vérification du mot de passe actuel).</li>
 <li>Factorisation du code du contrôleur de la page membre avec la création d’une fonction <em>checkClientConnexion</em>.</li>
 <li>Utilisation de la nouvelle requête préparée <em>INNER JOIN</em> pour obtenir le <em>nomniveau</em> du client lors de l’affichage de ses informations.</li>
@@ -25,6 +45,12 @@
 <li>Le nom et le prénom du client sont désormais automatiquement formatés sous la forme “Xxxxx Yyyyy” lors de l’inscription.</li>
 <li>L’adresse e-mail entrée lors de l’inscription est désormais forcée en minuscule lors de l’insertion dans la BDD.</li>
 <li>Redéfinition de tous les liens et actions des formulaires en utilisant la fonction “<em>get_url</em>”.</li>
+<li>Ajout de <em>views</em> <em>exercise_training</em> et <em>exercise_training_proceed</em> dans le contrôleur <em>pagemembre</em> pour afficher les pages d’entraînement.</li>
+<li>Création d’une fonction <em>INNER</em> <em>JOIN</em> avec la requête SQL préparée <em>select_ij</em>.</li>
+<li>Il est désormais possible de choisir le matériel “<em>Aucun</em>” lors de sa configuration de séance.</li>
+<li>Il n’est désormais plus possible d’avoir 2 fois le même exercice dans une page d’entraînement.</li>
+<li>Le problème du bouton d’ajout de coach géré en JavaScript est désormais réglé (panel admin).</li>
+<li>Utilisation des fonctions <em>strtolower(str)</em> et <em>strtoupper(str)</em>.</li>
 </ul>
 <blockquote>
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Circle-icons-dev.svg/1200px-Circle-icons-dev.svg.png" alt="DEV" width="14" height="14"> Développeurs  : Martin &amp; Malo</p>

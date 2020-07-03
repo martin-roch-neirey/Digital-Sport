@@ -221,7 +221,6 @@ function update_client_profile_proceed () // proceeds to the update of a client 
 	$oldInfo = getClientProfile(); // get old information from database
 	$newInfo = getModificationClientProfile(); // get new information from website (with update)
 
-
 	$array_diff = array_diff_assoc($newInfo,$oldInfo[0]); // get the information to update by comparing old and new information
 	$local_data = [[$newInfo],getOrderedPrefixPhone(),getOrderedLevel(), getOrderedSubsciption(), 'action_message'=>'client','presentation_message'=>'Modification profil client :','success_message' => 'Le profil du client à été édité avec succès ! 💪'];
 
@@ -282,7 +281,6 @@ function update_coach_profile_proceed () // proceeds to the update of a coach pr
 	checkAdminConnexion();
 	$oldInfo = getCoachProfile(); // get old information from database
 	$newInfo = getModificationCoachProfile(); // get new information from website (with update)
-
 
 	$array_diff = array_diff_assoc($newInfo,$oldInfo[0]); // get the information to update by comparing old and new information
 	$local_data = [[$newInfo],getOrderedPrefixPhone(), 'action_message'=>'coach', 'presentation_message'=>'Modification profil coach :', 'success_message' => 'Le profil du coach à été édité avec succès ! 💪'];

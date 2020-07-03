@@ -71,7 +71,7 @@
 					    }
 					print('</select>');
 						
-					echo "  <input minlength='10' maxlength='13' name='tel' value=".$tel." required>
+					echo "  <input minlength='6' maxlength='13' name='tel' value=".$tel." required>
 							</label>
 							<label class='label_space_usr_prfl'>Taille &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
 								<input minlength='1' maxlength='3' name='taille' value=".$taille." required>
