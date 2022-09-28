@@ -10,7 +10,7 @@ function countClient () // count client in database
 }
 
 function showAllClientsProfile () //show profile for all/searched client
-{ 
+{
     $local_table = 'client';
 	$local_fieldsParams = ['idclient','nom','refniveau','refprefixetel','reftypeabonnement','prenom','datenss','mail','tel','taille','poids','rue','numrue','ville','codepostal','pseudo'];
 	$local_whereParams = [];
@@ -157,7 +157,7 @@ function connexionTry() // try to connect a client
     }
 }
 
-function getRefAbo() 
+function getRefAbo()
 {
     $local_table = 'client';
     $local_fieldsParams = ['idclient','reftypeabonnement'];
